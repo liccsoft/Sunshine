@@ -207,9 +207,22 @@ ul#menu {
 
 /* page elements
 ----------------------------------------------------------*/
+
+.editor-label, .display-label{
+    float:left; clear:left; width:150px; margin-left:50px;
+}
+
+.editor-field, .display-field{
+    float:left; clear:right; width:40%;
+}
+fieldset p
+{
+    clear:both;margin-left:50%; 
+    }
+
 /* featured */
 .featured {
-    background-color: #fff;
+    background-color: #fff; 
 }
 
     .featured .content-wrapper {

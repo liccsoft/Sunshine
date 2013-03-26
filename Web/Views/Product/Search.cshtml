@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Sunshine.Business.Core.Product>
+
+@{
+    Layout = "";
+}
+<h3>搜索结果:@Model.Count()</h3>
+<table>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductMark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+    </tr>
+}
+
+</table>

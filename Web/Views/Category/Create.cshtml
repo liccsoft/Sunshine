@@ -1,0 +1,62 @@
+﻿@model Sunshine.Business.Core.Category
+
+@{
+    ViewBag.Title = "Create";
+    
+}
+@using Sunshine.Business.Core;
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Category</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ParentCategoryId)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.ParentCategoryId)*@
+            @Html.DropDownList("ParentCategoryId", Category.GetList(0, true).ConvertAll<SelectListItem>(a => new SelectListItem() { Text = a.Name, Value = a.CategoryId.ToString() }), new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.ParentCategoryId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DisplayName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisplayName)
+            @Html.ValidationMessageFor(model => model.DisplayName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

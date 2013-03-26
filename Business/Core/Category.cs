@@ -14,9 +14,10 @@ namespace Sunshine.Business.Core
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
 
+        [Display(Name="所属分类")]
         public int ParentCategoryId { get; set; }
 
-
+        
         public string Description
         {
             get;
@@ -35,5 +36,15 @@ namespace Sunshine.Business.Core
             set;
         }
 
+        public static List<Category> GetList(int parentId, bool addDefault)
+        {
+            using (var c = new UsersContext())
+            {
+                var list = c.Categorys.Where(a=>a.ParentCategoryId == parentId).ToList();
+                if (addDefault)
+                    list.Insert(0, new Category() { Name = "无" });
+                return list;
+            }
+        }
     }
 }

@@ -1,0 +1,43 @@
+﻿@model Sunshine.Business.Core.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Category</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ParentCategoryId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ParentCategoryId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DisplayName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DisplayName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CategoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

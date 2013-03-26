@@ -1,0 +1,58 @@
+﻿@model Sunshine.Business.Core.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductMark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductMark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductPriceTypeId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductPriceTypeId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductTypeId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductTypeId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CategoryId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
