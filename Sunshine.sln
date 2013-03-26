@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunshine", "Web\Web.csproj", "{38644A78-C669-42C5-88AB-FF29C0C244CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{38644A78-C669-42C5-88AB-FF29C0C244CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunshine.Business", "Business\Sunshine.Business.csproj", "{1E04109E-B897-4501-952B-A9EE719D0798}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{38644A78-C669-42C5-88AB-FF29C0C244CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38644A78-C669-42C5-88AB-FF29C0C244CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38644A78-C669-42C5-88AB-FF29C0C244CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E04109E-B897-4501-952B-A9EE719D0798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E04109E-B897-4501-952B-A9EE719D0798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E04109E-B897-4501-952B-A9EE719D0798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E04109E-B897-4501-952B-A9EE719D0798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
