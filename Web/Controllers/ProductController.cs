@@ -24,6 +24,8 @@ namespace Sunshine.Controllers
         [HttpPost]
         public ActionResult Search(string pattern)
         {
+            //var aaa = db.Products.Where(a => a.ProductMark.Contains(pattern));
+            //var c = aaa.ToString();
             return View(db.Products.Where(a=>a.ProductMark.Contains(pattern)).ToList());
         }
 

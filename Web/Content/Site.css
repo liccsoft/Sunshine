@@ -209,11 +209,11 @@ ul#menu {
 ----------------------------------------------------------*/
 
 .editor-label, .display-label{
-    float:left; clear:left; width:150px; margin-left:50px;
+    float:left; clear:left; width:150px; margin-left:50px; line-height:35px;
 }
 
 .editor-field, .display-field{
-    float:left; clear:right; width:40%;
+    float:left; clear:right; width:40%;line-height:35px;
 }
 fieldset p
 {

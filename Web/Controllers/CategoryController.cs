@@ -6,9 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
+using Sunshine.Filters;
 
 namespace Sunshine.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class CategoryController : Controller
     {
         private UsersContext db = new UsersContext();

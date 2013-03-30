@@ -13,6 +13,7 @@ namespace Sunshine.Business.Core
         public UsersContext()
             : base("DefaultConnection")
         {
+            
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
@@ -20,5 +21,6 @@ namespace Sunshine.Business.Core
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductPriceType> ProductPriceTypes { get; set; }
         public DbSet<Category> Categorys { get; set; }
+
     }
 }

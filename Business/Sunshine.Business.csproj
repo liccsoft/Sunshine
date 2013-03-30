@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Category.cs" />
+    <Compile Include="Core\Company.cs" />
     <Compile Include="Core\IBaseType.cs" />
     <Compile Include="Core\Product.cs" />
     <Compile Include="Core\ProductPriceType.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Core\UserContext.cs" />
     <Compile Include="Core\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\SearchResultItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
