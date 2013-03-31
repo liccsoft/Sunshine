@@ -1,15 +1,6 @@
 ﻿@model Sunshine.Models.LoginModel
-
-@{
-    ViewBag.Title = "Log in";
-}
-
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
+<h2>已有账号？ 登陆</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -17,34 +8,36 @@
     <fieldset>
         <legend>Log in Form</legend>
         <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
+            <li><div class="display-label">
+                @Html.LabelFor(m => m.UserName)</div><div class="display-editor">
                 @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)</div>
             </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
+            <li><div class="display-label">
+                @Html.LabelFor(m => m.Password)</div>
+                <div class="display-editor">
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
+                </div>
             </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
+            <li><div class="display-label">
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                </div><div class="display-editor">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                </div>
             </li>
         </ol>
-        <input type="submit" value="Log in" />
+      <p> <input type="submit" value="登陆" /></p>
     </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
-    </p>
+   
 }
 </section>
-
-@*<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>*@
-
+<section>
+<h2>没有账号？ 注册</h2>
+ <p>
+        @Html.ActionLink("注册", "Register") 一个属于你的新帐户
+    </p>
+</section>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,11 +1,7 @@
 ﻿@model Sunshine.Models.RegisterModel
-@{
-    ViewBag.Title = "Register";
-}
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
+    <h2>注册账号</h2>
 </hgroup>
 
 @using (Html.BeginForm()) {
@@ -15,20 +11,20 @@
     <fieldset>
         <legend>Registration Form</legend>
         <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+            <li><div class="display-label">
+                @Html.LabelFor(m => m.UserName)</div><div class="display-editor">
+                @Html.TextBoxFor(m => m.UserName)</div>
             </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
+            <li><div class="display-label">
+                @Html.LabelFor(m => m.Password)</div><div class="display-editor">
+                @Html.PasswordFor(m => m.Password)</div>
             </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
+            <li><div class="display-label">
+                @Html.LabelFor(m => m.ConfirmPassword)</div><div class="display-editor">
+                @Html.PasswordFor(m => m.ConfirmPassword)</div>
             </li>
         </ol>
-        <input type="submit" value="Register" />
+       <p> <input type="submit" value="注册" /></p>
     </fieldset>
 }
 

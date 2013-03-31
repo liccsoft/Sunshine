@@ -21,6 +21,9 @@ namespace Sunshine.Controllers
 
         public ActionResult Index()
         {
+            var category = db.Categorys.ToDictionary<Category, int>((a) => { return a.CategoryId; });
+            category.Add(0, new Category() { DisplayName = "无" });
+            ViewData["Category"] = category;
             return View(db.Categorys.ToList());
         }
 

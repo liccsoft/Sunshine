@@ -6,7 +6,9 @@
     <title>@ViewBag.Title</title>
             <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
         @Scripts.Render("~/bundles/modernizr")
+       
 </head>
 <body>
     <header>
@@ -21,7 +23,13 @@
             <nav>
                 <ul id="menu">
                     <li>@Html.ActionLink("返回首页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("用户管理", "EditDetail", "Account")</li>
+                    @if (Roles.IsUserInRole("Admin")) {
+                    <li>@Html.ActionLink("用户管理", "Manage", "Account")</li>
+                     
+                    }else{
+                    
+                    <li>@Html.ActionLink("个人中心", "Manage", "Account")</li>
+                    }
                     <li>@Html.ActionLink("类别管理", "Index", "Category")</li>
                     <li>@Html.ActionLink("产品管理", "Index", "Product")</li>
                 </ul>

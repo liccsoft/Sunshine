@@ -12,8 +12,13 @@ namespace Sunshine.Business.Core
     {   [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int CompanyId { get; set; }
+
+        [StringLength(256)]
+        [Required]
         public string CompanyName { get; set; }
+
         public string Address { get; set; }
+
         [StringLength(15)]
         public string TelNumber { get; set; }
         public string Mobile { get; set; }

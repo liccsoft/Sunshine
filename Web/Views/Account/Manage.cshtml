@@ -1,33 +1,25 @@
-﻿@model Sunshine.Models.LocalPasswordModel
+﻿@model Sunshine.Business.Core.UserProfile
 @{
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-
-<p class="message-success">@ViewBag.StatusMessage</p>
-
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
-
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
-
-@*<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>*@
-
+<section id="tabset">
+<ul id="">
+<li><a href="#info">用户信息</a></li>
+<li><a href="/Account/pwd?@DateTime.Now.Ticks">修改密码</a></li>
+</ul>
+<div id="info">
+@Html.Partial("EditDetail")
+</div>
+</section>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tabset").tabs({ ajaxOptions: { cache: true} });
+        });
+    </script>
 }
+

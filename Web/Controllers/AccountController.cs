@@ -25,7 +25,7 @@ namespace Sunshine.Controllers
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
-        {
+        {                    
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -42,7 +42,7 @@ namespace Sunshine.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
-
+            
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
@@ -99,8 +99,8 @@ namespace Sunshine.Controllers
        
         //
         // GET: /Account/Manage
-
-        public ActionResult Manage(ManageMessageId? message)
+        [OutputCache( Duration = 100000)]
+        public ActionResult pwd(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
@@ -118,7 +118,7 @@ namespace Sunshine.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
+        public ActionResult pwd(LocalPasswordModel model)
         {
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
@@ -176,7 +176,36 @@ namespace Sunshine.Controllers
             return View(model);
         }
 
-        public ActionResult EditDetail()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Manage(UserProfile user)
+        {
+            if (user.UserId == WebSecurity.CurrentUserId)
+            {
+                user.UserName = WebSecurity.CurrentUserName;
+                using (UsersContext uct = new UsersContext())
+                {
+                    try
+                    {
+                        uct.Entry<UserProfile>(user).State = EntityState.Modified; ;
+                        uct.SaveChanges();
+                        ViewBag.Message = "修改成功";
+                    }
+                    catch
+                    {
+                        ViewBag.Message = "修改失败";
+                    }
+                }
+            }
+            else
+            {
+                RedirectToAction("LogOff");
+            }
+
+            return View(user);
+        }
+
+        public ActionResult Manage()
         {
             using (UsersContext uct = new UsersContext())
             {
@@ -185,7 +214,7 @@ namespace Sunshine.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditDetail(UserProfile user)
+        public JsonResult EditDetail(UserProfile user)
         {
             if (user.UserId == WebSecurity.CurrentUserId)
             {
@@ -194,11 +223,10 @@ namespace Sunshine.Controllers
                 {
                     uct.Entry<UserProfile>(user).State = EntityState.Modified; ;
                     uct.SaveChanges();
-
                 }
             }
 
-            return EditDetail();
+            return Json(new {data = user, message="修改成功", status = true});
         }
 
         #region Helpers
