@@ -21,6 +21,22 @@
             @Html.ValidationMessageFor(model => model.ProductName)
         </div>
 
+		 <div class="editor-label">
+            @Html.LabelFor(model => model.ProductBrand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductBrand)
+            @Html.ValidationMessageFor(model => model.ProductBrand)
+        </div>
+
+		<div class="editor-label">
+            @Html.LabelFor(model => model.ProductSize)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductSize)
+            @Html.ValidationMessageFor(model => model.ProductSize)
+        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductMark)
         </div>
@@ -36,6 +52,22 @@
             @Html.EditorFor(model => model.ProductDescription)
             @Html.ValidationMessageFor(model => model.ProductDescription)
         </div>
+
+		<div class="editor-label">
+            @Html.LabelFor(model => model.ProductProcessor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductProcessor)
+            @Html.ValidationMessageFor(model => model.ProductProcessor)
+        </div>
+
+		<div class="editor-label">
+            @Html.LabelFor(model => model.ProductVideo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductVideo)
+            @Html.ValidationMessageFor(model => model.ProductVideo)
+        </div>        
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductPriceTypeId)
@@ -56,17 +88,28 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.CategoryId)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryId)
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>)
             @Html.ValidationMessageFor(model => model.CategoryId)
         </div>
 
+       @*枚举实现 <div class="editor-field">
+            @Html.EditorFor(model => model.CategoryId)
+            @Html.DropDownListFor(model => model.categories, new[]{
+            new SelectListItem() {Text = Sunshine.Business.Core.Product.Category.电脑.ToString(), 
+            Value=((int)Sunshine.Business.Core.Product.Category.电脑).ToString()}
+            ,new SelectListItem() {Text = Sunshine.Business.Core.Product.Category.电脑配件.ToString(), 
+            Value=((int)Sunshine.Business.Core.Product.Category.电脑配件).ToString()}}
+            ,"选择产品类型")
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>*@
+
+		<div id="ext"></div>
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

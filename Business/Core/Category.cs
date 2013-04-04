@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Sunshine.Business.Core
 {
     [Table("Category")]
-    public class Category :IBaseType
+    public class Category 
     {
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
@@ -24,7 +24,7 @@ namespace Sunshine.Business.Core
             set;
         }
 
-        public string DisplayName
+        public string CategoryName
         {
             get;
             set;

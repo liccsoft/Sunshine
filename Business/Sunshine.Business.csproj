@@ -49,8 +49,11 @@
     <Compile Include="Core\Company.cs" />
     <Compile Include="Core\IBaseType.cs" />
     <Compile Include="Core\Product.cs" />
+    <Compile Include="Core\ProductManager.cs" />
     <Compile Include="Core\ProductPriceType.cs" />
+    <Compile Include="Core\ProductProperty.cs" />
     <Compile Include="Core\ProductType.cs" />
+    <Compile Include="Core\Property.cs" />
     <Compile Include="Core\UserContext.cs" />
     <Compile Include="Core\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

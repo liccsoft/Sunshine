@@ -6,12 +6,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
+using Sunshine.Filters;
 
 namespace Sunshine.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class ProductController : Controller
     {
         private UsersContext db = new UsersContext();
+
+        
 
         //
         // GET: /Product/
@@ -21,13 +26,13 @@ namespace Sunshine.Controllers
             return View(db.Products.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Search(string pattern)
-        {
-            //var aaa = db.Products.Where(a => a.ProductMark.Contains(pattern));
-            //var c = aaa.ToString();
-            return View(db.Products.Where(a=>a.ProductMark.Contains(pattern)).ToList());
-        }
+        //[HttpPost]
+        //public ActionResult Search(string pattern)
+        //{
+        //    //var aaa = db.Products.Where(a => a.ProductMark.Contains(pattern));
+        //    //var c = aaa.ToString();
+        //    return View(db.Products.Where(a => a.ProductMark.Contains(pattern)).ToList());
+        //}
 
         //
         // GET: /Product/Details/5
@@ -47,7 +52,39 @@ namespace Sunshine.Controllers
 
         public ActionResult Create()
         {
+            ProductManager productmanager = new ProductManager();
+            IList<Category> CategoryList = productmanager.getCategoryName();
+            ViewData["categorylist"] = (from s in CategoryList
+                                       select new SelectListItem
+                                       {
+                                           Selected = (s.CategoryId == 0),
+                                           Text = s.Name,
+                                           Value = s.CategoryId.ToString()
+                                       }).ToList();
+
             return View();
+        }
+
+
+
+        //public static SelectList ToSelectListWithDefault<TEnum>(this TEnum enumObj, string defValue, string defText) where TEnum : IConvertible
+        //{
+        //    var values = new List<SelectListItem>();
+        //    var defItem = new SelectListItem() { Value = defValue, Text = defText };
+        //    values.Add(defItem);
+
+        //    foreach (TEnum e in Enum.GetValues(typeof(TEnum)))
+        //    {
+        //        values.Add(new SelectListItem() { Value = e.ToInt16(null).ToString(), Text = e.ToString() });
+        //    }
+
+        //    return new SelectList(values, "Value", "Text", defItem);
+        //}  
+
+        public JsonResult ExtraProperty(int? productTypeId)
+        {
+            //var Properties = ProductManager.GetPropertiesForProductType(productTypeId);
+            return Json("");//Properties);
         }
 
         //

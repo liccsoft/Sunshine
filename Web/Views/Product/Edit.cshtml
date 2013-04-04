@@ -24,6 +24,22 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.ProductBrand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductBrand)
+            @Html.ValidationMessageFor(model => model.ProductBrand)
+        </div>
+
+		<div class="editor-label">
+            @Html.LabelFor(model => model.ProductSize)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductSize)
+            @Html.ValidationMessageFor(model => model.ProductSize)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.ProductMark)
         </div>
         <div class="editor-field">
@@ -37,6 +53,22 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.ProductDescription)
             @Html.ValidationMessageFor(model => model.ProductDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductProcessor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductProcessor)
+            @Html.ValidationMessageFor(model => model.ProductProcessor)
+        </div>
+
+		<div class="editor-label">
+            @Html.LabelFor(model => model.ProductVideo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductVideo)
+            @Html.ValidationMessageFor(model => model.ProductVideo)
         </div>
 
         <div class="editor-label">

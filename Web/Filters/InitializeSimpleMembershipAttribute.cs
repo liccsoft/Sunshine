@@ -33,7 +33,8 @@ namespace Sunshine.Filters
                     {
                         if (!context.Database.Exists())
                         {
-                            // Create the SimpleMembership database without Entity Framework migration schema
+                             //Create the SimpleMembership database without Entity Framework migration schema
+
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
