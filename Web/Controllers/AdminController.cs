@@ -17,6 +17,11 @@ namespace Sunshine.Controllers
         //
         // GET: /Admin/
 
+        public AdminController()
+        {
+            ViewBag.ModuleName = "后台管理";
+        }
+
         public ActionResult Index()
         {
             return View();

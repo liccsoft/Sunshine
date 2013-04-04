@@ -15,7 +15,10 @@ namespace Sunshine.Controllers
     public class CategoryController : Controller
     {
         private UsersContext db = new UsersContext();
-
+        public CategoryController()
+        {
+            ViewBag.ModuleName = "产品分类管理";
+        }
         //
         // GET: /Category/
 

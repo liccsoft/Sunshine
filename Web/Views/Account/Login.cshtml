@@ -6,7 +6,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Log in Form</legend>
+        <legend>已有账号？ 登陆</legend>
         <ol>
             <li><div class="display-label">
                 @Html.LabelFor(m => m.UserName)</div><div class="display-editor">
@@ -32,7 +32,7 @@
    
 }
 </section>
-<section>
+<section id="socialLoginForm">
 <h2>没有账号？ 注册</h2>
  <p>
         @Html.ActionLink("注册", "Register") 一个属于你的新帐户

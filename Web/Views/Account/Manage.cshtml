@@ -3,8 +3,6 @@
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
-<section id="tabset">
 <ul id="">
 <li><a href="#info">用户信息</a></li>
 <li><a href="#company">公司信息</a></li>
@@ -23,15 +21,9 @@
 <p class="message"></p>
  @{Html.RenderAction("pwd");}
 </div>
-</section>
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#tabset").tabs({ ajaxOptions: { cache: true} });
-        });
 
+    <script type="text/javascript">
         function showmessage(a, b, c) {
             $(".message").html(a.message);
          }

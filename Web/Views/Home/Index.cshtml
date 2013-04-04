@@ -1,41 +1,10 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
-}
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>输入产品型号搜索</h1>
-            </hgroup>
-            <p> 
-            @using (Ajax.BeginForm("Search", "Product", new AjaxOptions { OnSuccess="f", OnFailure="" }))
-            {
-                <input name="pattern" /> <input type="submit" value="搜索" />
-            }
-            </p>
-        </div>
-    </section>
-                }
+    ViewBag.Title = "徽田首页";
+    }
+
 <div id="result"></div>
-@*<ol class="round">
-    <li class="one">
-      
-    </li>
 
-    <li class="two">
-       
-    </li>
-
-    <li class="three">
-       
-    </li>
-</ol>*@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<script type="text/javascript">
-    function f(a, b, c) {
- 
-        $("#result").html(a);
-    }
-</script>
+

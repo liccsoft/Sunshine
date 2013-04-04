@@ -16,6 +16,10 @@ namespace Sunshine.Controllers
     {
         private UsersContext db = new UsersContext();
 
+        public  ProductController():base()
+        {
+            ViewBag.ModuleName = "产品管理";
+        }
         //
         // GET: /Product/
 

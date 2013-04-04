@@ -1,11 +1,17 @@
 ﻿@model IEnumerable<Sunshine.Business.Core.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "分类管理";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
+
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">分类管理</a></li>
+    </ul>
+<div id="cindex">
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新建新分类", "Create")
 </p>
 <table>
     <tr>
@@ -47,3 +53,5 @@
 }
 
 </table>
+</div>
+</section>

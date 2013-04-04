@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<Sunshine.Business.Core.User>
 
 @{
-    ViewBag.Title = "Accounts";
+    ViewBag.Title = "用户管理后台";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
-<h2>Accounts</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("添加用户", "Create")
 </p>
 <table>
     <tr>

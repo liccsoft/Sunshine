@@ -24,6 +24,11 @@ namespace Sunshine.Controllers
         //
         // GET: /Account/Login
 
+        public AccountController()
+        {
+            ViewBag.ModuleName = "个人中心";
+        }
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {                    

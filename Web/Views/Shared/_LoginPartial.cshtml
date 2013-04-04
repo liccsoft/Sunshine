@@ -1,4 +1,4 @@
-﻿@if (Request.IsAuthenticated) {
+﻿@*@if (Request.IsAuthenticated) {
     <text>
         欢迎, @Html.ActionLink(Sunshine.Utility.CurrentNickName ?? WebSecurity.CurrentUserName, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
@@ -11,4 +11,17 @@
         <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("登陆", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
+}*@
+
+@if (Request.IsAuthenticated) {
+    <li id="loginbar" class="fore1">您好！欢迎来到徽田！@Html.ActionLink(Sunshine.Utility.CurrentNickName ?? WebSecurity.CurrentUserName, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!&nbsp;
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">登出</a>
+        }
+</li>
+} else {
+<li id="loginbar" class="fore1">您好！欢迎来到徽田！@Html.ActionLink("[登陆]", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })&nbsp;
+     @Html.ActionLink("[免费注册]", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+</li>
 }
