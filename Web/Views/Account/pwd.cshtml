@@ -1,0 +1,43 @@
+﻿@model Sunshine.Models.LocalPasswordModel
+@{
+    Layout = "";
+}
+@using (Ajax.BeginForm("pwd", "Account", new AjaxOptions { OnSuccess = "showmessage" }, new { id = "pwdform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Change Password Form</legend>
+        <ol>
+            <li><div class="editor-label">
+                @Html.DisplayNameFor(m => m.OldPassword)
+                </div>
+                <div class="editor-field">
+                @Html.PasswordFor(m => m.OldPassword)
+                @Html.ValidationMessageFor(m => m.OldPassword)
+                </div>
+            </li>
+            <li>
+            <div class="editor-label">
+                @Html.DisplayNameFor(m => m.NewPassword)
+                </div>
+                <div class="editor-field">
+                @Html.PasswordFor(m => m.NewPassword)
+                @Html.ValidationMessageFor(m => m.NewPassword)
+                </div>
+            </li>
+            <li>
+                <div class="editor-label">
+                @Html.DisplayNameFor(m => m.ConfirmPassword)
+                </div>
+                <div class="editor-field">
+                @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </div>
+            </li>
+        </ol>
+        <p><input type="submit" value="修改密码" /></p>
+        
+    </fieldset>
+}

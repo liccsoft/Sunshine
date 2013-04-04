@@ -1,33 +1,32 @@
-﻿@model Sunshine.Models.LocalPasswordModel
+﻿@model Sunshine.Business.Core.User
 @{
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
+<ul id="">
+<li><a href="#info">用户信息</a></li>
+<li><a href="#company">公司信息</a></li>
+<li><a href="#pwd">修改密码</a></li>
+</ul>
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-
-<p class="message-success">@ViewBag.StatusMessage</p>
-
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
-
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
-
-@*<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>*@
-
+<div id="info">
+<p class="message">@ViewBag.Message</p>
+@Html.Partial("_EditProfile")
+</div>
+<div id="company">
+<p class="message"></p>
+ @Html.Partial("_EditCompany")
+</div>
+<div id="pwd">
+<p class="message"></p>
+ @{Html.RenderAction("pwd");}
+</div>
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        function showmessage(a, b, c) {
+            $(".message").html(a.message);
+         }
+    </script>
 }
+

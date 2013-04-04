@@ -1,0 +1,82 @@
+﻿@model Sunshine.Business.Core.User
+@{
+    Layout = "";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserProfile</legend>
+
+        @Html.HiddenFor(model => model.Profile.UserProfileId)
+
+@*        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Profile.UserName)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.NickName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.NickName)
+            @Html.ValidationMessageFor(model => model.Profile.NickName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.Email)
+            @Html.ValidationMessageFor(model => model.Profile.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.QQ)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.QQ)
+            @Html.ValidationMessageFor(model => model.Profile.QQ)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.Weibo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.Weibo)
+            @Html.ValidationMessageFor(model => model.Profile.Weibo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.Address)
+            @Html.ValidationMessageFor(model => model.Profile.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.Tel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.Tel)
+            @Html.ValidationMessageFor(model => model.Profile.Tel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile.Mobile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Profile.Mobile)
+            @Html.ValidationMessageFor(model => model.Profile.Mobile)
+        </div>
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}

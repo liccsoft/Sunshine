@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<Sunshine.Business.Core.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "产品列表";
+    ViewBag.ModuleName = "产品管理";
+    ViewBag.SubModuleName = "产品列表";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("添加产品", "Create")
 </p>
 <table>
+<thead>
     <tr>
         
     </tr>
-
+</thead>
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.CategoryId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+            @Html.ActionLink("修改", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("察看", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.ProductId })
         </td>
     </tr>
 }
