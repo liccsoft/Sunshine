@@ -20,6 +20,7 @@ namespace Sunshine.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private UsersContext db = new UsersContext();
         //
         // GET: /Account/Login
 
@@ -99,17 +100,10 @@ namespace Sunshine.Controllers
        
         //
         // GET: /Account/Manage
+        [ChildActionOnly]
         [OutputCache( Duration = 100000)]
-        public ActionResult pwd(ManageMessageId? message)
+        public ActionResult pwd()
         {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
-
             return View();
         }
 
@@ -140,7 +134,7 @@ namespace Sunshine.Controllers
 
                     if (changePasswordSucceeded)
                     {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        return View();
                     }
                     else
                     {
@@ -178,56 +172,84 @@ namespace Sunshine.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(UserProfile user)
+        public ActionResult Manage(UserProfile profile)
         {
-            if (user.UserId == WebSecurity.CurrentUserId)
+            try
             {
-                user.UserName = WebSecurity.CurrentUserName;
-                using (UsersContext uct = new UsersContext())
+                if (profile.UserProfileId > 0)
                 {
-                    try
-                    {
-                        uct.Entry<UserProfile>(user).State = EntityState.Modified; ;
-                        uct.SaveChanges();
-                        ViewBag.Message = "修改成功";
-                    }
-                    catch
-                    {
-                        ViewBag.Message = "修改失败";
-                    }
+                    var temp = db.Entry<UserProfile>(profile);
+                    temp.State = EntityState.Modified; ;
+                    db.SaveChanges();
+                    ViewBag.Message = "修改成功";
+                    profile = temp.Entity;
+                }
+                else
+                {
+                    profile = db.UserProfiles.Add(profile);
+                    db.SaveChanges();
+                    db.Database.ExecuteSqlCommand("update [User] set UserProfileId = @id where [userid]=@uid", new SqlParameter("id", profile.UserProfileId), new SqlParameter("uid", WebSecurity.CurrentUserId));
                 }
             }
-            else
+            catch
             {
-                RedirectToAction("LogOff");
+                ViewBag.Message = "修改失败";
             }
 
-            return View(user);
+            return View(db.Users.Find(WebSecurity.CurrentUserId));
         }
-
+        User currentUser;
         public ActionResult Manage()
         {
-            using (UsersContext uct = new UsersContext())
-            {
-                return View(uct.UserProfiles.Find(WebSecurity.CurrentUserId));
-            }
+            currentUser = db.Users.Find(WebSecurity.CurrentUserId);
+            return View(currentUser);
         }
 
         [HttpPost]
         public JsonResult EditDetail(UserProfile user)
         {
-            if (user.UserId == WebSecurity.CurrentUserId)
+            if (user.UserProfileId == WebSecurity.CurrentUserId)
             {
-                user.UserName = WebSecurity.CurrentUserName;
-                using (UsersContext uct = new UsersContext())
-                {
-                    uct.Entry<UserProfile>(user).State = EntityState.Modified; ;
-                    uct.SaveChanges();
-                }
+                db.Entry<UserProfile>(user).State = EntityState.Modified; ;
+                db.SaveChanges();
             }
 
             return Json(new {data = user, message="修改成功", status = true});
         }
+
+        [HttpPost]
+        public JsonResult EditCompany(Company company)
+        {
+            var user = db.Users.Find(WebSecurity.CurrentUserId);
+
+            if (user.CompanyId != company.CompanyId && company.CompanyId > 0)
+            {
+                return Json(new { message = "修改失败", status = false });
+            }
+            if (company.CompanyId > 0)
+            {
+                db.Entry(company).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+               var c = db.Companys.Add(company);
+               db.SaveChanges();
+               //user.CompanyId = c.CompanyId;
+               //user.Company = c;
+               //db.Entry<User>(user).State = EntityState.Modified;
+               db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id where [userid]=@uid", new SqlParameter("id", c.CompanyId), new SqlParameter("uid", user.UserId));
+            }
+
+            return Json(new { message = "修改成功", status= true});
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+
 
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)

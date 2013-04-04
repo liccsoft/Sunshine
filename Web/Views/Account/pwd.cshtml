@@ -2,7 +2,8 @@
 @{
     Layout = "";
 }
-@using (Html.BeginForm("Manage", "Account")) {
+@using (Ajax.BeginForm("pwd", "Account", new AjaxOptions { OnSuccess = "showmessage" }, new { id = "pwdform" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
@@ -14,6 +15,7 @@
                 </div>
                 <div class="editor-field">
                 @Html.PasswordFor(m => m.OldPassword)
+                @Html.ValidationMessageFor(m => m.OldPassword)
                 </div>
             </li>
             <li>
@@ -22,6 +24,7 @@
                 </div>
                 <div class="editor-field">
                 @Html.PasswordFor(m => m.NewPassword)
+                @Html.ValidationMessageFor(m => m.NewPassword)
                 </div>
             </li>
             <li>
@@ -30,6 +33,7 @@
                 </div>
                 <div class="editor-field">
                 @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
                 </div>
             </li>
         </ol>

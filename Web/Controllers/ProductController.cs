@@ -6,9 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
+using Sunshine.Filters;
 
 namespace Sunshine.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class ProductController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -58,8 +61,9 @@ namespace Sunshine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+               var p = db.Products.Add(product);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

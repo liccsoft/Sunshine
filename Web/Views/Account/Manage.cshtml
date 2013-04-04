@@ -1,4 +1,4 @@
-﻿@model Sunshine.Business.Core.UserProfile
+﻿@model Sunshine.Business.Core.User
 @{
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_Admin.cshtml";
@@ -7,10 +7,21 @@
 <section id="tabset">
 <ul id="">
 <li><a href="#info">用户信息</a></li>
-<li><a href="/Account/pwd?@DateTime.Now.Ticks">修改密码</a></li>
+<li><a href="#company">公司信息</a></li>
+<li><a href="#pwd">修改密码</a></li>
 </ul>
+
 <div id="info">
-@Html.Partial("EditDetail")
+<p class="message">@ViewBag.Message</p>
+@Html.Partial("_EditProfile")
+</div>
+<div id="company">
+<p class="message"></p>
+ @Html.Partial("_EditCompany")
+</div>
+<div id="pwd">
+<p class="message"></p>
+ @{Html.RenderAction("pwd");}
 </div>
 </section>
 @section Scripts {
@@ -20,6 +31,10 @@
         $(document).ready(function () {
             $("#tabset").tabs({ ajaxOptions: { cache: true} });
         });
+
+        function showmessage(a, b, c) {
+            $(".message").html(a.message);
+         }
     </script>
 }
 

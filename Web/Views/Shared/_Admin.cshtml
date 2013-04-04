@@ -23,13 +23,12 @@
             <nav>
                 <ul id="menu">
                     <li>@Html.ActionLink("返回首页", "Index", "Home")</li>
-                    @if (Roles.IsUserInRole("Admin")) {
-                    <li>@Html.ActionLink("用户管理", "Manage", "Account")</li>
+                    @if (Roles.IsUserInRole("admin") || User.Identity.Name == "admin") {
+                    <li>@Html.ActionLink("用户管理", "Accounts", "Admin")</li>
                      
-                    }else{
-                    
-                    <li>@Html.ActionLink("个人中心", "Manage", "Account")</li>
                     }
+                    <li>@Html.ActionLink("个人中心", "Manage", "Account")</li>
+                   
                     <li>@Html.ActionLink("类别管理", "Index", "Category")</li>
                     <li>@Html.ActionLink("产品管理", "Index", "Product")</li>
                 </ul>
@@ -38,14 +37,16 @@
     </div>
     </header>
     <div id="body">
+        <section class="content-wrapper clear-fix">
         @RenderBody()
+        </section>
     </div>
     <footer>
-            <div class="content-wrapper">
+@*            <div class="content-wrapper">
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year - </p>
                 </div>
-            </div>
+            </div>*@
         </footer>
      @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)

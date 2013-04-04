@@ -12,15 +12,7 @@ namespace Sunshine.Business.Core
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-
-        /// <summary>
-        /// 用户名，登陆唯一标识符
-        /// </summary>
-        [MaxLength(128)]
-        [Required]
-        [Display(Name="用户名", GroupName="基本信息")]
-        public string UserName { get; set; }
+        public int UserProfileId { get; set; }
 
         /// <summary>
         /// 用户昵称，显示
@@ -63,4 +55,16 @@ namespace Sunshine.Business.Core
         [MaxLength(32)]
         public string Mobile { get; set; }
     }
+
+
+    public class Contact
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long ContactId { get; set; }
+
+        public string Email { get; set; }
+    
+    }
+
 }

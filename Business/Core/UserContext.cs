@@ -16,6 +16,7 @@ namespace Sunshine.Business.Core
             
         }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }

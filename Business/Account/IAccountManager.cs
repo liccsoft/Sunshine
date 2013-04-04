@@ -13,5 +13,7 @@ namespace Sunshine.Business.Account
         void AddNewProfile(UserProfile user);
         void UpdateProfile(UserProfile user);
         void DeactiveUser(int userId);
+
+        List<User> GetUsers();
     }
 }

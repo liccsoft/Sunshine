@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using WebMatrix.WebData;
 using Sunshine.Business.Core;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace Sunshine
 {
@@ -24,9 +26,35 @@ namespace Sunshine
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            Database.SetInitializer<UsersContext>(null);
 
-           // AuthConfig.RegisterAuth();
+            try
+            {
+                using (var context = new UsersContext())
+                {
+                    if (!context.Database.Exists())
+                    {
+                        // Create the SimpleMembership database without Entity Framework migration schema
+                        ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
+                    }
+                }
+
+                WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "UserId", "UserName", autoCreateTables: true);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+            }
+
+        }
+
+        protected void Application_AuthenticateRequest()
+        {
+            //if (WebSecurity.IsAuthenticated && WebSecurity.CurrentUserId < 0)
+            //{
+            //    WebSecurity.Logout();
+            //}
         }
     }
 }

@@ -8,12 +8,14 @@ namespace Sunshine.Business.Account
 {
     public class AccountManager : IAccountManager
     {
+        UsersContext db;
         public static IAccountManager Current = new AccountManager();
         public string GetNickName(int id)
         {
             using (var ctx = new UsersContext())
             {
-                return ctx.UserProfiles.Find(id).NickName;
+                var user = ctx.Users.Find(id);
+                return user==null ? null: user.NickName;
             }
         }
 
@@ -46,6 +48,15 @@ namespace Sunshine.Business.Account
         public void DeactiveUser(int userId)
         {
            
+        }
+
+
+        public List<User> GetUsers()
+        {
+            using (var ctx = new UsersContext())
+            {
+                return ctx.Users.Take(100).ToList();
+            }
         }
     }
 }

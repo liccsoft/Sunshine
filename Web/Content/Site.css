@@ -90,6 +90,22 @@ h5, h6 {
         text-decoration: none;
     }
 
+tr th 
+{ 
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    padding-left:5px; padding-right:5px;
+    background-color:Aqua
+    }
+    tr td 
+{ 
+    border-bottom: 1px solid gray;
+    padding-left:5px; 
+}
+tbody tr:hover
+{
+     background-color:Yellow
+}
 
 /* main layout
 ----------------------------------------------------------*/
@@ -122,9 +138,14 @@ footer {
     clear: both;
     background-color: #e2e2e2;
     font-size: .8em;
-    height: 100px;
+    height: 10px;
 }
 
+fieldset
+{
+
+ min-height: 300px;
+}
 
 /* site title
 ----------------------------------------------------------*/
@@ -209,16 +230,16 @@ ul#menu {
 ----------------------------------------------------------*/
 
 .editor-label, .display-label{
-    float:left; clear:left; width:150px; margin-left:50px; line-height:35px;
+    float:left; clear:left; width:150px; margin-left:50px; line-height:35px; font-size: 0.8em
 }
 
 .editor-field, .display-field{
-    float:left; clear:right; width:40%;line-height:35px;
+    float:left; clear:right; width:40%;line-height:35px; font-size: 0.8em
 }
 fieldset p
 {
-    clear:both;margin-left:50%; 
-    }
+    clear:both;margin-left:25%; width: 30%; text-align:right;
+}
 
 /* featured */
 .featured {
@@ -759,8 +780,8 @@ tr.pager td {
 
     footer {
         text-align: center;
-        height: auto;
-        padding: 10px 0;
+        height: 10px;
+        padding: 5px 0;
     }
 
         footer p {

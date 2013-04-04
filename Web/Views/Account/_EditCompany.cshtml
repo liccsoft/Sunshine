@@ -1,0 +1,54 @@
+﻿@model Sunshine.Business.Core.User
+
+@{
+    Layout = "";
+    }
+
+@using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "showmessage" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <fieldset>
+        <legend>UserProfile</legend>
+    @Html.HiddenFor(model => model.Company.CompanyId)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Company.CompanyName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Company.CompanyName)
+        @Html.ValidationMessageFor(model => model.Company.CompanyName)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Company.Mobile)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Company.Mobile)
+        @Html.ValidationMessageFor(model => model.Company.Mobile)
+    </div>
+        <div class="editor-label">
+        @Html.LabelFor(model => model.Company.TelNumber)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Company.TelNumber)
+        @Html.ValidationMessageFor(model => model.Company.TelNumber)
+    </div>
+        <div class="editor-label">
+        @Html.LabelFor(model => model.Company.Address)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Company.Address)
+        @Html.ValidationMessageFor(model => model.Company.Address)
+    </div>
+    
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Company.Description)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Company.Description)
+        @Html.ValidationMessageFor(model => model.Company.Description)
+    </div>
+     <p>
+            <input type="submit" value="保存" />
+     </p>   
+     </fieldset>
+}

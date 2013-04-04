@@ -53,6 +53,7 @@
     <Compile Include="Core\Product.cs" />
     <Compile Include="Core\ProductPriceType.cs" />
     <Compile Include="Core\ProductType.cs" />
+    <Compile Include="Core\User.cs" />
     <Compile Include="Core\UserContext.cs" />
     <Compile Include="Core\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
