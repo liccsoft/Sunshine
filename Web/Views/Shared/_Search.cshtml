@@ -4,6 +4,7 @@
 <meta content="max-age=300" http-equiv="cache-control"/>
 <meta content="text/html; charset=utf8" http-equiv="content-type"/>
 @Styles.Render("~/Content/css")
+@Styles.Render("~/Content/search/css")
 @Styles.Render("~/Content/themes/base/css")
 @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -39,7 +40,7 @@ width="260" height="60"></a></div><!--logo end-->
 </div><!--header end-->
 
 <div id="body" class="w">
-    <section id="nav-display">@ViewBag.ModuleName > @ViewBag.SubModuleName</section>
+ @*   <section id="nav-display">@ViewBag.ModuleName > @ViewBag.SubModuleName</section>*@
     <section id="tabset" class="content-wrapper clear-fix">
     @RenderBody()
     </section>
@@ -48,15 +49,7 @@ width="260" height="60"></a></div><!--logo end-->
 
 </footer>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $("#tabset").tabs({ ajaxOptions: { cache: true} });
-            });
-    </script>
-     @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
         
 </body>
 </html>

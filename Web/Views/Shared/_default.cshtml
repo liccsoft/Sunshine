@@ -1,7 +1,9 @@
-﻿<html lang="zh-hans">
+﻿<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<html lang="zh-hans">
 <head><title>电脑 - 徽田</title>
 <meta content="max-age=300" http-equiv="cache-control"/>
 <meta content="text/html; charset=utf8" http-equiv="content-type"/>
+<meta content="" />
 @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -21,8 +23,14 @@ width="260" height="60"></a></div><!--logo end-->
 <div id="search-2013">
 <div class="i-search ld">
 <ul id="shelper" class="hide"></ul>
-<div class="form"><input accesskey="s" onkeydown="javascript:if(event.keycode==13) search('key');" 
-id="key" class="text" type="text" autocomplete="off"><input class="button" onclick="search('key');return false;" value="搜索" type="button"></div></div>
+     @using (Html.BeginForm("Search", "Product", FormMethod.Get, new { target = "_blank", id = "searchForm" }))
+     {
+<div class="form">
+    <input accesskey="s" name="pattern" onkeydown="javascript:if(event.keycode==13) searchForm.submit();" id="key" class="text" type="text" autocomplete="off">
+    <input class="button" onclick="searchForm.submit(); return false;" value="搜索" type="button">
+</div>
+      }
+</div>
 <div id="hotwords"></div></div><!--search end-->
 <div id="my360buy-2013">
 <dl></dl></div><!--settleup end--></div><!--header end-->

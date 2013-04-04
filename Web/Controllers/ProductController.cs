@@ -27,19 +27,30 @@ namespace Sunshine.Controllers
         {
             return View(db.Products.ToList());
         }
-
-        [HttpPost]
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult Search(string pattern)
         {
             //var aaa = db.Products.Where(a => a.ProductMark.Contains(pattern));
             //var c = aaa.ToString();
+            ViewBag.keyword = pattern;
             return View(db.Products.Where(a=>a.ProductMark.Contains(pattern)).ToList());
         }
-
         //
         // GET: /Product/Details/5
 
+        
         public ActionResult Details(long id = 0)
+        {
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+        [AllowAnonymous]
+        public ActionResult View(long id = 0)
         {
             Product product = db.Products.Find(id);
             if (product == null)

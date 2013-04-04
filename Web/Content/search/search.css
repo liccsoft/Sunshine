@@ -1,5 +1,5 @@
-.crumb {
-	font-family: ËÎÌå;
+ï»¿.crumb {
+	font-family: å®‹ä½“;
 }
 .left {
 	width: 211px; float: left;
@@ -8,10 +8,10 @@
 	width: 769px; float: right;
 }
 .mt h1 {
-	font-family: ËÎÌå; font-weight: bold;
+	font-family: å®‹ä½“; font-weight: bold;
 }
 .mt h2 {
-	font-family: ËÎÌå; font-weight: bold;
+	font-family: å®‹ä½“; font-weight: bold;
 }
 .mt .extra {
 	float: right;
@@ -23,7 +23,7 @@
 	float: left;
 }
 .p-name {
-	height: 3em; word-wrap: break-word;
+	height: 2em; word-wrap: break-word;
 }
 .left h2 {
 	font-size: 12px;
@@ -518,7 +518,7 @@
 	height: 28px; padding-top: 2px;
 }
 #select-brand .tab li {
-	padding: 3px; border: 1px solid rgb(255, 255, 255); height: 14px; color: rgb(0, 94, 167); line-height: 12px; font-family: Verdana,ËÎÌå; margin-right: 2px; float: left; cursor: pointer;
+	padding: 3px; border: 1px solid rgb(255, 255, 255); height: 14px; color: rgb(0, 94, 167); line-height: 12px; font-family: Verdana,å®‹ä½“; margin-right: 2px; float: left; cursor: pointer;
 }
 #select-brand .tab b {
 	background: url("i/20120813A.gif") no-repeat 0px 0px; left: 50%; width: 9px; height: 5px; bottom: -5px; overflow: hidden; margin-left: -4px; display: none; position: absolute;
@@ -971,10 +971,10 @@
 	margin: -10px 0px 10px; height: 18px; line-height: 18px;
 }
 .plist-msg a:visited {
-	color: rgb(0, 90, 160); font-family: ËÎÌå;
+	color: rgb(0, 90, 160); font-family: å®‹ä½“;
 }
 .plist-msg a:link {
-	color: rgb(0, 90, 160); font-family: ËÎÌå;
+	color: rgb(0, 90, 160); font-family: å®‹ä½“;
 }
 .loading-in {
 	background: rgb(255, 253, 238); border: 1px solid rgb(237, 210, 139); width: 100%; height: 30px; line-height: 30px; position: absolute; z-index: 5;
@@ -989,7 +989,7 @@
 	overflow: visible; position: relative;
 }
 #plist li {
-	padding: 20px 15px; width: 224px; font-family: arial,ËÎÌå; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: dotted;
+	padding: 5px 15px; font-family: arial,å®‹ä½“; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: dotted;
 }
 #plist .p-img {
 	border: 1px solid rgb(255, 255, 255); height: 160px; text-align: center; position: relative;
@@ -1007,7 +1007,7 @@
 	color: rgb(204, 0, 0); font-weight: bold;
 }
 #plist .extra {
-	padding: 2px 0px; height: 16px; line-height: 16px; overflow: hidden; font-family: verdana; margin-top: 5px;
+	padding: 2px 0px; max-height: 32px; line-height: 16px; overflow: hidden; font-family: verdana; margin-top: 5px;
 }
 #plist .extra {
 	color: rgb(0, 90, 160);
@@ -1334,10 +1334,10 @@
 	width: 76px;
 }
 #notfound {
-	padding: 40px 0px 50px; font-family: verdana,ËÎÌå; font-size: 14px; margin-left: 200px; position: relative;
+	padding: 40px 0px 50px; font-family: verdana,å®‹ä½“; font-size: 14px; margin-left: 200px; position: relative;
 }
 #notfound h2 {
-	font: 500 24px/20px Î¢ÈíÑÅºÚ; margin-bottom: 25px; font-size-adjust: none; font-stretch: normal;
+	font: 500 24px/20px å¾®è½¯é›…é»‘; margin-bottom: 25px; font-size-adjust: none; font-stretch: normal;
 }
 #notfound h3 {
 	line-height: 3; font-size: 12px;
@@ -1841,7 +1841,7 @@
 	overflow: visible;
 }
 #shop-choice li {
-	padding: 4px 16px 11px; width: 223px; text-align: left; font-family: arial,ËÎÌå; position: relative;
+	padding: 4px 16px 11px; width: 223px; text-align: left; font-family: arial,å®‹ä½“; position: relative;
 }
 #shop-choice .p-img {
 	text-align: center;

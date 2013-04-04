@@ -26,6 +26,8 @@ namespace Sunshine
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
                 "~/Content/base.css"));
 
+            bundles.Add(new StyleBundle("~/Content/search/css").Include("~/Content/search/search.css"));
+
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",

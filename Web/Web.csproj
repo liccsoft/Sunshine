@@ -179,7 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\base.css" />
-    <Content Include="Content\search.css" />
+    <Content Include="Content\search\search.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -252,6 +252,10 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\Admin\Roles.cshtml" />
+    <Content Include="Views\Admin\UsersInRole.cshtml" />
+    <Content Include="Views\Product\View.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
     <None Include="Views\Shared\_default.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
