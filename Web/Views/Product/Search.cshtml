@@ -43,7 +43,7 @@ class="clr"></span></div>
     @foreach (var item in Model) {
          <li sku="@item.ProductId">
          <div class="p-name">
-              <strong>@Html.ActionLink(item.ProductMark + " - " + item.ProductName, "View", new { id= item.ProductId, tagert="_blank" })</strong>
+              <strong>@Html.ActionLink(item.ProductMark + " - " + item.ProductName, "View", new { id = item.ProductId }, new { target="_blank" })</strong>
         </div>
         <div class="extra">
             @Html.DisplayTextFor(modelItem => item.ProductDescription)
