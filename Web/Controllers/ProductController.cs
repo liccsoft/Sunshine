@@ -50,7 +50,7 @@ namespace Sunshine.Controllers
             return View(product);
         }
         [AllowAnonymous]
-        public ActionResult View(long id = 0)
+        public ActionResult Display(long id = 0)
         {
             Product product = db.Products.Find(id);
             if (product == null)
@@ -77,22 +77,6 @@ namespace Sunshine.Controllers
 
             return View();
         }
-
-
-
-        //public static SelectList ToSelectListWithDefault<TEnum>(this TEnum enumObj, string defValue, string defText) where TEnum : IConvertible
-        //{
-        //    var values = new List<SelectListItem>();
-        //    var defItem = new SelectListItem() { Value = defValue, Text = defText };
-        //    values.Add(defItem);
-
-        //    foreach (TEnum e in Enum.GetValues(typeof(TEnum)))
-        //    {
-        //        values.Add(new SelectListItem() { Value = e.ToInt16(null).ToString(), Text = e.ToString() });
-        //    }
-
-        //    return new SelectList(values, "Value", "Text", defItem);
-        //}  
 
         public JsonResult ExtraProperty(int? productTypeId)
         {
