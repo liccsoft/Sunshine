@@ -169,6 +169,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\WidgetController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,6 +257,8 @@
     <Content Include="Views\Admin\UsersInRole.cshtml" />
     <Content Include="Views\Product\View.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Product\Display.cshtml" />
+    <Content Include="Views\Home\TopCompany.cshtml" />
     <None Include="Views\Shared\_default.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -294,6 +297,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Widget\Company.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

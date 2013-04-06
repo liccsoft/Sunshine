@@ -25,7 +25,6 @@ namespace Sunshine.Controllers
         public ActionResult Index()
         {
             var category = db.Categorys.ToDictionary<Category, int>((a) => { return a.CategoryId; });
-            category.Add(0, new Category() { Name = "无" });
             ViewData["Category"] = category;
             return View(db.Categorys.ToList());
         }
@@ -59,6 +58,11 @@ namespace Sunshine.Controllers
         {
             if (ModelState.IsValid)
             {
+                category.Status = EntityStatus.Enabled;
+                if (category.ParentCategoryId == 0)
+                {
+                    category.ParentCategoryId = null;
+                }
                 db.Categorys.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");

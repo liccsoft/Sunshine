@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "分类管理";
+    ViewBag.SubModuleName = "分类管理";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
@@ -21,9 +22,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th></th>
     </tr>
@@ -31,18 +34,20 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ParentCategoryId)
+            @Html.DisplayFor(modelItem => item.ParentCategoryId,ViewData["Category"])
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id=item.CategoryId }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.CategoryId })
         </td>
     </tr>
 }

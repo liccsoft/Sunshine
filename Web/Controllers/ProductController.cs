@@ -71,7 +71,7 @@ namespace Sunshine.Controllers
                                        select new SelectListItem
                                        {
                                            Selected = (s.CategoryId == 0),
-                                           Text = s.Name,
+                                           Text = s.Title,
                                            Value = s.CategoryId.ToString()
                                        }).ToList();
 

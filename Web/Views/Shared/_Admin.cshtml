@@ -23,14 +23,14 @@ href="/"><img alt="徽田" src="/images/logo2013.png"
 width="260" height="60"></a></div><!--logo end-->
 <nav id="admin-nav">
     <ul id="navitems-2013">
-        <li>@Html.ActionLink("首页", "Index", "Home")</li>
+        <li class="fr">@Html.ActionLink("首页", "Index", "Home")</li>
         @if (User.Identity.IsAuthenticated){
-        <li>@Html.ActionLink("个人中心", "Manage", "Account")</li>
+        <li class="fr">@Html.ActionLink("个人中心", "Manage", "Account")</li>
         if (Roles.IsUserInRole("admin") || User.Identity.Name == "admin") {
-            <li>@Html.ActionLink("用户管理", "Accounts", "Admin")</li>
-            <li>@Html.ActionLink("类别管理", "Index", "Category")</li>           
+            <li class="fr">@Html.ActionLink("用户管理", "Accounts", "Admin")</li>
+            <li class="fr">@Html.ActionLink("类别管理", "Index", "Category")</li>           
         }        
-        <li>@Html.ActionLink("产品管理", "Index", "Product")</li>
+        <li class="fr">@Html.ActionLink("产品管理", "Index", "Product")</li>
         }
     </ul>
 </nav></div>

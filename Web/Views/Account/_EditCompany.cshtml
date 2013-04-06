@@ -2,14 +2,23 @@
 
 @{
     Layout = "";
-    }
+}
+
+@if (Model.Company == null)
+{ 
+<p>
+    <a href="javascript:addNewCompany()">添加一个公司</a> or
+    <a href="javascript:chooseCompany()">选择一个公司</a>
+</p>
+    ViewBag.display = "display:none";
+}
 
 @using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "showmessage" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-        <fieldset>
-        <legend>UserProfile</legend>
+    @Html.ValidationSummary(true) 
+        <fieldset id="NewCompany" style="@ViewBag.display">
+        <legend></legend>
     @Html.HiddenFor(model => model.Company.CompanyId)
     <div class="editor-label">
         @Html.LabelFor(model => model.Company.CompanyName)
@@ -47,8 +56,38 @@
         @Html.EditorFor(model => model.Company.Description)
         @Html.ValidationMessageFor(model => model.Company.Description)
     </div>
+            @if (Model.Company==null || Model.Company.CreatedUserName == User.Identity.Name)
+            {
      <p>
             <input type="submit" value="保存" />
-     </p>   
+     </p>  } 
      </fieldset>
 }
+<div id="dialoghold" style="display:none"></div>
+<script>
+    function addNewCompany()
+    {
+        $("#NewCompany").show();
+        return false;
+    }
+
+    function chooseCompany() {       
+        $.get("/widget/company", '', function (a) {
+            $("#dialoghold").html(a);
+            $("#dialoghold").dialog();
+        }, "html");
+        return false;
+    }
+
+    function Choosed(item, data)
+    {
+        var cd = data;
+       
+        $("#NewCompany").children(".editor-field").children("input").attr("disabled","disabled");
+        $("#Company_CompanyId").val(cd.CompanyId);
+        $("#Company_CompanyName").val(cd.CompanyName);
+        $("#NewCompany").show();
+        $("#dialoghold").dialog("close");
+        return false;
+    }
+</script>

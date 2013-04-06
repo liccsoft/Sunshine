@@ -227,10 +227,18 @@ namespace Sunshine.Controllers
         {
             var user = db.Users.Find(WebSecurity.CurrentUserId);
 
+            if (company.CompanyId > 0 && company.CreatedUserName != user.UserName)
+            {
+                db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id where [userid]=@uid", new SqlParameter("id", company.CompanyId), new SqlParameter("uid", user.UserId));
+           
+                return Json(new { message = "修改成功", status = true });
+            }
+
             if (user.CompanyId != company.CompanyId && company.CompanyId > 0)
             {
                 return Json(new { message = "修改失败", status = false });
             }
+
             if (company.CompanyId > 0)
             {
                 db.Entry(company).State = EntityState.Modified;
@@ -238,11 +246,9 @@ namespace Sunshine.Controllers
             }
             else
             {
+                company.CreatedUserName = user.UserName;
                var c = db.Companys.Add(company);
                db.SaveChanges();
-               //user.CompanyId = c.CompanyId;
-               //user.Company = c;
-               //db.Entry<User>(user).State = EntityState.Modified;
                db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id where [userid]=@uid", new SqlParameter("id", c.CompanyId), new SqlParameter("uid", user.UserId));
             }
 

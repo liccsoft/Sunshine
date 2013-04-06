@@ -1,64 +1,50 @@
-﻿<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
-<html lang="zh-hans">
-<head><title>电脑 - 徽田</title>
-<meta content="max-age=300" http-equiv="cache-control"/>
-<meta content="text/html; charset=utf8" http-equiv="content-type"/>
-<meta content="" />
-@Styles.Render("~/Content/css")
-</head>
-<body>
-<div id="shortcut-2013">
-<div class="w">
-<ul class="fl lh">
-  <li class="fore1 ld"><b></b><a href="javascript:addtofavorite()" rel="nofollow">收藏</a></li>
-</ul>
-<ul class="fr lh">
-     @Html.Partial("_LoginPartial")
-</ul><span class="clr"></span></div></div><!--shortcut end-->
+﻿@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+ }
+    @RenderSection("styles", required: false)
 <div id="o-header-2013">
-<div id="header-2013" class="w">
-<div id="logo-2013" class="ld"><a hidefocus="true" 
-href="#"><img alt="徽田" src="/images/logo2013.png" 
-width="260" height="60"></a></div><!--logo end-->
-<div id="search-2013">
-<div class="i-search ld">
-<ul id="shelper" class="hide"></ul>
-     @using (Html.BeginForm("Search", "Product", FormMethod.Get, new { target = "_blank", id = "searchForm" }))
-     {
-<div class="form">
-    <input accesskey="s" name="pattern" onkeydown="javascript:if(event.keycode==13) searchForm.submit();" id="key" class="text" type="text" autocomplete="off">
-    <input class="button" onclick="searchForm.submit(); return false;" value="搜索" type="button">
+    <div id="header-2013" class="w">
+        <div id="logo-2013" class="ld">
+            <a hidefocus="true"
+                href="#">
+                <img alt="徽田" src="/images/logo2013.png"
+                    width="260" height="60"></a>
+        </div>
+        <!--logo end-->
+        <div id="search-2013">
+            <div class="i-search ld">
+                <ul id="shelper" class="hide"></ul>
+                <div class="form">
+                @using (Html.BeginForm("Search", "Product", FormMethod.Get, new { target = "_blank", id = "searchForm" }))
+                {
+                        <input accesskey="s" name="pattern" onkeydown="javascript:if(event.keycode==13) searchForm.submit();" id="key" class="text" type="text" autocomplete="off">
+                        <input class="button" onclick="searchForm.submit(); return false;" value="搜索" type="button">
+                } </div>
+            </div>
+            <div id="hotwords"></div>
+        </div>
+        <!--search end-->
+        <div id="my360buy-2013">
+            <dl></dl>
+        </div>
+        <!--settleup end-->
+    </div>
+    <!--header end-->
+    <div class="w">
+        <div id="nav-2013">
+            @*<div id="treasure"></div>*@
+            <ul id="navitems-2013">
+                <li id="nav-home" class="fore1">@Html.ActionLink("首页", "index", "home")</li>
+            </ul>
+        </div>
+    </div>
 </div>
-      }
-</div>
-<div id="hotwords"></div></div><!--search end-->
-<div id="my360buy-2013">
-<dl></dl></div><!--settleup end--></div><!--header end-->
-<div class="w">
-<div id="nav-2013">
-<div id="treasure"></div>
-<ul id="navitems-2013">
-  <li id="nav-home" class="fore1">@Html.ActionLink("首页", "index", "home")</li></ul></div></div></div>
 <!-- header end -->
      @RenderSection("featured", required: false)
 <div class="w main">
 @RenderBody()
 </div>
 <div class="w"> 
+    <span class="clr"></span>
 </div>
-<div id="collect_tip" class="tip360 w260"></div>
-<div class="w">
-<div id="service-2013"><span class="clr"></span></div></div><!-- service end -->
-<div class="w">
-<div id="footer-2013">
-<div class="links">
-    <a href="/about" rel="nofollow" target="_blank">关于我们</a>|
-    <a href="/" rel="nofollow" target="_blank">联系我们</a>|
-    <a href="/joinin.aspx" rel="nofollow" target="_blank">商家入驻</a>|
-    <a href="/links.aspx" target="_blank">友情链接</a>|
-    <a href="#" target="_blank">销售联盟</a></div>
-</div>
-</div><!-- footer end -->
-    @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-</body></html>
+@RenderSection("scripts", required: false)

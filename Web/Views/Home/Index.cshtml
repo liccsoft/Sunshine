@@ -1,10 +1,94 @@
 ﻿@{
     ViewBag.Title = "徽田首页";
     }
+<div id="digitals" class="w w1">
+    <div class="m plist home-widget" data-widget="tabs">
+        <div style="left: 0px;" class="tab-arrow"><b></b></div>
+        <div class="sm sm2 fore1 curr" data-widget="tab-item">
+            <div class="smt" clstag="homepage|keycount|home2012|18c1">
+                <h3>最新商品</h3>
+            </div>
+            <div class="smc" data-widget="tab-content">
+                <ul class="l style1">
+                    @foreach(var i in new string[] {"","","","",""}){
+                    <li class="fore3">
+                        <div class="p-img">
+                            <a title="" href="" data-img="1">jjjjjjjjj</a>
+                        </div>
+                        <div class="p-name"><a title="" href="" target="_blank"></a></div>
+                        <div class="p-price"><span></span>1299<span></span></div>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="m plist home-widget" data-widget="tabs">
+        <div style="left: 0px;" class="tab-arrow"><b></b></div>
+        <div class="sm sm2 fore1 curr" data-widget="tab-item">
+            <div class="smt" clstag="homepage|keycount|home2012|18c1">
+                <h3>最新商品</h3>
+            </div>
+            <div class="smc" data-widget="tab-content">
+                <ul class="lh style1">
+                    @foreach(var i in new string[] {"","","","",""}){
+                    <li class="fore3">
+                        <div class="p-img">
+                            <a title="" href="" data-img="1">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
+                        </div>
+                        <div class="p-name"><a title="" href="" target="_blank"></a></div>
+                        <div class="p-price"><span></span>1299<span></span></div>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ad start -->
+    <div id="digitals-brands" class="sm sm1 brands">
+        <div class="smt">
+            <h3>热门公司直通车</h3>
+        </div>
+        <div class="smc">
+            <ul class="l" data-widget="tab-content">
+                <li class="fore1">
+                    <a title="" href="" target="_blank">
+                        <img alt="" src="" width="98" height="35" data-img="2"></a></li>
+                <li class="fore2"><a title="" href="" target="_blank">
+                    <img alt="" src="" data-img="2"></a></li>
+                <li class="fore8"><a title="" href="" target="_blank">
+                    <img alt="" src="" data-img="2"></a></li>
+            </ul>
+           @* <ul class="l" data-widget="tab-content">
+                <li class="fore1"><a title="" href="=36267&amp;advid=50650&amp;guv=&amp;url=" target="_blank">
+                    <img alt="" width="98" height="35" data-img="2" data-src=""></a></li>
+                <li class="fore8"><a title="" href="" target="_blank">
+                    <img alt="" width="98" height="35" data-img="2" data-src=""></a></li>
+            </ul>*@
+            <div class="tab"><span class="curr" data-widget="tab-item"><b></b></span><span data-widget="tab-item"><b></b></span></div>
+        </div>
+    </div>
+    @*<div class="fr da209x180">
+        <div class="slide">
+            <div class="slide-itemswrap">
+                <div class="slide-items">
+                    <div>
+                        <a href="" target="_blank">
+                            <img class="err-poster" alt="监控也能DIY" src="" data-img="2"></a>
+                    </div>
+                    <div>
+                        <a href="" target="_blank">
+                            <img class="err-poster" alt="春天来约会" src="" data-img="2"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-controls"><span class="curr"><b></b></span><span><b></b></span></div>
+        </div>
+    </div>*@
 
-<div id="result"></div>
+</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section styles {
+    @Styles.Render("~/Content/search/css")
 }
 

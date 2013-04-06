@@ -29,70 +29,70 @@
 	font-size: 12px;
 }
 #refilter .mt {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #refilter .item b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #refilter .item li s {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #refilter .item li s.tree-last {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #select .mt {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #select dl.fore1 b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #filter {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #filter .order dd {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #store-selector .text b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #select-hold {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #notfound b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #re-search .text {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #re-search .button {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #plist .item-book .summary .close {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/search2012052301.jpg") no-repeat;
+	background: url("/search2012052301.jpg") no-repeat;
 }
 #refilter .more b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #filter .up b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #filter .down b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #store-selector .close {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #filter .instock b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #filter .type b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #select-hold b {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 .svote span {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/i2012052801.png") no-repeat;
+	background: url("/i2012052801.png") no-repeat;
 }
 #refilter {
 	border: 2px solid rgb(221, 221, 221); width: 207px;
@@ -230,7 +230,7 @@
 	border: 1px solid rgb(221, 221, 221);
 }
 .m0 .mt {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120827E.jpg") repeat-x rgb(230, 230, 230); height: 31px; line-height: 28px; padding-left: 8px;
+	background: url("/20120827E.jpg") repeat-x rgb(230, 230, 230); height: 31px; line-height: 28px; padding-left: 8px;
 }
 .m0 ul {
 	padding: 0px 8px; overflow: hidden; zoom: 1;
@@ -260,7 +260,7 @@
 	border: 1px solid rgb(221, 221, 221);
 }
 .rank .mt {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120827E.jpg") repeat-x rgb(230, 230, 230); height: 31px; line-height: 28px; padding-left: 8px;
+	background: url("/20120827E.jpg") repeat-x rgb(230, 230, 230); height: 31px; line-height: 28px; padding-left: 8px;
 }
 .rank .mc {
 	padding: 0px 1px;
@@ -344,7 +344,7 @@
 	float: left;
 }
 #evaluate span {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120806B.gif") no-repeat; width: 70px; height: 11px; overflow: hidden; float: left;
+	background: url("/20120806B.gif") no-repeat; width: 70px; height: 11px; overflow: hidden; float: left;
 }
 #evaluate .heart-white {
 	background-position: -70px 0px; margin: 6px 5px 0px 0px;
@@ -371,7 +371,7 @@
 	width: 70px;
 }
 #flagship-store a.go-store {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120802A.jpg") no-repeat; width: 81px; height: 30px; text-align: center; color: rgb(0, 0, 0); line-height: 30px; font-weight: bold; margin-top: 15px; float: right;
+	background: url("/20120802A.jpg") no-repeat; width: 81px; height: 30px; text-align: center; color: rgb(0, 0, 0); line-height: 30px; font-weight: bold; margin-top: 15px; float: right;
 }
 #flagship-store a.go-store:hover {
 	text-decoration: none;
@@ -506,10 +506,10 @@
 	border-width: 1px; border-style: solid; border-color: rgb(170, 170, 170) rgb(221, 221, 221) rgb(221, 221, 221) rgb(170, 170, 170); padding: 1px; width: 46px; height: 17px; line-height: 17px; font-family: verdana;
 }
 #select dd .btn-determine {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20121226A.jpg") no-repeat 0px 0px; margin: 2px 10px 0px 0px; border: currentColor; width: 53px; height: 21px; text-align: center; line-height: 21px; float: left; cursor: pointer;
+	background: url("/20121226A.jpg") no-repeat 0px 0px; margin: 2px 10px 0px 0px; border: currentColor; width: 53px; height: 21px; text-align: center; line-height: 21px; float: left; cursor: pointer;
 }
 #select dd .disabled {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20121226A.jpg") no-repeat 0px -22px; color: rgb(204, 204, 204); cursor: default;
+	background: url("/20121226A.jpg") no-repeat 0px -22px; color: rgb(204, 204, 204); cursor: default;
 }
 #select dd i {
 	width: 4px; height: 11px; overflow: hidden; font-size: 0px; border-bottom-color: rgb(51, 51, 51); border-bottom-width: 1px; border-bottom-style: solid; float: left;
@@ -653,7 +653,7 @@
 	background-color: rgb(243, 220, 201);
 }
 .select-color a.multicolor span {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120808A.gif") no-repeat;
+	background: url("/20120808A.gif") no-repeat;
 }
 #select .select-color a.curr:link {
 	padding: 0px; border: 2px solid rgb(204, 0, 0); position: relative;
@@ -1037,19 +1037,19 @@
 	border: 0px currentColor; line-height: 20px; cursor: pointer;
 }
 #plist a.notice-store {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120828E.jpg") no-repeat; width: 57px; height: 21px; color: rgb(51, 51, 51); line-height: 20px; padding-left: 32px; margin-right: 4px; float: left;
+	background: url("/20120828E.jpg") no-repeat; width: 57px; height: 21px; color: rgb(51, 51, 51); line-height: 20px; padding-left: 32px; margin-right: 4px; float: left;
 }
 #plist a.ehaoyao {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/btn2012062502.png") no-repeat; width: 86px; height: 21px; color: rgb(51, 51, 51); line-height: 20px; padding-left: 26px; cursor: pointer;
+	background: url("/btn2012062502.png") no-repeat; width: 86px; height: 21px; color: rgb(51, 51, 51); line-height: 20px; padding-left: 26px; cursor: pointer;
 }
 #plist a.btn-buy {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120828A.jpg") no-repeat; width: 79px; height: 21px; text-align: center; color: rgb(0, 0, 0); line-height: 20px; text-decoration: none; margin-right: 4px; float: left;
+	background: url("/20120828A.jpg") no-repeat; width: 79px; height: 21px; text-align: center; color: rgb(0, 0, 0); line-height: 20px; text-decoration: none; margin-right: 4px; float: left;
 }
 #plist a.free-download {
 	background: url("i/20121219A.jpg") no-repeat 0px -26px; width: 67px; height: 21px; text-align: center; color: rgb(0, 0, 0); line-height: 20px; text-decoration: none; margin-right: 4px; float: left;
 }
 #plist .btns a.btn-coll {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120828B.jpg") no-repeat; width: 53px; height: 21px; text-align: center; color: rgb(0, 0, 0); line-height: 20px; margin-right: 4px; float: left; cursor: pointer;
+	background: url("/20120828B.jpg") no-repeat; width: 53px; height: 21px; text-align: center; color: rgb(0, 0, 0); line-height: 20px; margin-right: 4px; float: left; cursor: pointer;
 }
 #plist a.ehaoyao:hover {
 	text-decoration: none;
@@ -1310,10 +1310,10 @@
 	margin-right: 5px;
 }
 .star .star-white {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120828G.jpg") no-repeat; width: 76px;
+	background: url("/20120828G.jpg") no-repeat; width: 76px;
 }
 .star .star-yellow {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120828F.jpg") no-repeat rgb(255, 255, 255); position: relative; z-index: 1;
+	background: url("/20120828F.jpg") no-repeat rgb(255, 255, 255); position: relative; z-index: 1;
 }
 .star .h0 {
 	width: 100%;
@@ -1649,7 +1649,7 @@
 	background-position: 0px -180px; width: 41px;
 }
 .pt5 {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120713A.png") no-repeat; width: 62px; height: 15px;
+	background: url("/20120713A.png") no-repeat; width: 62px; height: 15px;
 }
 .plist-220#plist li {
 	margin-bottom: 10px;
@@ -1823,7 +1823,7 @@
 	background: rgb(245, 245, 245); border: 1px solid rgb(221, 221, 221); height: 276px; overflow: visible; margin-bottom: 10px;
 }
 #shop-choice .mt {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120723A.gif") repeat-x; height: 30px; line-height: 27px;
+	background: url("/20120723A.gif") repeat-x; height: 30px; line-height: 27px;
 }
 #shop-choice .mt h3 {
 	height: 27px; padding-left: 1em; font-size: 12px; float: left;
@@ -1877,10 +1877,10 @@
 	height: 24px; text-align: center; overflow: hidden; margin-top: 10px; zoom: 1;
 }
 #shop-choice a.btn-buy {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120723A.gif") no-repeat; margin: 0px 2px; border: 0px currentColor; width: 53px; height: 21px; text-align: center; line-height: 21px; vertical-align: middle; display: inline-block; cursor: pointer;
+	background: url("/20120723A.gif") no-repeat; margin: 0px 2px; border: 0px currentColor; width: 53px; height: 21px; text-align: center; line-height: 21px; vertical-align: middle; display: inline-block; cursor: pointer;
 }
 #shop-choice .btns input {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120723A.gif") no-repeat; margin: 0px 2px; border: 0px currentColor; width: 53px; height: 21px; text-align: center; line-height: 21px; vertical-align: middle; display: inline-block; cursor: pointer;
+	background: url("/20120723A.gif") no-repeat; margin: 0px 2px; border: 0px currentColor; width: 53px; height: 21px; text-align: center; line-height: 21px; vertical-align: middle; display: inline-block; cursor: pointer;
 }
 #shop-choice a.btn-buy {
 	background-position: -90px -31px;
@@ -1898,7 +1898,7 @@
 	background: url("i/notice_store.gif") no-repeat 0px 0px; width: 65px; color: rgb(195, 135, 0); padding-left: 25px;
 }
 #shop-choice a.ehaoyao {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/btn2012062502.png") no-repeat; width: 86px; height: 21px; color: rgb(51, 51, 51); line-height: 21px; padding-left: 26px; cursor: pointer;
+	background: url("/btn2012062502.png") no-repeat; width: 86px; height: 21px; color: rgb(51, 51, 51); line-height: 21px; padding-left: 26px; cursor: pointer;
 }
 #shop-choice a.ehaoyao:hover {
 	text-decoration: none;
@@ -1919,10 +1919,10 @@
 	background-color: rgb(229, 229, 229);
 }
 #shop-choice .star .star-white {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20121023B.png") no-repeat;
+	background: url("/20121023B.png") no-repeat;
 }
 #shop-choice .star .star-yellow {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20121023A.png") no-repeat;
+	background: url("/20121023A.png") no-repeat;
 }
 .plist-220#shop-choice {
 	height: 420px;
@@ -1985,10 +1985,10 @@
 	border-width: 1px; border-style: solid; border-color: rgb(170, 170, 170) rgb(221, 221, 221) rgb(221, 221, 221) rgb(170, 170, 170); margin: 0px 5px; padding: 1px; width: 36px; height: 21px; text-align: center; font-family: verdana; float: left;
 }
 .pagin a.btn-skipsearch {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120829A.jpg") no-repeat; padding: 0px; border: currentColor; width: 53px; height: 25px; text-align: center; color: rgb(51, 51, 51); line-height: 25px; margin-left: 5px; float: left; cursor: pointer;
+	background: url("/20120829A.jpg") no-repeat; padding: 0px; border: currentColor; width: 53px; height: 25px; text-align: center; color: rgb(51, 51, 51); line-height: 25px; margin-left: 5px; float: left; cursor: pointer;
 }
 .pagin .btn-skipsearch:hover {
-	background: url("http://misc.360buyimg.com/201007/skin/df/i/20120829A.jpg") no-repeat; padding: 0px; border: currentColor; width: 53px; height: 25px; text-align: center; color: rgb(51, 51, 51); line-height: 25px; margin-left: 5px; float: left; cursor: pointer;
+	background: url("/20120829A.jpg") no-repeat; padding: 0px; border: currentColor; width: 53px; height: 25px; text-align: center; color: rgb(51, 51, 51); line-height: 25px; margin-left: 5px; float: left; cursor: pointer;
 }
 .pagin-m a {
 	height: 14px;
@@ -2000,10 +2000,10 @@
 	width: 23px; overflow: hidden; padding-bottom: 10px; position: fixed;
 }
 #float-bar div {
-	width: 23px; text-align: center; line-height: 13px; padding-top: 24px; background-image: url("http://misc.360buyimg.com/201007/skin/df/i/bg_pannel.jpg"); background-repeat: no-repeat;
+	width: 23px; text-align: center; line-height: 13px; padding-top: 24px; background-image: url("/bg_pannel.jpg"); background-repeat: no-repeat;
 }
 #float-bar a {
-	width: 23px; text-align: center; line-height: 13px; padding-top: 24px; background-image: url("http://misc.360buyimg.com/201007/skin/df/i/bg_pannel.jpg"); background-repeat: no-repeat;
+	width: 23px; text-align: center; line-height: 13px; padding-top: 24px; background-image: url("/bg_pannel.jpg"); background-repeat: no-repeat;
 }
 #float-bar a {
 	background-position: 0px bottom; padding: 2px 1px 8px 0px; width: 22px; color: rgb(255, 102, 0); text-decoration: none; display: block;

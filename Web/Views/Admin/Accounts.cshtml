@@ -4,9 +4,6 @@
     ViewBag.Title = "用户管理后台";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-<p>
-    @Html.ActionLink("添加用户", "Create")
-</p>
 <table>
     <tr>
         <th>
@@ -16,10 +13,7 @@
             @Html.DisplayNameFor(model => model.NickName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserProfileId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompanyId)
+            @Html.DisplayNameFor(model => model.Company)
         </th>
         <th></th>
     </tr>
@@ -32,16 +26,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.NickName)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.UserProfileId)
+            @Html.DisplayFor(modelItem => item.Company.CompanyName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CompanyId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            @Html.ActionLink("查看", "Display", new { id=item.UserId }) |
+            @Html.ActionLink("禁用", "Delete", new { id=item.UserId })
         </td>
     </tr>
 }

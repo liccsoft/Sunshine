@@ -29,8 +29,14 @@ namespace Sunshine.Controllers
 
         public ActionResult Accounts()
         {
-            var Users = db.Users.Take(100).ToList();
+            var Users = db.Users.Where(a=>a.UserName!="admin").Take(100).ToList();
             return View(Users);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int userId)
+        {
+            return View();
         }
 
     }

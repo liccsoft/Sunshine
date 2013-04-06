@@ -6,8 +6,6 @@
 }
 @using Sunshine.Business.Core;
 
-<h2>Create</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
@@ -19,9 +17,26 @@
         </div>
         <div class="editor-field">
             @*@Html.EditorFor(model => model.ParentCategoryId)*@
-            @Html.DropDownList("ParentCategoryId", Category.GetList(0, true).ConvertAll<SelectListItem>(a => new SelectListItem() { Text = a.Name, Value = a.CategoryId.ToString() }), new { @class = "text-box single-line" })
+            @Html.DropDownList("ParentCategoryId", Category.GetList(0).ConvertAll<SelectListItem>(a => new SelectListItem() { Text = a.Title, Value = a.CategoryId.ToString() }), new { @class = "text-box single-line" })
             @Html.ValidationMessageFor(model => model.ParentCategoryId)
         </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CategoryName)
+            @Html.ValidationMessageFor(model => model.CategoryName)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
@@ -31,22 +46,15 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
+       
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="创建" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回列表", "Index")
 </div>
 
 @section Scripts {

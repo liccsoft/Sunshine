@@ -14,35 +14,41 @@ namespace Sunshine.Business.Core
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
 
-        [Display(Name="所属分类")]
-        public int ParentCategoryId { get; set; }
+        [Display(Name="父级分类")]
+        public int? ParentCategoryId { get; set; }
 
-        
+        [ForeignKey("ParentCategoryId")]
+        public virtual Category ParentCategory { get; set; }
+
+        [Display(Name = "描述")]
         public string Description
         {
             get;
             set;
         }
 
+        [Display(Name = "分类名称")]
         public string CategoryName
         {
             get;
             set;
         }
 
-        public string Name
+        [Display(Name = "显示名称")]
+        public string Title
         {
             get;
             set;
         }
 
-        public static List<Category> GetList(int parentId, bool addDefault)
+        
+        public EntityStatus Status { get; set; }
+
+        public static List<Category> GetList(int? parentId)
         {
             using (var c = new UsersContext())
             {
-                var list = c.Categorys.Where(a=>a.ParentCategoryId == parentId).ToList();
-                if (addDefault)
-                    list.Insert(0, new Category() { Name = "无" });
+                var list = c.Categorys.Where(a=>a.ParentCategoryId==parentId).ToList();
                 return list;
             }
         }

@@ -49,6 +49,7 @@
     <Compile Include="Account\IAccountManager.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\Company.cs" />
+    <Compile Include="Core\EntityStatus.cs" />
     <Compile Include="Core\IBaseType.cs" />
     <Compile Include="Core\Product.cs" />
     <Compile Include="Core\ProductManager.cs" />
