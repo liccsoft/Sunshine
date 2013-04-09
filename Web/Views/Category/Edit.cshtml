@@ -19,10 +19,17 @@
             @Html.LabelFor(model => model.ParentCategoryId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ParentCategoryId)
+            @Html.DisplayFor(model => model.ParentCategory.CategoryName)
             @Html.ValidationMessageFor(model => model.ParentCategoryId)
         </div>
-
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryName)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.CategoryName)
+            @Html.ValidationMessageFor(model => model.CategoryName)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
         </div>
@@ -32,19 +39,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DisplayName)
+            @Html.LabelFor(model => model.Title)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DisplayName)
-            @Html.ValidationMessageFor(model => model.DisplayName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
         </div>
 
         <p>

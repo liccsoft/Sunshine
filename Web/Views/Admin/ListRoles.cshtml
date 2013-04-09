@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Sunshine.ViewModels.RoleModel>
+
+@{
+    ViewBag.Title = "角色管理";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+@foreach (Sunshine.ViewModels.RoleModel a in Model)
+{
+    <h2>@Html.ActionLink(a.RoleName, "UsersInRole", new { role=a.RoleName })</h2>
+}
+
+<p></p>

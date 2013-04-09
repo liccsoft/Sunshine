@@ -63,6 +63,10 @@ namespace Sunshine.Controllers
                 {
                     category.ParentCategoryId = null;
                 }
+                else
+                {
+                    category.CategoryLevel = db.Categorys.Find(category.ParentCategoryId).CategoryLevel + 1;
+                }
                 db.Categorys.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -92,7 +96,10 @@ namespace Sunshine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                var orginal = db.Categorys.Find(category.CategoryId);
+                orginal.Description = category.Description;
+                orginal.Title = category.Title;
+                db.Entry(orginal).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -109,6 +116,12 @@ namespace Sunshine.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (category.CategoryLevel == 0)
+            {
+                return HttpNotFound();
+            }
+
             return View(category);
         }
 
@@ -119,8 +132,11 @@ namespace Sunshine.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categorys.Find(id);
-            db.Categorys.Remove(category);
-            db.SaveChanges();
+            if (category.CategoryLevel != 0)
+            {
+                db.Categorys.Remove(category);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

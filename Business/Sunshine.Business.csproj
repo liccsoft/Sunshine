@@ -63,6 +63,7 @@
     <Compile Include="Core\User.cs" />
     <Compile Include="Core\UserContext.cs" />
     <Compile Include="Core\UserProfile.cs" />
+    <Compile Include="Core\ModifyStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\ISearchProvider.cs" />
     <Compile Include="Search\SearchResultItem.cs" />
