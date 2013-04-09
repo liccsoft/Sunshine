@@ -14,17 +14,50 @@ namespace Sunshine.Business.Core
 
         public IList<Property> GetPropertiesForProductType(int? productTypeId)
         {
-            using(var ctx= new UsersContext())
+            using (var ctx = new UsersContext())
             {
                 return ctx.Database.SqlQuery<Property>("SELECT a.PropertyId AS PropertyId, a.PropertyName as PropertyName FROM Product a LEFT JOIN ProductPorperty b on a.ProductId = b.ProductId LEFT JOIN Property c on b.PropertyId = c.PropertyId").ToList();
             }
         }
 
-        public IList<Category> getCategoryName()
+        public IList<Category> getCategory(int state)
         {
             using (var ctx = new UsersContext())
             {
-                return ctx.Categorys.ToList();
+                //return ctx.Categorys.ToList();
+                return ctx.Database.SqlQuery<Category>(String.Format("SELECT * FROM Category where ParentCategoryId = {0}",state)).ToList();
+            }
+        }
+
+        public IList<Brand> getBrand()
+        {
+            using (var ctx = new UsersContext())
+            {
+                return ctx.Brands.ToList();
+            }
+        }
+
+        public IList<PriceInterval> getPriceInterval()
+        {
+            using (var ctx = new UsersContext())
+            {
+                return ctx.PriceIntervals.ToList();
+            }
+        }
+
+        public IList<ProductSize> getProductSize()
+        {
+            using (var ctx = new UsersContext())
+            {
+                return ctx.ProductSizes.ToList();
+            }
+        }
+
+        public IList<object> get_Product()
+        {
+            using (var ctx = new UsersContext())
+            {
+                return ctx.Database.SqlQuery<object>("select a.*, b.categoryname as mainname, c.categoryname as secondname from product a left join (select categoryid,categoryname from category) b on a.categoryid = b.categoryid left join (select categoryid,categoryname from category) c on a.secondcategoryid = c.categoryid").ToList();
             }
         }
     }

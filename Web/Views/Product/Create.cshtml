@@ -5,13 +5,32 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">创建产品</a></li>
+    </ul>
+<div id="cindex">
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Product</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId)
+        </div>
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecondCategoryId)
+        </div>
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.SecondCategoryId, ViewData["secondcategorylist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.SecondCategoryId)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductName)
@@ -22,19 +41,19 @@
         </div>
 
 		 <div class="editor-label">
-            @Html.LabelFor(model => model.ProductBrand)
+            @Html.LabelFor(model => model.Brand.BrandName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductBrand)
-            @Html.ValidationMessageFor(model => model.ProductBrand)
+            @Html.DropDownListFor(model => model.BrandId, ViewData["brandlist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.BrandId)
         </div>
 
 		<div class="editor-label">
-            @Html.LabelFor(model => model.ProductSize)
+            @Html.LabelFor(model => model.ProductSize.ProductSizeName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductSize)
-            @Html.ValidationMessageFor(model => model.ProductSize)
+            @Html.DropDownListFor(model => model.ProductSizeId, ViewData["productsizelist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.ProductSizeId)
         </div>
 
         <div class="editor-label">
@@ -46,14 +65,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductDescription)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDescription)
-            @Html.ValidationMessageFor(model => model.ProductDescription)
-        </div>
-
-		<div class="editor-label">
             @Html.LabelFor(model => model.ProductProcessor)
         </div>
         <div class="editor-field">
@@ -61,52 +72,33 @@
             @Html.ValidationMessageFor(model => model.ProductProcessor)
         </div>
 
-		<div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.ProductVideo)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ProductVideo)
             @Html.ValidationMessageFor(model => model.ProductVideo)
-        </div>        
+        </div> 
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductPriceTypeId)
+            @Html.LabelFor(model => model.PriceInterval.PriceIntervalName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductPriceTypeId)
-            @Html.ValidationMessageFor(model => model.ProductPriceTypeId)
+            @Html.DropDownListFor(model => model.PriceIntervalId, ViewData["productintervallist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.PriceIntervalId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductTypeId)
+            @Html.LabelFor(model => model.ProductDescription)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductTypeId)
-            @Html.ValidationMessageFor(model => model.ProductTypeId)
+            @Html.EditorFor(model => model.ProductDescription)
+            @Html.ValidationMessageFor(model => model.ProductDescription)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryId)
-        </div>
-         <div class="editor-field">
-            @Html.DropDownListFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>)
-            @Html.ValidationMessageFor(model => model.CategoryId)
-        </div>
-
-       @*枚举实现 <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryId)
-            @Html.DropDownListFor(model => model.categories, new[]{
-            new SelectListItem() {Text = Sunshine.Business.Core.Product.Category.电脑.ToString(), 
-            Value=((int)Sunshine.Business.Core.Product.Category.电脑).ToString()}
-            ,new SelectListItem() {Text = Sunshine.Business.Core.Product.Category.电脑配件.ToString(), 
-            Value=((int)Sunshine.Business.Core.Product.Category.电脑配件).ToString()}}
-            ,"选择产品类型")
-            @Html.ValidationMessageFor(model => model.CategoryId)
-        </div>*@
 
 		<div id="ext"></div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="确定" />
         </p>
     </fieldset>
 }
@@ -117,3 +109,6 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+</div>
+</section>

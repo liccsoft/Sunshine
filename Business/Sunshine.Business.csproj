@@ -47,14 +47,17 @@
   <ItemGroup>
     <Compile Include="Account\AccountManager.cs" />
     <Compile Include="Account\IAccountManager.cs" />
+    <Compile Include="Core\Brand.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\Company.cs" />
     <Compile Include="Core\EntityStatus.cs" />
     <Compile Include="Core\IBaseType.cs" />
+    <Compile Include="Core\PriceInterval.cs" />
     <Compile Include="Core\Product.cs" />
     <Compile Include="Core\ProductManager.cs" />
     <Compile Include="Core\ProductPriceType.cs" />
     <Compile Include="Core\ProductProperty.cs" />
+    <Compile Include="Core\ProductSize.cs" />
     <Compile Include="Core\ProductType.cs" />
     <Compile Include="Core\Property.cs" />
     <Compile Include="Core\User.cs" />

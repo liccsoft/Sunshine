@@ -4,9 +4,11 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
-<h2>Delete</h2>
-
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">删除产品</a></li>
+    </ul>
+<div id="cindex">
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
     <legend>Product</legend>
@@ -33,17 +35,10 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductPriceTypeId)
+         @Html.DisplayNameFor(model => model.PriceIntervalId)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ProductPriceTypeId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductTypeId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductTypeId)
+        @Html.DisplayFor(model => model.PriceInterval.PriceIntervalName)
     </div>
 
     <div class="display-label">
@@ -59,3 +54,6 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
+
+</div>
+</section>

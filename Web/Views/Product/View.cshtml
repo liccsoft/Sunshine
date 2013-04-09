@@ -29,23 +29,9 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductPriceTypeId)
+         @Html.DisplayNameFor(model => model.Category.CategoryName)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ProductPriceTypeId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductTypeId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductTypeId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CategoryId)
+        @Html.DisplayFor(model => model.Category.CategoryName)
     </div>
 </fieldset>

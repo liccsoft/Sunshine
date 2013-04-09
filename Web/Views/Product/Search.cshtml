@@ -4,43 +4,46 @@
     Layout = "~/Views/Shared/_search.cshtml";
 }
 <div class="crumb">全部结果&nbsp;&gt;&nbsp;<strong>@ViewBag.keyword</strong></div>
-<div class="left">
-    <div id="refilter" class="m">
-        <div class="mt">
-            <h2>所有类目</h2>
-        </div>
-        <div class="mc">
-            <div class="item fore hover">
-                <h3><b></b><a href="#">电脑整机</a><span>(188)</span></h3>
-                <ul>
-                    <li><s></s><a href="/search?keyword=thinkpad">笔记本					<span>(21)</span></a></li>
-                    <li><s></s><a href="/search?keyword=thinkpads">台式机					<span>(167)</span></a></li>
-                    <li><s class="tree-last"></s><a href="/search?keyword=thinkpads">一体机					<span>(167)</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="ad_left" class="m m0 hide" reco_id="6"></div>
+@*<div class="left">
+<div id="refilter" class="m">
+<div class="mt">
+<h2>所有类目</h2></div>
+<div class="mc">
+<div class="item fore hover">
+<h3><b></b><a href="/search?keyword=thinkpad%20e430&amp;enc=utf-8&amp;suggest=1&amp;area=1#ls" 
+click-index="671">电脑整机</a><span>(188)</span></h3>
+<ul>
+  <li><s></s><a href="/search?keyword=thinkpad" 
+  click-index="671-672">笔记本					<span>(21)</span></a></li>
+  <li><s class="tree-last"></s><a onclick="lss.query(this, '/s.php?cid3=675&amp;ls=1');searchlog(1, 675, 0, 51);" 
+  href="/search?keyword=thinkpads" 
+  click-index="671-675">笔记本配件					<span>(167)</span></a></li></ul>
+</div></div></div>
+<div id="ad_left" class="m m0 hide" reco_id="6"></div>
 
-    <div id="miaozhen8148" class="m"></div>
-</div>
+<div id="miaozhen8148" class="m"></div></div>*@
 <div class="right-extra">
 <div id="filter">
 <div class="fore1">
 <dl class="order">
   <dt>排序：</dt>
+    <dd>价格<b></b></dd>
   <dd><a href="#">上架时间</a><b></b></dd></dl>
 <div id="top_pagi" class="pagin pagin-m"><span class="text">1/1</span><span 
 class="prev-disabled">上一页<b></b></span><a class="next"
 href="#">下一页<b></b></a></div>
 <div class="total"><span>共<strong>@Model.Count()</strong>个商品</span></div><span 
-class="clr"></span></div></div>
+class="clr"></span></div>
+<div class="fore2 form">
+<!--<dl class="store">
+  </dl>-->
+<span class="clr"></span></div></div>
 <div id="plist" class="m psearch ">
 <ul class="list clearfix">
     @foreach (var item in Model) {
          <li sku="@item.ProductId">
          <div class="p-name">
-              <strong>@Html.ActionLink(item.ProductMark + " - " + item.ProductName, "Display", new { id = item.ProductId }, new { target="_blank" })</strong>
+              <strong>@Html.ActionLink(item.ProductMark + " - " + item.ProductName, "View", new { id = item.ProductId }, new { target="_blank" })</strong>
         </div>
         <div class="extra">
             @Html.DisplayTextFor(modelItem => item.ProductDescription)
@@ -69,7 +72,7 @@ value="1" type="text"><em>页</em><a class="btn-skipsearch" onclick="jumpto()" >
 <script>
     function search(id)
     {
-        if (document.getElementById(id).value.length > 0)
+        if ($("#" + id).val().length > 0)
         {
             searchForm.submit();
         }
