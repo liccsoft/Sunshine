@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Account\AccountManager.cs" />
     <Compile Include="Account\IAccountManager.cs" />
+    <Compile Include="Categories\DefaultCategoryManager.cs" />
+    <Compile Include="Categories\ICategoryManager.cs" />
     <Compile Include="Core\Brand.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\Company.cs" />

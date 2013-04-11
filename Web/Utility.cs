@@ -6,6 +6,7 @@ using Sunshine.Business.Account;
 using WebMatrix.WebData;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
+using Sunshine.Business.Categories;
 
 namespace Sunshine
 {
@@ -15,7 +16,6 @@ namespace Sunshine
         {
             get
             {
-
                 if (HttpContext.Current.Items["CurrentUserNickName"] == null)
                 {
                    HttpContext.Current.Items["CurrentUserNickName"] = new AccountManager().GetNickName(WebSecurity.CurrentUserId);
@@ -38,6 +38,27 @@ namespace Sunshine
                 }
 
                 return HttpContext.Current.Items["CurrentCompanyList"] as IList<SelectListItem>;
+            }
+        }
+
+        public static IList<SelectListItem> L1CategoryList
+        {
+            get {
+                DefaultCategoryManager manager=new DefaultCategoryManager();
+                var list =manager.GetCategoryByLevel(1);
+
+                return (from c in list select new SelectListItem() { Value = c.CategoryId.ToString(), Text = c.Title }).ToList();
+            }
+        }
+
+        public static IList<SelectListItem> L2CategoryList
+        {
+            get
+            {
+                DefaultCategoryManager manager = new DefaultCategoryManager();
+                var list = manager.GetCategoryByLevel(2);
+
+                return (from c in list select new SelectListItem() { Value = c.CategoryId.ToString(), Text = c.Title }).ToList();
             }
         }
     }
