@@ -4,23 +4,28 @@
     Layout = "";
     
 }
-
+<p id="message" class=""></p>
 @if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None)
 { 
+    <div id="company-option">
 <p>
-    <a href="javascript:addNewCompany()">添加一个公司</a> or
-    <a href="javascript:chooseCompany()">选择一个公司</a>
-</p>
+    <a href="javascript:addNewCompany()">创建一个公司</a> 
+</p> 
+<label>或者</label>
+<p><input id="scname"/> <a href="javascript:chooseCompany(scname.value)">加入一个公司</a></p>
+</div>
     ViewBag.display = "display:none";
 }
 
-<p id="message" class="message"></p>
-@using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "editcmpymsg" }))
+<fieldset id="NewCompany" style="@ViewBag.display">
+        <legend></legend>
+@if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None || Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.Allowed)
 {
+    using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "editcmpymsg" }))
+    {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true) 
-        <fieldset id="NewCompany" style="@ViewBag.display">
-        <legend></legend>
+        
     @Html.HiddenFor(model => model.Company.CompanyId)
     <div class="editor-label">
         @Html.LabelFor(model => model.Company.CompanyName)
@@ -58,23 +63,59 @@
         @Html.EditorFor(model => model.Company.Description)
         @Html.ValidationMessageFor(model => model.Company.Description)
     </div>
-            @if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None || Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.Allowed)
-            {
+           
      <p>
             <input type="submit" value="保存" />
-     </p>  } 
-     </fieldset>
+     </p>  
+    
+    }
 }
+else
+{
+    
+    <div class="display-label">
+        @Html.LabelFor(model => model.Company.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.CompanyName)
+    </div>
+    <div class="display-label">
+        @Html.LabelFor(model => model.Company.Mobile)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.Mobile)
+    </div>
+        <div class="display-label">
+        @Html.LabelFor(model => model.Company.TelNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.TelNumber)
+    </div>
+        <div class="display-label">
+        @Html.LabelFor(model => model.Company.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.Address)
+    </div>
+    
+    <div class="display-label">
+        @Html.LabelFor(model => model.Company.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.Description)
+    </div>
+} </fieldset>
 <div id="dialoghold" style="display:none"></div>
-<script>
-    function addNewCompany()
-    {
+<script type="text/javascript">
+    function addNewCompany() {
+        $("#Company_CompanyId").val('');
+        $("#Company_CompanyName").val('');
         $("#NewCompany").show();
         return false;
     }
 
-    function chooseCompany() {       
-        $.get("/widget/company", '', function (a) {
+    function chooseCompany(name) {
+        $.get("/widget/company", {name:name}, function (a) {
             $("#dialoghold").html(a);
             $("#dialoghold").dialog();
         }, "html");
@@ -95,5 +136,11 @@
 
     function editcmpymsg(a, b, c) {
         $("#message").html(a.message);
+        if (a.status) {
+            $("#message").css("message-success");
+            $("#company-option").html("");
+        }
+        else
+        { $("#message").css("message-error") }
      }
 </script>

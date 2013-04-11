@@ -12,11 +12,11 @@ namespace Sunshine.Controllers
         //
         // GET: /Widget/
 
-        public ActionResult Company()
+        public ActionResult Company(string name, int? pageIndex)
         {
             using (var db = new UsersContext())
             {
-                return View(db.Companys.ToList());
+                return View(db.Companys.Where(a=>a.CompanyName.Contains(name)).Take(10).ToList());
             }
             
         }

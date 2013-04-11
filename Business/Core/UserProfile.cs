@@ -25,7 +25,7 @@ namespace Sunshine.Business.Core
         /// 
         /// </summary>
         [MaxLength(256)]
-        [RegularExpression(".*@.*",ErrorMessage="邮箱格式错误")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "邮箱", GroupName = "基本信息")]
         public string Email { get; set; }
 
@@ -39,6 +39,8 @@ namespace Sunshine.Business.Core
         /// 
         /// </summary>
         [MaxLength(256)]
+        [DataType(DataType.Url)]
+        [Display(Name = "微博", GroupName = "基本信息")]
         public string Weibo { get; set; }
 
         /// <summary>
@@ -50,9 +52,12 @@ namespace Sunshine.Business.Core
 
         [MaxLength(32)]
         [Display(Name = "电话", GroupName = "基本信息")]
+        [DataType(DataType.PhoneNumber)]
         public string Tel { get; set; }
 
         [MaxLength(32)]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "手机", GroupName = "基本信息")]
         public string Mobile { get; set; }
     }
 

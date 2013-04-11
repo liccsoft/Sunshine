@@ -56,17 +56,19 @@ namespace Sunshine.Models
     {
         [Required]
         [Display(Name = "用户名称")]
+        [StringLength(100, ErrorMessage = "{0}至少需要{2}字符长.", MinimumLength = 6)]
+        [RegularExpression("[a-z|A-Z][a-z|A-Z|0-9|.|@|-|_]*", ErrorMessage = "请输入字母、数字或者符号（@和.）")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0}至少需要{2}字符长.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "用户密码")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "确认密码")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "确认密码需要相同.")]
         public string ConfirmPassword { get; set; }
     }
 

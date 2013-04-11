@@ -65,7 +65,8 @@ namespace Sunshine.Controllers
                 }
                 else
                 {
-                    category.CategoryLevel = db.Categorys.Find(category.ParentCategoryId).CategoryLevel + 1;
+                    var p = db.Categorys.Find(category.ParentCategoryId);
+                    category.CategoryLevel = (p==null)? 0: p.CategoryLevel + 1;
                 }
                 db.Categorys.Add(category);
                 db.SaveChanges();

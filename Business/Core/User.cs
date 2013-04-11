@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Sunshine.Business.Core
 {
@@ -33,7 +34,9 @@ namespace Sunshine.Business.Core
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
+        [DefaultValue(0)]
         public int? ProfileStatus { get; set; }
+        [DefaultValue(0)]
         public int? CompanyStatus { get; set; }
 
        // [EnumDataType(typeof(int))]
