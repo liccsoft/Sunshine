@@ -27,12 +27,11 @@ click-index="671">电脑整机</a><span>(188)</span></h3>
 <div class="fore1">
 <dl class="order">
   <dt>排序：</dt>
-    <dd>价格<b></b></dd>
-  <dd><a href="#">上架时间</a><b></b></dd></dl>
+  <dd><a href="#"><strong>@Html.ActionLink("上架时间", "Searchprice")</strong></a><b></b></dd></dl>
 <div id="top_pagi" class="pagin pagin-m"><span class="text">1/1</span><span 
 class="prev-disabled">上一页<b></b></span><a class="next"
 href="#">下一页<b></b></a></div>
-<div class="total"><span>共<strong>@Model.Count()</strong>个商品</span></div><span 
+<div class="total"><span>共<strong>@ViewBag.count</strong>个商品</span></div><span 
 class="clr"></span></div>
 <div class="fore2 form">
 <!--<dl class="store">
@@ -43,7 +42,7 @@ class="clr"></span></div>
     @foreach (var item in Model) {
          <li sku="@item.ProductId">
          <div class="p-name">
-              <strong>@Html.ActionLink(item.ProductMark + " - " + item.ProductName, "View", new { id = item.ProductId }, new { target="_blank" })</strong>
+              <strong>@Html.ActionLink(item.ProductMark + " - " + item.ProductName, "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })</strong>
         </div>
         <div class="extra">
             @Html.DisplayTextFor(modelItem => item.ProductDescription)
@@ -52,10 +51,11 @@ class="clr"></span></div>
     }
 </ul></div>
 <div id="bottom_pager" class="m clearfix">
+
 <div id="pagin-btm" class="pagin fr"><span 
 class="prev-disabled">上一页<b></b></span><a class="current" href="javascript:void(0)">1</a><a 
 class="next" onclick="searchlog(1, 2, 0, 56);" href="#">下一页<b></b></a><span 
-class="page-skip"><em>&nbsp;&nbsp;共6页&nbsp;&nbsp;&nbsp;&nbsp;到第</em><input 
+class="page-skip"><em>&nbsp;&nbsp;共</em><a>@ViewBag.pages</a><em>页&nbsp;&nbsp;&nbsp;&nbsp;到第</em><input 
 onkeydown="javascript:if(event.keycode==13){jumpto();return false;}" class="jumpto" 
 value="1" type="text"><em>页</em><a class="btn-skipsearch" onclick="jumpto()" >确定</a></span></div></div>
 <div id="re-search" class="m">
@@ -77,5 +77,10 @@ value="1" type="text"><em>页</em><a class="btn-skipsearch" onclick="jumpto()" >
             searchForm.submit();
         }
     }
+
+    function jumpto() {
+
+    }
+
 </script>
 }

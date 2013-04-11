@@ -36,6 +36,11 @@ namespace Sunshine.Controllers
         [AllowAnonymous]
         public ActionResult Search(string pattern, string type, int? pageIndex)
         {
+            SearchResultItem search = new SearchResultItem();
+            // ViewData["count"] = search.getcount(pattern, keywords);
+            ViewBag.count = Convert.ToInt32(search.getcount(pattern, keywords));
+            ViewBag.pages = Convert.ToInt32(search.getcount(pattern, keywords) / 10 + 1);
+
             ViewBag.keyword = pattern;
             int skipcount = (pageIndex??0) * 10;
             if (type == "1")
@@ -105,6 +110,55 @@ namespace Sunshine.Controllers
         {
             Product product = db.Products.Find(id);
             SetDefaultInfo(product);
+            #region
+            ProductManager productmanager = new ProductManager();
+            IList<Category> CategoryList = productmanager.getCategory(0);
+            ViewData["categorylist"] = (from s in CategoryList
+                                        select new SelectListItem
+                                        {
+                                            Selected = (s.CategoryId == product.CategoryId),
+                                            Text = s.CategoryName,
+                                            Value = s.CategoryId.ToString()
+                                        }).ToList();
+
+            IList<Category> SecondCategoryList = productmanager.getCategory(1);
+            ViewData["secondcategorylist"] = (from s in SecondCategoryList
+                                              select new SelectListItem
+                                              {
+                                                  Selected = (s.CategoryId == product.SecondCategoryId),
+                                                  Text = s.CategoryName,
+                                                  Value = s.CategoryId.ToString()
+                                              }).ToList();
+
+            IList<Brand> BrandList = productmanager.getBrand();
+            ViewData["brandlist"] = (from s in BrandList
+                                     select new SelectListItem
+                                     {
+                                         Selected = (s.BrandId == product.BrandId),
+                                         Text = s.BrandName,
+                                         Value = s.BrandId.ToString()
+                                     }).ToList();
+
+            IList<PriceInterval> ProductIntervalList = productmanager.getPriceInterval();
+            ViewData["productintervallist"] = (from s in ProductIntervalList
+                                               select new SelectListItem
+                                               {
+                                                   Selected = (s.PriceIntervalId == product.PriceIntervalId),
+                                                   Text = s.PriceIntervalName,
+                                                   Value = s.PriceIntervalId.ToString()
+                                               }).ToList();
+
+            IList<ProductSize> ProductSizeList = productmanager.getProductSize();
+            ViewData["productsizelist"] = (from s in ProductSizeList
+                                           select new SelectListItem
+                                           {
+                                               Selected = (s.ProductSizeId == product.ProductSizeId),
+                                               Text = s.ProductSizeName,
+                                               Value = s.ProductSizeId.ToString()
+                                           }).ToList();
+            #endregion
+
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -186,6 +240,16 @@ namespace Sunshine.Controllers
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ViewDetails(long id = 0)
+        {
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
 
         protected override void Dispose(bool disposing)
