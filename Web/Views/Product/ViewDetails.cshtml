@@ -1,0 +1,65 @@
+﻿@model Sunshine.Business.Core.Product
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_search.cshtml";
+}
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Brand.BrandName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Brand.BrandName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductSize.ProductSizeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductSize.ProductSizeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductMark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductMark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductProcessor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductProcessor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductVideo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductVideo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceInterval.PriceIntervalName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceInterval.PriceIntervalName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductDescription)
+    </div>
+</fieldset>
