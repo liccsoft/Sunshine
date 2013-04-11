@@ -41,10 +41,19 @@ namespace Sunshine.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        [OutputCache(Duration=1000)]
         public ActionResult ListRoles()
         {
             var result = from s in Roles.GetAllRoles()
                    select new RoleModel(){RoleName=s};
+            return View(result);
+        }
+
+        public ActionResult UsersInRole(string role)
+        {
+            var result = from s in Roles.GetUsersInRole(role)
+                         select new RoleModel() { RoleName = s };
             return View(result);
         }
 

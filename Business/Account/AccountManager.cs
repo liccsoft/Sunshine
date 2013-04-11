@@ -8,8 +8,8 @@ namespace Sunshine.Business.Account
 {
     public class AccountManager : IAccountManager
     {
-        UsersContext db;
         public static IAccountManager Current = new AccountManager();
+
         public string GetNickName(int id)
         {
             using (var ctx = new UsersContext())

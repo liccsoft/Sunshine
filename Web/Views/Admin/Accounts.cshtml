@@ -4,6 +4,12 @@
     ViewBag.Title = "用户管理后台";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
+<ul>
+<li><a href="#AccountsPanel">账号</a></li>
+<li><a href="#RolePanel">角色</a></li>
+</ul>
+
+<div id="AccountsPanel">
 <table>
     <tr>
         <th>
@@ -38,3 +44,8 @@
 }
 
 </table>
+</div>
+
+<div id="RolePanel">
+@{Html.RenderAction("ListRoles");}
+</div>

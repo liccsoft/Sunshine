@@ -18,6 +18,7 @@ namespace Sunshine.Business.Core
         [Display(Name="父级分类")]
         public int? ParentCategoryId { get; set; }
 
+        [Display(Name = "分类级别")]
         public int CategoryLevel { get; set; }
 
         [ForeignKey("ParentCategoryId")]
@@ -47,24 +48,9 @@ namespace Sunshine.Business.Core
         
         public EntityStatus Status { get; set; }
 
-        public static List<Category> GetListByLevel(int level, bool includeRoot=false)
-        {
-            using (var c = new UsersContext())
-            {
-                var list = c.Categorys.Where(a => a.CategoryLevel == level || (a.CategoryLevel==0 && includeRoot==true)).ToList();
-                return list;
-            }
-        }
 
-
-
-        public static List<Category> GetListByParent(int parentId)
-        {
-            using (var c = new UsersContext())
-            {
-                var list = c.Categorys.Where(a => a.ParentCategoryId == parentId).ToList();
-                return list;
-            }
-        }
+        public string ShortDescription { get {
+            return (Description == null || Description.Length < 50) ? Description : Description.Substring(0, 50) + "...";
+        } }
     }
 }

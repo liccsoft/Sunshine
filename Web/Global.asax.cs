@@ -10,6 +10,7 @@ using WebMatrix.WebData;
 using Sunshine.Business.Core;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Web.Security;
 
 namespace Sunshine
 {
@@ -41,6 +42,17 @@ namespace Sunshine
                 }
 
                 WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "UserId", "UserName", autoCreateTables: true);
+
+                if (!WebSecurity.UserExists("admin"))
+                {
+                    WebSecurity.CreateUserAndAccount("admin", "password");
+                }
+
+                if (!Roles.RoleExists("admin"))
+                {
+                    Roles.CreateRole("admin");
+                    Roles.AddUserToRole("admin", "admin");
+                }
             }
             catch (Exception ex)
             {

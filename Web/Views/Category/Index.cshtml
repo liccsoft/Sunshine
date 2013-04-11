@@ -17,10 +17,10 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ParentCategoryId)
+            @Html.DisplayNameFor(model => model.CategoryLevel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.ParentCategoryId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CategoryName)
@@ -28,16 +28,20 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParentCategory.CategoryName)
+    <td>
+            @Html.DisplayFor(modelItem => item.CategoryLevel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.ParentCategory.CategoryName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CategoryName)
@@ -45,6 +49,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        
         <td>
        
             @Html.ActionLink("编辑", "Edit", new { id=item.CategoryId }) 
