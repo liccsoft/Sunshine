@@ -61,5 +61,17 @@ namespace Sunshine
                 return (from c in list select new SelectListItem() { Value = c.CategoryId.ToString(), Text = c.Title }).ToList();
             }
         }
+
+        public static IList<SelectListItem> BaseCategoryList
+        {
+            get
+            {
+                DefaultCategoryManager manager = new DefaultCategoryManager();
+                var list = manager.GetCategoryByLevel(1);
+                list.Insert(0, manager.RootCategory);
+
+                return (from c in list select new SelectListItem() { Value = c.CategoryId.ToString(), Text = c.Title }).ToList();
+            }
+        }
     }
 }

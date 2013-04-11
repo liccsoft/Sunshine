@@ -41,7 +41,7 @@ namespace Sunshine.Business.Core
 
         [Display(Name = "二级分类")]
         public int? SecondCategoryId { get; set; }
-        [ForeignKey("CategoryId")]
+        [ForeignKey("SecondCategoryId")]
         public virtual Category CategorySecond { get; set; }
 
         [Display(Name = "描述")]
