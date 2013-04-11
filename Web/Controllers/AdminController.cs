@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Sunshine.Filters;
 using Sunshine.Business.Core;
 using WebMatrix.WebData;
+using System.Web.Security;
+using Sunshine.ViewModels;
 
 namespace Sunshine.Controllers
 {
@@ -37,6 +39,13 @@ namespace Sunshine.Controllers
         public ActionResult Delete(int userId)
         {
             return View();
+        }
+
+        public ActionResult ListRoles()
+        {
+            var result = from s in Roles.GetAllRoles()
+                   select new RoleModel(){RoleName=s};
+            return View(result);
         }
 
     }

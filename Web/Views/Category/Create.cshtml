@@ -17,7 +17,7 @@
         </div>
         <div class="editor-field">
             @*@Html.EditorFor(model => model.ParentCategoryId)*@
-            @Html.DropDownList("ParentCategoryId", Category.GetList(0).ConvertAll<SelectListItem>(a => new SelectListItem() { Text = a.Title, Value = a.CategoryId.ToString() }), new { @class = "text-box single-line" })
+            @Html.DropDownList("ParentCategoryId", Category.GetListByLevel(1, true).ConvertAll<SelectListItem>(a => new SelectListItem() { Text = a.Title, Value = a.CategoryId.ToString() }), new { @class = "text-box single-line" })
             @Html.ValidationMessageFor(model => model.ParentCategoryId)
         </div>
 

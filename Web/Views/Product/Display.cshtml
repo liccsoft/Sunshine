@@ -8,10 +8,38 @@
     <legend>Product</legend>
 
     <div class="display-label">
+         @Html.DisplayNameFor(model => model.CategoryId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CategoryId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryId, ViewData["secondcategorylist"] as IList<SelectListItem>)
+    </div>
+
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.ProductName)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ProductName)
+        @Html.DisplayTextFor(model => model.ProductName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Brand.BrandName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Brand.BrandName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductSize)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductSize)
     </div>
 
     <div class="display-label">
@@ -22,30 +50,30 @@
     </div>
 
     <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductProcessor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductProcessor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductVideo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductVideo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceInterval.PriceIntervalName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceInterval.PriceIntervalName)
+    </div>
+
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.ProductDescription)
     </div>
     <div class="display-field">
-        @Html.DisplayTextFor(model => model.ProductDescription)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductPriceTypeId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductPriceTypeId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductTypeId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductTypeId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CategoryId)
+        @Html.DisplayFor(model => model.ProductDescription)
     </div>
 </fieldset>

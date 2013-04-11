@@ -2,9 +2,10 @@
 
 @{
     Layout = "";
+    
 }
 
-@if (Model.Company == null)
+@if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None)
 { 
 <p>
     <a href="javascript:addNewCompany()">添加一个公司</a> or
@@ -13,7 +14,8 @@
     ViewBag.display = "display:none";
 }
 
-@using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "showmessage" }))
+<p id="message" class="message"></p>
+@using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "editcmpymsg" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true) 
@@ -56,7 +58,7 @@
         @Html.EditorFor(model => model.Company.Description)
         @Html.ValidationMessageFor(model => model.Company.Description)
     </div>
-            @if (Model.Company==null || Model.Company.CreatedUserName == User.Identity.Name)
+            @if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None || Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.Allowed)
             {
      <p>
             <input type="submit" value="保存" />
@@ -90,4 +92,8 @@
         $("#dialoghold").dialog("close");
         return false;
     }
+
+    function editcmpymsg(a, b, c) {
+        $("#message").html(a.message);
+     }
 </script>

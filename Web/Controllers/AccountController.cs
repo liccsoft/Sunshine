@@ -227,11 +227,19 @@ namespace Sunshine.Controllers
         {
             var user = db.Users.Find(WebSecurity.CurrentUserId);
 
-            if (company.CompanyId > 0 && company.CreatedUserName != user.UserName)
+            if (user.CompanyModifyStatus == ModifyStatus.Forbidden || user.CompanyModifyStatus == ModifyStatus.Submitted)
             {
-                db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id where [userid]=@uid", new SqlParameter("id", company.CompanyId), new SqlParameter("uid", user.UserId));
+                return Json(new { message = "公司信息不可修改", status = false });
+            }
+
+            if (company.CompanyId > 0 && user.CompanyModifyStatus == ModifyStatus.None)
+            {
+                db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
+                    new SqlParameter("id", company.CompanyId),
+                    new SqlParameter("uid", user.UserId),
+                    new SqlParameter("status", ModifyStatus.Submitted));
            
-                return Json(new { message = "修改成功", status = true });
+                return Json(new { message = "修改成功,请等待公司管理员审核", status = true });
             }
 
             if (user.CompanyId != company.CompanyId && company.CompanyId > 0)
@@ -249,7 +257,10 @@ namespace Sunshine.Controllers
                 company.CreatedUserName = user.UserName;
                var c = db.Companys.Add(company);
                db.SaveChanges();
-               db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id where [userid]=@uid", new SqlParameter("id", c.CompanyId), new SqlParameter("uid", user.UserId));
+               db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
+                   new SqlParameter("id", c.CompanyId),
+                   new SqlParameter("uid", user.UserId),
+                   new SqlParameter("status", ModifyStatus.Allowed));
             }
 
             return Json(new { message = "修改成功", status= true});

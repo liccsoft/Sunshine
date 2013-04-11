@@ -17,8 +17,10 @@ namespace Sunshine.Business.Core
         [Required]
         [StringLength(128, MinimumLength=6, ErrorMessage="请输入大于6个字符")]
         public string UserName { get; set; }
+         [MaxLength(128)]
+        [DataType(DataType.EmailAddress)]
+        public string SecurityEmail { get; set; }
 
-        [MaxLength(128)]
         public string NickName { get { return Profile == null ? null : Profile.NickName; } }
 
         public int? UserProfileId { get; set; }
@@ -30,5 +32,34 @@ namespace Sunshine.Business.Core
 
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
+
+        public int? ProfileStatus { get; set; }
+        public int? CompanyStatus { get; set; }
+
+       // [EnumDataType(typeof(int))]
+        public ModifyStatus ProfileModifyStatus
+        {
+            get
+            {
+                return (ModifyStatus) (ProfileStatus ?? 0);
+            }
+            set
+            {
+                ProfileStatus = (int)value;
+            }
+        }
+
+        //[EnumDataType(typeof(int))]
+        public ModifyStatus CompanyModifyStatus
+        {
+            get
+            {
+                return (ModifyStatus)(CompanyStatus??0);
+            }
+            set
+            {
+                CompanyStatus = (int)value;
+            }
+        }
     }
 }

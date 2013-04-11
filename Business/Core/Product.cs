@@ -14,32 +14,42 @@ namespace Sunshine.Business.Core
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public long ProductId { get; set; }
 
-        [Display(Name="产品名称")]
+        [Display(Name = "产品名称")]
         public string ProductName { get; set; }
         [Display(Name = "型号")]
         public string ProductMark { get; set; }
+
         [Display(Name = "品牌")]
-        public string ProductBrand { get; set; }
-        [Display(Name = "尺寸")]
-        public string ProductSize { get; set; }
+        public int? BrandId { get; set; }
+        [ForeignKey("BrandId")]
+        public virtual Brand Brand { get; set; }
+
         [Display(Name = "CPU")]
         public string ProductProcessor { get; set; }
         [Display(Name = "显卡")]
         public string ProductVideo { get; set; }
+        
         [Display(Name = "价格区间")]
-        public int? ProductPriceTypeId { get; set; }
-        [ForeignKey("ProductPriceTypeId")]
-        public virtual ProductPriceType ProductPriceType { get; set; }
+        public int? PriceIntervalId { get; set; }
+        [ForeignKey("PriceIntervalId")]
+        public virtual PriceInterval PriceInterval { get; set; }
 
-        [Display(Name = "产品类型")]
-        public int ProductTypeId { get; set; }
-        [Display(Name = "所属分类")]
+        [Display(Name = "一级分类")]
         public int? CategoryId { get; set; }
-
         [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
+        public virtual Category CategoryMain { get; set; }
+
+        [Display(Name = "二级分类")]
+        public int? SecondCategoryId { get; set; }
+        [ForeignKey("CategoryId")]
+        public virtual Category CategorySecond { get; set; }
 
         [Display(Name = "描述")]
         public string ProductDescription { get; set; }
+
+        [Display(Name = "尺寸")]
+        public int? ProductSizeId { get; set; }
+        [ForeignKey("ProductSizeId")]
+        public virtual ProductSize ProductSize { get; set; }
     }
 }
