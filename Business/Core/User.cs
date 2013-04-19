@@ -17,11 +17,12 @@ namespace Sunshine.Business.Core
 
         [Required]
         [StringLength(128, MinimumLength=6, ErrorMessage="请输入大于6个字符")]
+        [Display(Name="用户名")]
         public string UserName { get; set; }
-         [MaxLength(128)]
+        [MaxLength(128)]
         [DataType(DataType.EmailAddress)]
         public string SecurityEmail { get; set; }
-
+        [Display(Name = "用户昵称")]
         public string NickName { get { return Profile == null ? null : Profile.NickName; } }
 
         public int? UserProfileId { get; set; }
@@ -32,6 +33,7 @@ namespace Sunshine.Business.Core
         public int? CompanyId { get; set; }
 
         [ForeignKey("CompanyId")]
+        [Display(Name = "所属公司")]
         public virtual Company Company { get; set; }
 
         [DefaultValue(0)]

@@ -8,6 +8,7 @@ using Sunshine.Business.Core;
 using WebMatrix.WebData;
 using System.Web.Security;
 using Sunshine.ViewModels;
+using System.Data.SqlClient;
 
 namespace Sunshine.Controllers
 {
@@ -52,8 +53,15 @@ namespace Sunshine.Controllers
 
         public ActionResult UsersInRole(string role)
         {
-            var result = from s in Roles.GetUsersInRole(role)
-                         select new RoleModel() { RoleName = s };
+            const string query = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
+join dbo.webpages_UsersInRoles ur
+on u.UserId = ur.UserId
+join dbo.webpages_Roles r
+on ur.RoleId = r.RoleId
+left join Company c
+on u.CompanyId = c.CompanyId
+where r.RoleName = @rolename";
+            var result = db.Database.SqlQuery<UserRoleModel>(query, new SqlParameter("rolename", role));
             return View(result);
         }
 

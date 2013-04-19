@@ -5,23 +5,22 @@
     ViewBag.SubModuleName = "分类管理";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
+<style>
+.t-0{ padding-left:0px;}
+.t-1{ padding-left:20px;}
+.t-2{ padding-left:40px;}
+div.c  {cursor: pointer;background: url(images/folder.gif) 0 0 no-repeat; padding-left:18px;}
+</style>
 <section id="tabset">
     <ul>
         <li><a href="#cindex">分类管理</a></li>
     </ul>
-<div id="cindex">
+<div id="cindex" class="treeview">
 <p>
     @Html.ActionLink("新建新分类", "Create")
 </p>
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryLevel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParentCategoryId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
@@ -31,38 +30,119 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        
+         <th>
+            @Html.DisplayNameFor(model => model.CategoryLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentCategoryId)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Where(a => a.CategoryLevel == 0))
+{
     <tr>
-    <td>
-            @Html.DisplayFor(modelItem => item.CategoryLevel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParentCategory.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
+        <td class="t-@item.CategoryLevel"><div class=c>
+         @Html.DisplayFor(modelItem => item.CategoryName)</div>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
+           @* @Html.DisplayFor(modelItem => item.ShortDescription)*@
         </td>
-        
         <td>
-       
-            @Html.ActionLink("编辑", "Edit", new { id=item.CategoryId }) 
-             @if(item.CategoryLevel > 0) {
-                 @Html.ActionLink("删除", "Delete", new { id=item.CategoryId })
-            }
+           @* @Html.DisplayFor(modelItem => item.CategoryLevel)*@
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.ParentCategory.CategoryName)*@
+        </td>
+        <td>
+       @*
+            @Html.ActionLink("编辑", "Edit", new { id = item.CategoryId }) 
+             @if (item.CategoryLevel > 0)
+             {
+                 @Html.ActionLink("删除", "Delete", new { id = item.CategoryId })
+             }*@
         </td>
     </tr>
+             foreach (var l1item in Model.Where(a => a.CategoryLevel == 1 && a.ParentCategoryId == item.CategoryId))
+             {
+    <tr>
+         <td class="t-@l1item.CategoryLevel"><div class="c">
+           @Html.DisplayFor(modelItem => l1item.CategoryName)</div>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l1item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l1item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l1item.CategoryLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l1item.ParentCategory.CategoryName)
+        </td>
+        <td>
+       
+            @Html.ActionLink("编辑", "Edit", new { id = l1item.CategoryId }) 
+             @if (l1item.CategoryLevel > 0)
+             {
+                 @Html.ActionLink("删除", "Delete", new { id = l1item.CategoryId })
+             }
+        </td>
+    </tr>
+             foreach (var l2item in Model.Where(a => a.CategoryLevel == 2 && a.ParentCategoryId == l1item.CategoryId))
+             {
+    <tr>
+         <td class="t-@l2item.CategoryLevel"><div class="c">
+          @Html.DisplayFor(modelItem => l2item.CategoryName)</div>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l2item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l2item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l2item.CategoryLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => l2item.ParentCategory.CategoryName)
+        </td>
+        <td>
+       
+            @Html.ActionLink("编辑", "Edit", new { id = l2item.CategoryId }) 
+             @if (l2item.CategoryLevel > 0)
+             {
+                 @Html.ActionLink("删除", "Delete", new { id = l2item.CategoryId })
+             }
+        </td>
+    </tr>
+    
+             }
+             }
 }
 
 </table>
 </div>
 </section>
+
+@*<div id="refilter" class="m">
+@foreach (var root in Model.Where(a => a.CategoryLevel == 0))
+{
+<div class="mt"><h2>@root.CategoryName</h2></div>
+<div class="mc">
+<div class="item fore hover">
+<h3><b></b><a href="/search?keyword=thinkpad%20e430&amp;enc=utf-8&amp;suggest=1&amp;area=1#ls" 
+click-index="671">电脑整机</a><span>(188)</span></h3>
+<ul>
+  <li><s></s><a href="/search?keyword=thinkpad" 
+  click-index="671-672">笔记本					<span>(21)</span></a></li>
+  <li><s class="tree-last"></s><a onclick="lss.query(this, '/s.php?cid3=675&amp;ls=1');searchlog(1, 675, 0, 51);" 
+  href="/search?keyword=thinkpads" 
+  click-index="671-675">笔记本配件					<span>(167)</span></a></li></ul>
+</div></div>
+}
+    </div>*@
