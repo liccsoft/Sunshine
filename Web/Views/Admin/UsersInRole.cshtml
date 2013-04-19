@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "角色管理";
     ViewBag.SubModuleName = Request.Params["role"];
-    Layout = "~/Views/Shared/_Admin.cshtml";
+    Layout = "";
 }
 
-<div id="AccountsPanel">
+<div id="panel-@ViewBag.SubModuleName">
 <table>
     <tr>
         <th>

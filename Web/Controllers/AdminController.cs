@@ -30,9 +30,10 @@ namespace Sunshine.Controllers
             return View();
         }
 
-        public ActionResult Accounts()
+        public ActionResult Accounts(int? pageIndex)
         {
-            var Users = db.Users.Where(a=>a.UserName!="admin").Take(100).ToList();
+            int skipNumber = 20 * pageIndex??0;
+            var Users = db.Users.OrderBy(a=>a.UserId).Skip(skipNumber).Take(20).ToList();
             return View(Users);
         }
 
@@ -51,8 +52,9 @@ namespace Sunshine.Controllers
             return View(result);
         }
 
-        public ActionResult UsersInRole(string role)
+        public ActionResult UsersInRole(string role, int? pageIndex)
         {
+            int skipNumber = 20 * pageIndex ?? 0;
             const string query = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
 join dbo.webpages_UsersInRoles ur
 on u.UserId = ur.UserId
@@ -60,8 +62,8 @@ join dbo.webpages_Roles r
 on ur.RoleId = r.RoleId
 left join Company c
 on u.CompanyId = c.CompanyId
-where r.RoleName = @rolename";
-            var result = db.Database.SqlQuery<UserRoleModel>(query, new SqlParameter("rolename", role));
+where r.RoleName = @rolename order by u.UserId";
+            var result = db.Database.SqlQuery<UserRoleModel>(query, new SqlParameter("rolename", role)).Skip(skipNumber).Take(20);
             return View(result);
         }
 
