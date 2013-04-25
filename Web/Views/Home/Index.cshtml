@@ -2,27 +2,8 @@
     ViewBag.Title = "徽田首页";
     }
 <div id="digitals" class="w w1">
-    <div class="m plist home-widget" data-widget="tabs">
-        <div style="left: 0px;" class="tab-arrow"><b></b></div>
-        <div class="sm sm2 fore1 curr" data-widget="tab-item">
-            <div class="smt" clstag="homepage|keycount|home2012|18c1">
-                <h3>最新商品</h3>
-            </div>
-            <div class="smc" data-widget="tab-content">
-                <ul class="l style1">
-                    @foreach(var i in new string[] {"","","","",""}){
-                    <li class="fore3">
-                        <div class="p-img">
-                            <a title="" href="" data-img="1">jjjjjjjjj</a>
-                        </div>
-                        <div class="p-name"><a title="" href="" target="_blank"></a></div>
-                        <div class="p-price"><span></span>1299<span></span></div>
-                    </li>
-                    }
-                </ul>
-            </div>
-        </div>
-    </div>
+    @{Html.RenderAction("LatestProducts");}
+
     <div class="m plist home-widget" data-widget="tabs">
         <div style="left: 0px;" class="tab-arrow"><b></b></div>
         <div class="sm sm2 fore1 curr" data-widget="tab-item">

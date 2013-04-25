@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Sunshine.Business.Core;
 
 namespace Sunshine.Controllers
 {
@@ -28,5 +29,45 @@ namespace Sunshine.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 10)]
+        public ActionResult LatestProducts(int? categoryId)
+        {
+            try
+            {
+                using (UsersContext ctx = new UsersContext())
+                {
+                    if (categoryId == null)
+                        return View(ctx.Products.OrderByDescending(a => a.ProductId).Take(ItemSize).ToList());
+                    return View(ctx.Products.Where(a => a.CategoryId == categoryId).OrderByDescending(a => a.ProductId).Take(ItemSize).ToList());
+                }
+               
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 10)]
+        public ActionResult LatestCompanies()
+        {
+            try
+            {
+                using (UsersContext ctx = new UsersContext())
+                {
+                    return View(ctx.Companys.OrderByDescending(a => a.CompanyId).Take(ItemSize).ToList());
+                }
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public readonly int ItemSize = 5;
     }
 }

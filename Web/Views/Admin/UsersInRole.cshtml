@@ -21,7 +21,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr id="id-@item.UserId">
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
@@ -33,10 +33,21 @@
             @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
         <td>
-            @Html.ActionLink("移除用户", "Derole", new { id=item.UserId })
+           @Ajax.ActionLink("移除用户", "RemoveFromRole", new { userName = item.UserName, roleName = Request.Params["role"] }, new AjaxOptions { OnSuccess = "ShowResult" })
         </td>
     </tr>
 }
 
 </table>
+<a href="javascript:">添加用户</a>
+<div id="n-@Request.Params["role"]" style="display:none">
+@using (Ajax.BeginForm("AddToRole", new {  roleName = Request.Params["role"] }, new AjaxOptions { OnSuccess=""}))
+{
+    <div class="editor-label" >
+<label for="userName">用户名</label></div>
+    <div  class="editor-field">
+<input id="userName" name = "userName" /></div>
+    <input type="hidden" name="roleName" value="@Request.Params["role"]" />
+}
+</div>
 </div>

@@ -1,0 +1,29 @@
+﻿@model List<Sunshine.Business.Core.Product>
+
+@{
+    Layout = "";
+    ViewBag.Title = "最新商品";
+}
+
+<div class="m plist home-widget" data-widget="tabs">
+        <div style="left: 0px;" class="tab-arrow"><b></b></div>
+        <div class="sm sm2 fore1 curr" data-widget="tab-item">
+            <div class="smt">
+                <h3>@ViewBag.Title</h3>
+            </div>
+            <div class="smc" data-widget="tab-content">
+                <ul class="l style1">
+                    @foreach (var item in Model)
+                    {
+                    <li class="fore3">
+@*                        <div class="p-img">
+                        
+                        </div>*@
+                        <div class="p-name">@Html.ActionLink(item.ProductName, "Display", "Product", new { id = item.ProductId })</div>
+                        <div class="p-price"><span></span>@item.ProductMark<span></span></div>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
