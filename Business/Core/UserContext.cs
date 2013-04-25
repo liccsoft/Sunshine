@@ -25,6 +25,7 @@ namespace Sunshine.Business.Core
         public DbSet<Brand> Brands { get; set; }
         public DbSet<PriceInterval> PriceIntervals { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<ProductColor> ProductColors { get; set; }
 
         public DbSet<Company> Companys { get; set; }
     }

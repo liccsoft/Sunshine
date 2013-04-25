@@ -151,6 +151,15 @@ namespace Sunshine.Controllers
                                                Text = s.ProductSizeName,
                                                Value = s.ProductSizeId.ToString()
                                            }).ToList();
+
+            IList<ProductColor> ProductColorList = productmanager.getProductColor();
+            ViewData["productcolorlist"] = (from s in ProductColorList
+                                           select new SelectListItem
+                                           {
+                                               Selected = (s.ProductColorId == product.ProductColorId),
+                                               Text = s.ProductColorName,
+                                               Value = s.ProductColorId.ToString()
+                                           }).ToList();
         }
 
         //

@@ -28,7 +28,7 @@ namespace Sunshine.Business.Core
         public string ProductProcessor { get; set; }
         [Display(Name = "显卡")]
         public string ProductVideo { get; set; }
-        
+
         [Display(Name = "价格区间")]
         public int? PriceIntervalId { get; set; }
         [ForeignKey("PriceIntervalId")]
@@ -51,5 +51,22 @@ namespace Sunshine.Business.Core
         public int? ProductSizeId { get; set; }
         [ForeignKey("ProductSizeId")]
         public virtual ProductSize ProductSize { get; set; }
+
+        [Display(Name = "配置补充")]
+        public string ProductAdditions { get; set; }
+
+        [Display(Name = "代理价")]
+        public decimal AgentPrice { get; set; }
+
+        [Display(Name = "提货价")]
+        public decimal DeliveryPrice { get; set; }
+
+        [Display(Name = "颜色")]
+        public int ProductColorId { get; set; }
+        [ForeignKey("ProductColorId")]
+        public virtual ProductColor ProductColor { get; set; }
+
+        [Display(Name = "库存")]
+        public int ProductStock { get; set; }
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="Core\IBaseType.cs" />
     <Compile Include="Core\PriceInterval.cs" />
     <Compile Include="Core\Product.cs" />
+    <Compile Include="Core\ProductColor.cs" />
     <Compile Include="Core\ProductManager.cs" />
     <Compile Include="Core\ProductPriceType.cs" />
     <Compile Include="Core\ProductProperty.cs" />

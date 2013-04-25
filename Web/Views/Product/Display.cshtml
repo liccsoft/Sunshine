@@ -1,77 +1,96 @@
 ﻿@model Sunshine.Business.Core.Product
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_search.cshtml";
 }
 <fieldset>
     <legend>Product</legend>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryId)
+        @Html.DisplayNameFor(model => model.CategoryId)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryId)
+        @Html.DisplayNameFor(model => model.CategoryId)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CategoryId, ViewData["secondcategorylist"] as IList<SelectListItem>)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductName)
+        @Html.DisplayNameFor(model => model.ProductName)
     </div>
     <div class="display-field">
         @Html.DisplayTextFor(model => model.ProductName)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Brand.BrandName)
+        @Html.DisplayNameFor(model => model.Brand.BrandName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Brand.BrandName)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductSize)
+        @Html.DisplayNameFor(model => model.ProductSize)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProductSize)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductMark)
+        @Html.DisplayNameFor(model => model.ProductMark)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProductMark)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductProcessor)
+        @Html.DisplayNameFor(model => model.ProductProcessor)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProductProcessor)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductVideo)
+        @Html.DisplayNameFor(model => model.ProductVideo)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProductVideo)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.PriceInterval.PriceIntervalName)
+        @Html.DisplayNameFor(model => model.PriceInterval.PriceIntervalName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.PriceInterval.PriceIntervalName)
     </div>
-
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductDescription)
+        @Html.DisplayNameFor(model => model.AgentPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AgentPrice)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DeliveryPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeliveryPrice)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ProductStock)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductStock)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ProductAdditions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductAdditions)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ProductColor.ProductColorId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductColor.ProductColorId)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ProductDescription)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProductDescription)

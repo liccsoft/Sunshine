@@ -53,6 +53,14 @@ namespace Sunshine.Business.Core
             }
         }
 
+        public IList<ProductColor> getProductColor()
+        {
+            using (var ctx = new UsersContext())
+            {
+                return ctx.ProductColors.ToList();
+            }
+        }
+
         public IList<object> get_Product()
         {
             using (var ctx = new UsersContext())

@@ -92,6 +92,46 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.AgentPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AgentPrice)
+            @Html.ValidationMessageFor(model => model.AgentPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeliveryPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeliveryPrice)
+            @Html.ValidationMessageFor(model => model.DeliveryPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductStock)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductStock)
+            @Html.ValidationMessageFor(model => model.ProductStock)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductAdditions)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductAdditions)
+            @Html.ValidationMessageFor(model => model.ProductAdditions)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductColor.ProductColorId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ProductColor.ProductColorId, ViewData["productcolorlist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.ProductColor.ProductColorId)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.ProductDescription)
         </div>
         <div class="editor-field">
