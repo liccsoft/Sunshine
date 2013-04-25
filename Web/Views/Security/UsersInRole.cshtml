@@ -1,12 +1,13 @@
-﻿@model IEnumerable<Sunshine.ViewModels.UserRoleModel>
+﻿@model IEnumerable<Sunshine.Models.UserModel>
 @{
     ViewBag.Title = "角色管理";
+    ViewBag.RoleName = Request.Params["role"];
     ViewBag.SubModuleName = Request.Params["role"];
     Layout = "";
 }
 
-<div id="panel-@ViewBag.SubModuleName">
-<table>
+<div id="panel-@ViewBag.SubModuleName" class="left">
+<table id="list-@ViewBag.RoleName">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
@@ -33,21 +34,22 @@
             @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
         <td>
-           @Ajax.ActionLink("移除用户", "RemoveFromRole", new { userName = item.UserName, roleName = Request.Params["role"] }, new AjaxOptions { OnSuccess = "ShowResult" })
+           @Ajax.ActionLink("移除用户", "RemoveFromRole", new { userName = item.UserName, roleName = ViewBag.RoleName }, new AjaxOptions { OnSuccess = "ShowResult" })
         </td>
     </tr>
 }
 
 </table>
-<a href="javascript:">添加用户</a>
-<div id="n-@Request.Params["role"]" style="display:none">
-@using (Ajax.BeginForm("AddToRole", new {  roleName = Request.Params["role"] }, new AjaxOptions { OnSuccess=""}))
+</div>
+
+<div class="right">
+<h2>添加用户</h2>
+@using (Ajax.BeginForm("FindUser", new { ctrl = "list-"+@ViewBag.RoleName }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "id-" + ViewBag.RoleName }))
 {
-    <div class="editor-label" >
-<label for="userName">用户名</label></div>
-    <div  class="editor-field">
-<input id="userName" name = "userName" /></div>
-    <input type="hidden" name="roleName" value="@Request.Params["role"]" />
+<input id="userName" name = "userName" />
+<input type="hidden" name="roleName" value="@ViewBag.RoleName" />
+<input type="submit" value="查找" />
 }
+<div id="id-@ViewBag.RoleName">
 </div>
 </div>

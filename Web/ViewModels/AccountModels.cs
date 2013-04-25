@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
+using Sunshine.ViewModels;
 
 namespace Sunshine.Models
 {
@@ -77,5 +78,11 @@ namespace Sunshine.Models
         public string Provider { get; set; }
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
+    }
+
+    public class UserModel : UserRoleModel
+    {
+        public string NickName { get; set; }
+        public string CompanyName { get; set; }
     }
 }

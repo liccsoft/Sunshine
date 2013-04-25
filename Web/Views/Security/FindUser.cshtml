@@ -1,0 +1,17 @@
+﻿@model List<Sunshine.ViewModels.UserRoleModel>
+
+@{
+    ViewBag.Title = "FindUser";
+    ViewBag.ctrl = Request.Params["ctrl"];
+    Layout = "";
+}
+
+<table>@foreach (var item in Model)
+{
+<tr>
+<td>@Html.DisplayFor(i=>item.UserName)</td>
+<td>@Html.HiddenFor(i=>item.UserId)</td>
+<td><a href="javascript:ConfirmAddToRole(@Json.Encode(item), '@ViewBag.ctrl')">添加</a></td>
+</tr>
+}
+</table>

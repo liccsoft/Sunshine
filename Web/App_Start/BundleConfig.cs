@@ -12,12 +12,15 @@ namespace Sunshine
             bundles.UseCdn = true;
             bundles.Add(new ScriptBundle("~/bundles/jquery", "http://code.jquery.com/jquery-1.7.1.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datatable", "http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryui", "http://code.jquery.com/ui/1.8.20/jquery-ui.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
-
+        //http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js
+        //http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/css/jquery.dataTables.css
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

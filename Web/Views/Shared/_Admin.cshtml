@@ -26,15 +26,17 @@ width="260" height="60"></a></div><!--logo end-->
         <li class="fr">@Html.ActionLink("首页", "Index", "Home")</li>
         @if (User.Identity.IsAuthenticated){
         <li class="fr">@Html.ActionLink("个人中心", "Manage", "Account")</li>
-        if (Roles.IsUserInRole("admin") || User.Identity.Name == "admin") {
-            <li class="fr">@Html.ActionLink("用户管理", "Accounts", "Admin")</li>
+        if (Roles.IsUserInRole("security") || User.Identity.Name == "admin") {
+            <li class="fr">@Html.ActionLink("用户管理", "Accounts", "Security")</li>
+        }
+            if (Roles.IsUserInRole("admin") || User.Identity.Name == "admin"){
             <li class="fr">@Html.ActionLink("类别管理", "Index", "Category")</li>           
         }        
         <li class="fr">@Html.ActionLink("产品管理", "Index", "Product")</li>
         }
     </ul>
 </nav></div>
-<div id="my360buy-2013">
+<div id="">
 <dl></dl></div><!--settleup end-->
 </div><!--header end-->
 

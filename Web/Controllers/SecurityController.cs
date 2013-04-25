@@ -9,19 +9,19 @@ using WebMatrix.WebData;
 using System.Web.Security;
 using Sunshine.ViewModels;
 using System.Data.SqlClient;
+using Sunshine.Models;
 
 namespace Sunshine.Controllers
 {
-    [Authorize(Roles="admin")]
-    [Authorize(Users = "admin")]
+    [Authorize(Roles="security")]
     [InitializeSimpleMembership]
-    public class AdminController : Controller
+    public class SecurityController : Controller
     {
         private UsersContext db = new UsersContext();
         //
         // GET: /Admin/
 
-        public AdminController()
+        public SecurityController()
         {
             ViewBag.ModuleName = "后台管理";
         }
@@ -63,18 +63,25 @@ join dbo.webpages_Roles r
 on ur.RoleId = r.RoleId
 left join Company c
 on u.CompanyId = c.CompanyId
-where r.RoleName = @rolename order by u.UserId";
-            var result = db.Database.SqlQuery<UserRoleModel>(query, new SqlParameter("rolename", role)).Skip(skipNumber).Take(100);
+where r.RoleName = @rolename and u.UserName <> 'admin' 
+order by u.UserId";
+            var result = db.Database.SqlQuery<UserModel>(query, new SqlParameter("rolename", role)).Skip(skipNumber).Take(100);
             return View(result);
         }
 
-        [Authorize(Users="admin")]
         public JsonResult RemoveFromRole(string userName, string roleName)
         {
             try
             {
+                if ("security".Equals(roleName, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    if (Roles.GetUsersInRole("security").Length <= 1)
+                    {
+                        return Json(new ResponseResult { Status = ResponseResultStatus.Failed, Message = "至少需要一个安全管理员" });
+                    }
+                }
                 Roles.RemoveUserFromRole(userName, roleName);
-                return Json(new ResponseResult { Status = ResponseResultStatus.Failed, Message = "删除成功" });
+                return Json(new ResponseResult { Status = ResponseResultStatus.Sucess, Message = "删除成功" });
             }
             catch
             {
@@ -82,7 +89,6 @@ where r.RoleName = @rolename order by u.UserId";
             }
         }
 
-        [Authorize(Users = "admin")]
         public JsonResult AddToRole(string userName, string roleName)
         {
             try
@@ -96,5 +102,9 @@ where r.RoleName = @rolename order by u.UserId";
             }
         }
 
+        public ActionResult FindUser(string userName, string roleName)
+        {
+            return View(db.Users.Where(a => a.UserName.Contains(userName)).ToList().ConvertAll<UserRoleModel>((a) => new UserRoleModel { UserName=a.UserName, UserId = a.UserId, RoleName = roleName }));
+        }
     }
 }

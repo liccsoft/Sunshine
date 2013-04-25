@@ -46,7 +46,7 @@ namespace Sunshine.Controllers
             }
             catch
             {
-                return View();
+                return View(new List<Product>());
             }
         }
 

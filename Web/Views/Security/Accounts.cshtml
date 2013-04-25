@@ -4,6 +4,10 @@
     ViewBag.Title = "用户管理后台";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
+<style>
+.left{ float: left;}
+.right{float: right;}
+</style>
 <ul>
 <li><a href="#AccountsPanel">所有账号</a></li>
 @foreach (var role in Roles.GetAllRoles())
@@ -14,7 +18,7 @@
 </ul>
 
 <div id="AccountsPanel">
-<table>
+<table id="tbl-all">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
@@ -50,3 +54,19 @@
 
 </table>
 </div>
+<div style="display:none">Loading</div>
+@section Scripts {
+@*@Scripts.Render("~/bundles/datatable");
+   
+        $(document).ready(
+function () {
+    $("#tbl-all").dataTable();
+}
+);*@
+ <script type="text/javascript">
+        function ConfirmAddToRole(userRole, holder) {
+            $("#" + holder);
+            
+        }
+    </script>
+}

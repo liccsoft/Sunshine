@@ -48,10 +48,14 @@ namespace Sunshine
                     WebSecurity.CreateUserAndAccount("admin", "password");
                 }
 
-                if (!Roles.RoleExists("admin"))
+                ///security: user management
+                foreach (var name in new string[] { "admin", "security", "user" })
                 {
-                    Roles.CreateRole("admin");
-                    Roles.AddUserToRole("admin", "admin");
+                    if (!Roles.RoleExists(name))
+                    {
+                        Roles.CreateRole(name);
+                        Roles.AddUserToRole("admin", name);
+                    }
                 }
             }
             catch (Exception ex)
