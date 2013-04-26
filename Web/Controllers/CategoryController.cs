@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
 using Sunshine.Filters;
+using System.Net;
 
 namespace Sunshine.Controllers
 {
@@ -112,18 +113,25 @@ namespace Sunshine.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Category category = db.Categorys.Find(id);
-            if (category == null)
+            try
             {
-                return HttpNotFound();
-            }
+                Category category = db.Categorys.Find(id);
+                if (category == null)
+                {
+                    return HttpNotFound();
+                }
 
-            if (category.CategoryLevel == 0)
+                if (category.CategoryLevel == 0)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(category);
+            }
+            catch (Exception e)
             {
-                return HttpNotFound();
+                return RedirectToAction("Error", "Utility", new { message = e.Message });
             }
-
-            return View(category);
         }
 
         //
@@ -132,13 +140,21 @@ namespace Sunshine.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categorys.Find(id);
-            if (category.CategoryLevel != 0)
+            try
             {
-                db.Categorys.Remove(category);
-                db.SaveChanges();
+                Category category = db.Categorys.Find(id);
+                if (category.CategoryLevel != 0)
+                {
+                    db.Categorys.Remove(category);
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            catch (Exception e)
+            {
+                return RedirectToAction("GeneralError", "Common");
+            }
         }
 
         protected override void Dispose(bool disposing)
