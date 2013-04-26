@@ -5,68 +5,78 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 <style>
-.left{ float: left;}
-.right{float: right;}
+    .left{ float: left;}
+.right{float: right; }
+.left73{ float: left; width:68%}
+.right73{float: right; width:28%}
 </style>
-<ul>
-<li><a href="#AccountsPanel">所有账号</a></li>
-@foreach (var role in Roles.GetAllRoles())
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#AccountsPanel">所有账号</a></li>
+@*@foreach (var role in Roles.GetAllRoles())
 {
 <li>@Html.ActionLink(role, "UsersInRole", new { role = role })</li>
-}
-@*<li><a href="#RolePanel">角色</a></li>*@
+}*@
 </ul>
 
-<div id="AccountsPanel">
-<table id="tbl-all">
+<div id="AccountsPanel" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+<div class="left73">
+<table id="tbl-all" style="width:100%;"><thead>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NickName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Company)
-        </th>
-        <th></th>
-    </tr>
-
+<th>
+    @Html.DisplayNameFor(model => model.UserName)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.NickName)
+</th>
+<th>
+    @Html.DisplayNameFor(model => model.Company)
+</th>
+<th></th>
+    </tr></thead>
+<tbody>
 @foreach (var item in Model)
 {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NickName)
-        </td>
+<td>
+    @Html.DisplayFor(modelItem => item.UserName)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.NickName)
+</td>
        
-        <td>
-            @Html.DisplayFor(modelItem => item.Company.CompanyName)
-        </td>
-        <td>
-           @* @Html.ActionLink("查看", "Display", new { id=item.UserId }) |
-            @Html.ActionLink("禁用", "Delete", new { id=item.UserId })*@
-        </td>
+<td>
+    @Html.DisplayFor(modelItem => item.Company.CompanyName)
+</td>
+<td>
+</td>
     </tr>
 }
-
+</tbody>
+<tfoot> <tr>
+<td>
+    @Html.DisplayNameFor(model => model.UserName)
+</td>
+<td>
+    @Html.DisplayNameFor(model => model.NickName)
+</td>
+<td>
+    @Html.DisplayNameFor(model => model.Company)
+</td>
+<td></td>
+    </tr></tfoot>
 </table>
+<div style="width:100%; text-align:right;">
+@if (ViewBag.CurrentPageIndex > 1)
+{
+@Html.ActionLink("上一页", "Accounts", new { pageIndex = ViewBag.CurrentPageIndex - 1 })  
+}
+<b>@ViewBag.CurrentPageIndex</b>
+@if (ViewBag.IsLastPage == false)
+{
+@Html.ActionLink("下一页", "Accounts", new { pageIndex = ViewBag.CurrentPageIndex + 1 })
+} 
 </div>
-<div style="display:none">Loading</div>
-@section Scripts {
-@*@Scripts.Render("~/bundles/datatable");
-   
-        $(document).ready(
-function () {
-    $("#tbl-all").dataTable();
-}
-);*@
- <script type="text/javascript">
-        function ConfirmAddToRole(userRole, holder) {
-            $("#" + holder);
-            
-        }
-    </script>
-}
+</div>
+<div class="right73"></div>
+<div class="clear"></div>
+</div>

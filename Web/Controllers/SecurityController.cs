@@ -17,6 +17,7 @@ namespace Sunshine.Controllers
     [InitializeSimpleMembership]
     public class SecurityController : Controller
     {
+        readonly int pageSize = 5;
         private UsersContext db = new UsersContext();
         //
         // GET: /Admin/
@@ -33,8 +34,10 @@ namespace Sunshine.Controllers
 
         public ActionResult Accounts(int? pageIndex)
         {
-            int skipNumber = 20 * pageIndex??0;
-            var Users = db.Users.OrderBy(a=>a.UserId).Skip(skipNumber).Take(20).ToList();
+            int skipNumber = pageSize * ((pageIndex ?? 1) - 1);
+            var Users = db.Users.OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
+            ViewBag.CurrentPageIndex = pageIndex ?? 1;
+            ViewBag.IsLastPage = Users.Count < pageSize;
             return View(Users);
         }
 
@@ -102,9 +105,38 @@ order by u.UserId";
             }
         }
 
-        public ActionResult FindUser(string userName, string roleName)
+        public ActionResult FindUser(string userName)
         {
-            return View(db.Users.Where(a => a.UserName.Contains(userName)).ToList().ConvertAll<UserRoleModel>((a) => new UserRoleModel { UserName=a.UserName, UserId = a.UserId, RoleName = roleName }));
+            return View(db.Users.Where(a => a.UserName.Contains(userName)).ToList().ConvertAll<UserRoleModel>((a) => new UserRoleModel { UserName=a.UserName, UserId = a.UserId }));
+        }
+        const string querybyrole = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
+join dbo.webpages_UsersInRoles ur
+on u.UserId = ur.UserId
+join dbo.webpages_Roles r
+on ur.RoleId = r.RoleId
+left join Company c
+on u.CompanyId = c.CompanyId
+where r.RoleName = @rolename and u.UserName <> 'admin' 
+order by u.UserId";
+        const string queryAllUsers = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
+join dbo.webpages_UsersInRoles ur
+on u.UserId = ur.UserId
+join dbo.webpages_Roles r
+on ur.RoleId = r.RoleId
+left join Company c
+on u.CompanyId = c.CompanyId
+order by u.UserId";
+        
+        public JsonResult GetUsers(string roleName, int? pageIndex)
+        {
+            int skipNumber = 100 * pageIndex ?? 0;
+
+            List<UserModel> result;
+            if(!string.IsNullOrEmpty(roleName))
+                result = db.Database.SqlQuery<UserModel>(querybyrole, new SqlParameter("rolename", roleName)).Skip(skipNumber).Take(100).ToList();
+            else
+                result = db.Database.SqlQuery<UserModel>(queryAllUsers).Skip(skipNumber).Take(100).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
