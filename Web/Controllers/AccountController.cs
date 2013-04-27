@@ -225,45 +225,52 @@ namespace Sunshine.Controllers
         [HttpPost]
         public JsonResult EditCompany(Company company)
         {
-            var user = db.Users.Find(WebSecurity.CurrentUserId);
-
-            if (user.CompanyModifyStatus == ModifyStatus.Forbidden || user.CompanyModifyStatus == ModifyStatus.Submitted)
+            try
             {
-                return Json(new { message = "公司信息不可修改", status = false });
-            }
+                var user = db.Users.Find(WebSecurity.CurrentUserId);
 
-            if (company.CompanyId > 0 && user.CompanyModifyStatus == ModifyStatus.None)
-            {
-                db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
-                    new SqlParameter("id", company.CompanyId),
-                    new SqlParameter("uid", user.UserId),
-                    new SqlParameter("status", ModifyStatus.Submitted));
-           
-                return Json(new { message = "修改成功,请等待公司管理员审核", status = true });
-            }
+                if (user.CompanyModifyStatus == ModifyStatus.Forbidden || user.CompanyModifyStatus == ModifyStatus.Submitted)
+                {
+                    return Json(new { message = "公司信息不可修改", status = false });
+                }
 
-            if (user.CompanyId != company.CompanyId && company.CompanyId > 0)
-            {
-                return Json(new { message = "修改失败", status = false });
-            }
+                if (company.CompanyId > 0 && user.CompanyModifyStatus == ModifyStatus.None)
+                {
+                    db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
+                        new SqlParameter("id", company.CompanyId),
+                        new SqlParameter("uid", user.UserId),
+                        new SqlParameter("status", ModifyStatus.Submitted));
 
-            if (company.CompanyId > 0)
-            {
-                db.Entry(company).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            else
-            {
-                company.CreatedUserName = user.UserName;
-               var c = db.Companys.Add(company);
-               db.SaveChanges();
-               db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
-                   new SqlParameter("id", c.CompanyId),
-                   new SqlParameter("uid", user.UserId),
-                   new SqlParameter("status", ModifyStatus.Allowed));
-            }
+                    return Json(new { message = "修改成功,请等待公司管理员审核", status = true });
+                }
 
-            return Json(new { message = "修改成功", status= true});
+                if (user.CompanyId != company.CompanyId && company.CompanyId > 0)
+                {
+                    return Json(new { message = "修改失败", status = false });
+                }
+
+                if (company.CompanyId > 0)
+                {
+                    db.Entry(company).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    company.CreatedUserName = user.UserName;
+                    var c = db.Companys.Add(company);
+                    db.SaveChanges();
+                    db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
+                        new SqlParameter("id", c.CompanyId),
+                        new SqlParameter("uid", user.UserId),
+                        new SqlParameter("status", ModifyStatus.Allowed));
+                }
+
+                return Json(new { message = "修改成功", status = true });
+            }
+            catch(Exception e)
+            {
+                return Json(new { message = "修改失败"+e.Message, status = false });
+            }
         }
 
         protected override void Dispose(bool disposing)

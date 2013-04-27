@@ -7,14 +7,17 @@
 <p id="message" class=""></p>
 @if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None)
 { 
-    <div id="company-option">
+<div id="company-option">
 <p>
-    <a href="javascript:addNewCompany()">创建一个公司</a> 
-</p> 
-<label>或者</label>
-<p><input id="scname"/> <a href="javascript:chooseCompany(scname.value)">加入一个公司</a></p>
+<a href="javascript:addNewCompany()">创建一个公司</a> 
+<span>或者</span>
+<a href="javascript:joinCompany()">加入一个公司</a></p>
+<fieldset id="join-panel" style="display:none"><legend></legend>
+<input id="scname" type="search"/> <input type="button" value="查找" onclick="javascript:chooseCompany(scname.value)"/>
+<div id="search-reuslt"></div>
+</fieldset>
 </div>
-    ViewBag.display = "display:none";
+ViewBag.display = "display:none";
 }
 
 <fieldset id="NewCompany" style="@ViewBag.display">
@@ -110,27 +113,35 @@ else
     function addNewCompany() {
         $("#Company_CompanyId").val('');
         $("#Company_CompanyName").val('');
+        $("#join-panel").hide();
+        $("#NewCompany div>input").removeAttr("disabled");
         $("#NewCompany").show();
         return false;
     }
-
+    function joinCompany() {
+        $("#NewCompany").hide();
+        $("#join-panel").show();
+    }
     function chooseCompany(name) {
         $.get("/widget/company", {name:name}, function (a) {
-            $("#dialoghold").html(a);
-            $("#dialoghold").dialog();
+            $("#search-reuslt").html(a);
         }, "html");
         return false;
     }
 
     function Choosed(item, data)
     {
-        var cd = data;
-       
-        $("#NewCompany").children(".editor-field").children("input").attr("disabled","disabled");
-        $("#Company_CompanyId").val(cd.CompanyId);
-        $("#Company_CompanyName").val(cd.CompanyName);
+        var Company = data;
+        $("#NewCompany input").each(function (index) {
+            if (this.name != '') {
+                this.value=Company[this.name.replace("Company.", '')];
+                if(this.type != 'hidden')
+                    this.disabled= "disabled";
+            }
+        });
         $("#NewCompany").show();
-        $("#dialoghold").dialog("close");
+        $("#join-panel").hide();
+        alert(cd);
         return false;
     }
 

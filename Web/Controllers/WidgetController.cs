@@ -16,7 +16,7 @@ namespace Sunshine.Controllers
         {
             using (var db = new UsersContext())
             {
-                return View(db.Companys.Where(a=>a.CompanyName.Contains(name)).Take(10).ToList());
+                return View(db.Companys.Where(a=>a.CompanyName.Contains(name)).Take(100).ToList());
             }
             
         }
