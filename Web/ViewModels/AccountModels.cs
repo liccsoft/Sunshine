@@ -85,4 +85,10 @@ namespace Sunshine.Models
         public string NickName { get; set; }
         public string CompanyName { get; set; }
     }
+
+    public class SecutiyRoleModel
+    {
+        public string RoleName { get; set; }
+        public bool Selected { get; set; }
+    }
 }

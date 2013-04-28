@@ -15,5 +15,9 @@ namespace Sunshine.Business.Account
         void DeactiveUser(int userId);
 
         List<User> GetUsers();
+
+        #region  Security Group
+        SecurityGroup CreateSecurityGroup(string groupName, string groupDesc, params string[] permission);
+        #endregion
     }
 }

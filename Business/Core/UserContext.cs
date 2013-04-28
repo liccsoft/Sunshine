@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Sunshine.Business.Account;
 
 namespace Sunshine.Business.Core
 {
@@ -28,5 +29,9 @@ namespace Sunshine.Business.Core
         public DbSet<ProductColor> ProductColors { get; set; }
 
         public DbSet<Company> Companys { get; set; }
+
+
+        public DbSet<SecurityGroup> SecurityGroups { get; set; }
+        public DbSet<RoleSecurityGroup> RoleSecurityGroups { get; set; }
     }
 }

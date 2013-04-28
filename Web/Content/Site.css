@@ -437,6 +437,22 @@ tr.pager td {
 }
 
 
+/* layout */
+.fix-960
+{
+ width:960;
+}
+.panel73-left
+{
+   float:left;
+   width:68%;
+}
+.panel73-right
+{
+   float:right;
+   width:28%;
+}
+
 /********************
 *   Mobile Styles   *
 ********************/

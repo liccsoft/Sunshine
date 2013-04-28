@@ -1,0 +1,55 @@
+﻿@model Sunshine.Business.Account.SecurityGroup
+
+@{
+    ViewBag.Title = "CreateSecGroup";
+}
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.SecurityGroupId)
+    <fieldset>
+        <legend>SecurityGroup</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecurityGroupName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecurityGroupName)
+            @Html.ValidationMessageFor(model => model.SecurityGroupName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <div class="editor-label">权限</div>
+        <div class="editor-field">
+            <table>
+            @foreach (var r in Roles.GetAllRoles())
+            {
+            <tr><td>
+            @if (Model != null && Model.HasPermission(r))
+            {
+                <input name = "Permissions" checked="checked" type="checkbox" value="@r" id="@r"/>
+            } else {
+            <input name = "Permissions" type="checkbox" value="@r" id="@r"/>
+            }
+            </td><td><label for="@r">@r</label></td></tr>
+            }
+            </table>
+        </div>
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "SecurityGroup")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

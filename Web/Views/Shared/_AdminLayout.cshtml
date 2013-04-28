@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="zh-hans">
+<head><title>@ViewBag.Title</title>
+<meta content="max-age=300" http-equiv="cache-control"/>
+<meta content="text/html; charset=utf8" http-equiv="content-type"/>
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/themes/base/css")
+@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<div id="shortcut-2013">
+<div class="w">
+<ul class="fl lh">
+  <li class="fore1 ld"><b></b><a href="javascript:addtofavorite()" rel="nofollow">收藏</a></li>
+</ul>
+<ul class="fr lh">
+     @Html.Partial("_LoginPartial")
+</ul>
+<ul class="fr lh">
+  <li class="fore1 ld"><b></b>@Html.ActionLink("用户管理", "Accounts", "Security")</li>
+  <li class="fore1 ld"><b></b>@Html.ActionLink("权限管理", "SecurityGroup", "Security")</li>
+</ul>
+<span class="clr"></span></div></div><!--shortcut end-->
+@*<div id="o-header-2013">
+<div id="header-2013" class="w">
+<div id="logo-2013" class="ld"><a hidefocus="true" 
+href="/"><img alt="徽田" src="/images/logo2013.png" 
+width="260" height="60"></a></div><!--logo end-->
+</div>
+<div id="">
+<dl></dl></div><!--settleup end-->
+</div>*@
+<!--header end-->
+
+<div id="body" class="w">
+    <section id="nav-display">@ViewBag.ModuleName > @ViewBag.SubModuleName</section>
+    <section id="tabset" class="content-wrapper clear-fix">
+    @RenderBody()
+    </section>
+</div>
+<footer>
+
+</footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#tabset").tabs({ ajaxOptions: { cache: true} });
+            });
+    </script>
+     @RenderSection("scripts", required: false)
+        
+</body>
+</html>

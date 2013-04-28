@@ -10,6 +10,7 @@ using System.Web.Security;
 using Sunshine.ViewModels;
 using System.Data.SqlClient;
 using Sunshine.Models;
+using Sunshine.Business.Account;
 
 namespace Sunshine.Controllers
 {
@@ -137,6 +138,28 @@ order by u.UserId";
             else
                 result = db.Database.SqlQuery<UserModel>(queryAllUsers).Skip(skipNumber).Take(100).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult SecurityGroup()
+        {
+            return View(db.SecurityGroups.ToList());
+        }
+
+        public ActionResult AddEditSecGroup(int? id)
+        {
+
+            return View(db.SecurityGroups.Find(id));
+        }
+        [HttpPost]
+        public ActionResult AddEditSecGroup(SecurityGroup securityGroup)
+        {
+
+            if (securityGroup.SecurityGroupId > 0)
+            {
+                new AccountManager().UpdateSecurityGroup(securityGroup);
+            }
+            else
+            new AccountManager().CreateSecurityGroup(securityGroup);
+            return RedirectToAction("SecurityGroup");
         }
     }
 }

@@ -123,6 +123,8 @@ else
         $("#join-panel").show();
     }
     function chooseCompany(name) {
+        if (name == "" || name == null || name == undefined)
+            return false;
         $.get("/widget/company", {name:name}, function (a) {
             $("#search-reuslt").html(a);
         }, "html");

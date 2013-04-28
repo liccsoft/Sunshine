@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Sunshine.Business.Account.SecurityGroup>
+
+@{
+    ViewBag.Title = "SecurityGroup";
+}
+<p>
+    @Html.ActionLink("创建", "AddEditSecGroup")
+</p>
+<div class="panel73-left">
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+                <th>
+            @Html.DisplayNameFor(model => model.Permissions)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecurityGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Permissions)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "AddEditSecGroup", new { id = item.SecurityGroupId }) 
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+<div class="panel73-right">fsadfsdfd</div>
