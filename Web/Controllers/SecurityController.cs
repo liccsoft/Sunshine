@@ -20,12 +20,22 @@ namespace Sunshine.Controllers
     {
         readonly int pageSize = 5;
         private UsersContext db = new UsersContext();
-        //
-        // GET: /Admin/
+        static List<ModuleModel> AdminModules;
+        static SecurityController()
+        {
+            AdminModules = new List<ModuleModel>();
+            AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "Accounts", ModuleName = "Accounts", Title="管理员管理" });
+            AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "SecurityGroup", ModuleName = "SecurityGroup", Title = "权限组管理" });
+            AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "ListRoles", ModuleName = "ListRoles", Title = "权限管理" });
+           // AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "Accounts", ModuleName = "Accounts", Title = "所有用户" });
+        }
 
         public SecurityController()
         {
             ViewBag.ModuleName = "后台管理";
+            ViewBag.TabActiveStyle = "ui-state-default ui-corner-top ui-tabs-selected ui-state-active";
+            ViewBag.TabStyle = "ui-state-default ui-corner-top";
+            ViewData["modules"] = AdminModules;
         }
 
         public ActionResult Index()
@@ -48,8 +58,6 @@ namespace Sunshine.Controllers
             return View();
         }
 
-        [ChildActionOnly]
-        [OutputCache(Duration=1000)]
         public ActionResult ListRoles()
         {
             var result = from s in Roles.GetAllRoles()

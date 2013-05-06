@@ -15,7 +15,13 @@
 </ul>
 <ul class="fr lh">
      @Html.Partial("_LoginPartial")
-</ul><span class="clr"></span></div></div><!--shortcut end-->
+</ul>
+<ul class="fr lh">
+@if (Roles.IsUserInRole("security"))
+{<li class="fore1 ld"><b></b>@Html.ActionLink("后台管理", "Accounts", "Security")</li>}
+    <li class="fore1 ld"><b></b>@Html.ActionLink("前台管理", "index", "Category")</li>
+</ul>
+<span class="clr"></span></div></div><!--shortcut end-->
 <div id="o-header-2013">
 <div id="header-2013" class="w">
 <div id="logo-2013" class="ld"><a hidefocus="true" 
@@ -26,9 +32,6 @@ width="260" height="60"></a></div><!--logo end-->
         <li class="fr">@Html.ActionLink("首页", "Index", "Home")</li>
         @if (User.Identity.IsAuthenticated){
         <li class="fr">@Html.ActionLink("个人中心", "Manage", "Account")</li>
-        if (Roles.IsUserInRole("security") || User.Identity.Name == "admin") {
-            <li class="fr">@Html.ActionLink("用户管理", "Accounts", "Security")</li>
-        }
             if (Roles.IsUserInRole("admin") || User.Identity.Name == "admin"){
             <li class="fr">@Html.ActionLink("类别管理", "Index", "Category")</li>           
         }        

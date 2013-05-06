@@ -1,25 +1,11 @@
 ﻿@model IEnumerable<Sunshine.Business.Core.User>
 
 @{
-    ViewBag.Title = "用户管理后台";
-    //Layout = "~/Views/Shared/_Admin.cshtml";
+    ViewBag.Title ="后台管理 - 管理员管理";
 }
-<style>
-    .left{ float: left;}
-.right{float: right; }
-.left73{ float: left; width:68%}
-.right73{float: right; width:28%}
-</style>
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#AccountsPanel">所有账号</a></li>
-@*@foreach (var role in Roles.GetAllRoles())
-{
-<li>@Html.ActionLink(role, "UsersInRole", new { role = role })</li>
-}*@
-</ul>
-
-<div id="AccountsPanel" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-<div class="left73">
+@Html.Partial("AdminNav")
+<div id="@ViewContext.RouteData.Values["Action"].ToString()" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+<div class="panel73-left">
 <table id="tbl-all" style="width:100%;"><thead>
     <tr>
 <th>
@@ -77,6 +63,35 @@
 } 
 </div>
 </div>
-<div class="right73"></div>
-<div class="clear"></div>
+<div class="panel73-right">
+<p><a href="">添加管理员</a></p>
+<style>
+#admin-new li input {float:left; clear: right; width:150px; padding:3px; margin: 2px} 
+#admin-new li label {float:left;padding:3px; margin: 2px} 
+</style>
+<fieldset id="admin-new" style="display:none">
+  <legend>Registration Form</legend>
+  <ol>
+      <li>
+          <label for="UserName">用户名称</label>
+          <input data-val="true" data-val-length="用户名称至少需要6字符长." data-val-length-max="100" data-val-length-min="6" data-val-regex="请输入字母、数字或者符号（@@和.）" data-val-regex-pattern="[a-z|A-Z][a-z|A-Z|0-9|.|@@|-|_]*" data-val-required="用户名称 字段是必需的。" id="UserName" name="UserName" type="text" value="">
+      </li>
+      <li>
+          <label for="Password">用户密码</label>
+          <input data-val="true" data-val-length="用户密码至少需要6字符长." data-val-length-max="100" data-val-length-min="6" data-val-required="用户密码 字段是必需的。" id="Password" name="Password" type="password">
+      </li>
+      <li>
+          <label for="ConfirmPassword">确认密码</label>
+          <input data-val="true" data-val-equalto="确认密码需要相同." data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password">
+      </li>
+      <li>
+      <label for="Permission">所属分组</label>
+      
+      </li>
+  </ol>
+  <div class="clr"></div>
+  <input type="submit" value="添加" style="float:right">
+    </fieldset>
+</div>
+<div class="clr"></div>
 </div>

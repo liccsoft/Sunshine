@@ -8,17 +8,16 @@ namespace Sunshine.Controllers
 {
     public class BaseController : Controller
     {
-        //
-        // GET: /Base/
-
         public ActionResult NotAllow(string message)
         {
-            return RedirectToAction("");
+            ViewBag.ErrorMessage = message;
+            return View("Error");
         }
 
         public ActionResult ToErrorPage(string message)
         {
-            return RedirectToAction("");
+            ViewBag.ErrorMessage = message;
+            return View("Error");
         }
 
     }

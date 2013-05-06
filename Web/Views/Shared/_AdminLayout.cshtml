@@ -17,24 +17,13 @@
      @Html.Partial("_LoginPartial")
 </ul>
 <ul class="fr lh">
-  <li class="fore1 ld"><b></b>@Html.ActionLink("用户管理", "Accounts", "Security")</li>
-  <li class="fore1 ld"><b></b>@Html.ActionLink("权限管理", "SecurityGroup", "Security")</li>
+  <li class="fore1 ld"><b></b>@Html.ActionLink("后台管理", "Accounts", "Security")</li>
+  <li class="fore1 ld"><b></b>@Html.ActionLink("前台管理", "index", "Category")</li>
 </ul>
 <span class="clr"></span></div></div><!--shortcut end-->
-@*<div id="o-header-2013">
-<div id="header-2013" class="w">
-<div id="logo-2013" class="ld"><a hidefocus="true" 
-href="/"><img alt="徽田" src="/images/logo2013.png" 
-width="260" height="60"></a></div><!--logo end-->
-</div>
-<div id="">
-<dl></dl></div><!--settleup end-->
-</div>*@
-<!--header end-->
 
 <div id="body" class="w">
-    <section id="nav-display">@ViewBag.ModuleName > @ViewBag.SubModuleName</section>
-    <section id="tabset" class="content-wrapper clear-fix">
+    <section id="tabset" class="content-wrapper clear-fix ui-tabs ui-widget ui-widget-content ui-corner-all">
     @RenderBody()
     </section>
 </div>
@@ -43,13 +32,6 @@ width="260" height="60"></a></div><!--logo end-->
 </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $("#tabset").tabs({ ajaxOptions: { cache: true} });
-            });
-    </script>
      @RenderSection("scripts", required: false)
         
 </body>
