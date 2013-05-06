@@ -166,6 +166,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\FoundationController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -274,6 +275,24 @@
     <Content Include="Views\Security\SecurityGroup.cshtml" />
     <Content Include="Views\Security\AddEditSecGroup.cshtml" />
     <Content Include="Views\Security\AdminNav.cshtml" />
+    <Content Include="Views\Foundation\BrandCreate.cshtml" />
+    <Content Include="Views\Foundation\BrandDelete.cshtml" />
+    <Content Include="Views\Foundation\BrandEdit.cshtml" />
+    <Content Include="Views\Foundation\BrandManager.cshtml" />
+    <Content Include="Views\Foundation\ColorCreate.cshtml" />
+    <Content Include="Views\Foundation\ColorDelete.cshtml" />
+    <Content Include="Views\Foundation\ColorEdit.cshtml" />
+    <Content Include="Views\Foundation\ColorManager.cshtml" />
+    <Content Include="Views\Foundation\Index.cshtml" />
+    <Content Include="Views\Foundation\PriceIntervalCreate.cshtml" />
+    <Content Include="Views\Foundation\PriceIntervalDelete.cshtml" />
+    <Content Include="Views\Foundation\PriceIntervalEdit.cshtml" />
+    <Content Include="Views\Foundation\PriceIntervalManager.cshtml" />
+    <Content Include="Views\Foundation\SizeCreate.cshtml" />
+    <Content Include="Views\Foundation\SizeDelete.cshtml" />
+    <Content Include="Views\Foundation\SizeEdit.cshtml" />
+    <Content Include="Views\Foundation\SizeManager.cshtml" />
+    <Content Include="Views\Security\Companies.cshtml" />
     <None Include="Views\Shared\_default.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

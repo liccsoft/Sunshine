@@ -16,6 +16,9 @@
 
     <fieldset>
         <legend>Product</legend>
+        <table>
+        <tr>
+			<td>
         <div class="editor-label">
             @Html.LabelFor(model => model.CategoryId)
         </div>
@@ -23,15 +26,8 @@
             @Html.DropDownListFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
             @Html.ValidationMessageFor(model => model.CategoryId)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.SecondCategoryId)
-        </div>
-         <div class="editor-field">
-            @Html.DropDownListFor(model => model.SecondCategoryId, ViewData["secondcategorylist"] as IList<SelectListItem>)
-            @Html.ValidationMessageFor(model => model.SecondCategoryId)
-        </div>
-
+			</td>
+			<td>
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductName)
         </div>
@@ -39,14 +35,36 @@
             @Html.EditorFor(model => model.ProductName)
             @Html.ValidationMessageFor(model => model.ProductName)
         </div>
+        </td>
+        </tr>
 
+		<tr>
+			<td>
+
+            <div class="editor-label">
+            @Html.LabelFor(model => model.SecondCategoryId)
+        </div>
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.SecondCategoryId, ViewData["secondcategorylist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.SecondCategoryId)
+        </div>
+
+        
+			</td>
+			<td>
 		 <div class="editor-label">
-            @Html.LabelFor(model => model.Brand.BrandName)
+            @Html.LabelFor(model => model.ProductVideo)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.BrandId, ViewData["brandlist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
-            @Html.ValidationMessageFor(model => model.BrandId)
-        </div>
+            @Html.EditorFor(model => model.ProductVideo)
+            @Html.ValidationMessageFor(model => model.ProductVideo)
+        </div> 
+		 </td>
+        </tr>
+
+		<tr>
+			<td>
+             
 
 		<div class="editor-label">
             @Html.LabelFor(model => model.ProductSize.ProductSizeName)
@@ -55,54 +73,29 @@
             @Html.DropDownListFor(model => model.ProductSizeId, ViewData["productsizelist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
             @Html.ValidationMessageFor(model => model.ProductSizeId)
         </div>
-
-        <div class="editor-label">
+		</td>
+			<td>
+         <div class="editor-label">
             @Html.LabelFor(model => model.ProductMark)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ProductMark)
             @Html.ValidationMessageFor(model => model.ProductMark)
         </div>
+		 </td>
+        </tr>
 
+		<tr>
+			<td>
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductProcessor)
+            @Html.LabelFor(model => model.ProductColor.ProductColorName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductProcessor)
-            @Html.ValidationMessageFor(model => model.ProductProcessor)
+            @Html.DropDownListFor(model => model.ProductColor.ProductColorId, ViewData["productcolorlist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.ProductColor.ProductColorId)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductVideo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductVideo)
-            @Html.ValidationMessageFor(model => model.ProductVideo)
-        </div> 
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PriceInterval.PriceIntervalName)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.PriceIntervalId, ViewData["productintervallist"] as IList<SelectListItem>)
-            @Html.ValidationMessageFor(model => model.PriceIntervalId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.AgentPrice)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.AgentPrice)
-            @Html.ValidationMessageFor(model => model.AgentPrice)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DeliveryPrice)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DeliveryPrice)
-            @Html.ValidationMessageFor(model => model.DeliveryPrice)
-        </div>
+		</td>
+			<td>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductStock)
@@ -111,7 +104,59 @@
             @Html.EditorFor(model => model.ProductStock)
             @Html.ValidationMessageFor(model => model.ProductStock)
         </div>
+		</td>
+        </tr>
+        
+        <tr>
+			<td>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.PriceInterval.PriceIntervalName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.PriceIntervalId, ViewData["productintervallist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.PriceIntervalId)
+        </div>
 
+        
+	</td>
+			<td>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductProcessor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductProcessor)
+            @Html.ValidationMessageFor(model => model.ProductProcessor)
+        </div>
+</td>
+        </tr>
+        
+        <tr>
+			<td>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Brand.BrandName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.BrandId, ViewData["brandlist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.BrandId)
+        </div>
+
+
+
+       
+</td>
+			<td>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AgentPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AgentPrice)
+            @Html.ValidationMessageFor(model => model.AgentPrice)
+        </div>
+</td>
+        </tr>
+        
+        <tr>
+			<td>
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductAdditions)
         </div>
@@ -119,15 +164,22 @@
             @Html.EditorFor(model => model.ProductAdditions)
             @Html.ValidationMessageFor(model => model.ProductAdditions)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductColor.ProductColorId)
+</td>
+			<td>
+             <div class="editor-label">
+            @Html.LabelFor(model => model.DeliveryPrice)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.ProductColor.ProductColorId, ViewData["productcolorlist"] as IList<SelectListItem>)
-            @Html.ValidationMessageFor(model => model.ProductColor.ProductColorId)
+            @Html.EditorFor(model => model.DeliveryPrice)
+            @Html.ValidationMessageFor(model => model.DeliveryPrice)
         </div>
 
+       
+</td>
+        </tr>
+        
+        <tr>
+			<td>
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDescription)
         </div>
@@ -135,16 +187,22 @@
             @Html.EditorFor(model => model.ProductDescription)
             @Html.ValidationMessageFor(model => model.ProductDescription)
         </div>
+        </td>
+        </tr>
 
-		<div id="ext"></div>
-        <p>
+		
+        <tr>
+			<td align="right">
             <input type="submit" value="确定" />
-        </p>
+        </td>
+        <td align="left">
+			@Html.ActionLink("Back to List", "Index")
+			</td>
+		</tr>
+		        <table>
     </fieldset>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

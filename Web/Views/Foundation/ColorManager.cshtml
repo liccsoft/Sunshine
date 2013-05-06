@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Sunshine.Business.Core.ProductColor>
+@{
+    Layout = "";
+}
+<style>
+    .t-0
+    {
+        padding-left: 10%;
+        font-size: 2px;
+        align: center;
+    }
+    .t-1
+    {
+        padding-left: 10%;
+        font-size: 2px;
+        align: center;
+    }
+    .t-2
+    {
+        padding-left: 10%;
+        font-size: 2px;
+    }
+    .t-3
+    {
+        padding-left: 10%;
+    }
+    .t-4
+    {
+        padding-left: 10%;
+    }
+    .t-5
+    {
+        padding-left: 10%;
+    }
+    .t-6
+    {
+        padding-left: 10%;
+    }
+    .t-7
+    {
+        padding-left: 10%;
+    }
+    .t-8
+    {
+        padding-left: 10%;
+    }
+    div.c
+    {
+        cursor: pointer;
+        background: url(images/folder.gif) 0 0 no-repeat;
+        padding-left: 0px;
+    }
+</style>
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">颜色列表</a></li>
+    </ul>
+<div id="cindex">
+<table>
+    <thead>
+        <tr style="width:auto">
+            <th>
+                @Html.DisplayNameFor(model => model.ProductColorName)
+            </th>
+            <th align="center">
+                操作
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductColorName)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "ColorEdit", new { id = item.ProductColorId }) |
+                @Html.ActionLink("删除", "ColorDelete", new { id = item.ProductColorId })
+            </td>
+        </tr> 
+    }
+</table>
+<p>
+    @Html.ActionLink("添加颜色", "ColorCreate")
+</p>
+</div>
+</section>

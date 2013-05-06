@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Sunshine.Business.Core.ProductColor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<ul id="">
+<li><a href="#color">颜色</a></li>
+<li><a href="#size">尺寸</a></li>
+<li><a href="#priceinterval">价格区间</a></li>
+<li><a href="#brand">品牌</a></li>
+</ul>
+
+<div id="color">
+<p class="message">@ViewBag.Message</p>
+@Html.Partial("ColorManager")
+</div>
+<div id="size">
+<p class="message"></p>
+@{Html.RenderAction("SizeManager");}
+@*@Html.Partial("SizeManager")*@
+</div>
+<div id="priceinterval">
+<p class="message"></p>
+@{Html.RenderAction("PriceIntervalManager");}
+@*@Html.Partial("IntervalManager")*@
+</div>
+<div id="brand">
+<p class="message"></p>
+@{Html.RenderAction("BrandManager");}
+@*@Html.Partial("BrandManager")*@
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+        function showmessage(a, b, c) {
+            $(".message").html(a.message);
+        }
+    </script>
+}

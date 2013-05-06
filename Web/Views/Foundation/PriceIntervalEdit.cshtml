@@ -1,0 +1,46 @@
+﻿@model Sunshine.Business.Core.PriceInterval
+
+@{
+    ViewBag.Title = "更新价格区间";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">更新价格区间</a></li>
+    </ul>
+<div id="cindex">
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PriceInterval</legend>
+
+        @Html.HiddenFor(model => model.PriceIntervalId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceIntervalName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceIntervalName)
+            @Html.ValidationMessageFor(model => model.PriceIntervalName)
+        </div>
+
+        <div id="ext"></div>
+        <p>
+            <input type="submit" value="确定" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "PriceIntervalManager")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</div>
+</section>

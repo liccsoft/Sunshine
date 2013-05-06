@@ -106,6 +106,7 @@ namespace Sunshine.Controllers
         //
         // GET: /Product/Edit/5
 
+        [Authorize(Roles = "edit")]
         public ActionResult Edit(long id = 0)
         {
             Product product = db.Products.Find(id);

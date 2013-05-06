@@ -1,0 +1,32 @@
+﻿@model Sunshine.Business.Core.PriceInterval
+@{
+    ViewBag.Title = "PriceIntervalDelete";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">删除价格区间</a></li>
+    </ul>
+<div id="cindex">
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>PriceInterval</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceIntervalName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceIntervalName)
+    </div>
+</fieldset>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "PriceIntervalManager")
+    </p>
+}
+
+</div>
+</section>

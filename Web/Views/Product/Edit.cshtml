@@ -60,6 +60,22 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.PriceInterval.PriceIntervalName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.PriceIntervalId, ViewData["productintervallist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.PriceIntervalId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductColor.ProductColorName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ProductColor.ProductColorId, ViewData["productcolorlist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.ProductColor.ProductColorId)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.ProductMark)
         </div>
         <div class="editor-field">
@@ -82,14 +98,6 @@
             @Html.EditorFor(model => model.ProductVideo)
             @Html.ValidationMessageFor(model => model.ProductVideo)
         </div> 
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PriceInterval.PriceIntervalName)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.PriceIntervalId, ViewData["productintervallist"] as IList<SelectListItem>)
-            @Html.ValidationMessageFor(model => model.PriceIntervalId)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.AgentPrice)
@@ -123,13 +131,7 @@
             @Html.ValidationMessageFor(model => model.ProductAdditions)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductColor.ProductColorId)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.ProductColor.ProductColorId, ViewData["productcolorlist"] as IList<SelectListItem>)
-            @Html.ValidationMessageFor(model => model.ProductColor.ProductColorId)
-        </div>
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDescription)

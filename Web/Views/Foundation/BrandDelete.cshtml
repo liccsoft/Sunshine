@@ -1,0 +1,32 @@
+﻿@model Sunshine.Business.Core.Brand
+@{
+    ViewBag.Title = "BrandDelete";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">删除品牌</a></li>
+    </ul>
+<div id="cindex">
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Brand</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BrandName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BrandName)
+    </div>
+</fieldset>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "BrandManager")
+    </p>
+}
+
+</div>
+</section>
