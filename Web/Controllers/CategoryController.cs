@@ -11,7 +11,7 @@ using System.Net;
 
 namespace Sunshine.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Category")]
     [InitializeSimpleMembership]
     public class CategoryController : BaseController
     {

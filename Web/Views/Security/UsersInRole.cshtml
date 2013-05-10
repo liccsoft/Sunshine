@@ -3,7 +3,6 @@
     ViewBag.Title = "角色管理";
     ViewBag.RoleName = Request.Params["role"];
     ViewBag.SubModuleName = Request.Params["role"];
-    Layout = "";
 }
 
 <div id="panel-@ViewBag.SubModuleName" class="left">
@@ -40,9 +39,10 @@
 }
 
 </table>
+@Html.ActionLink("返回", "ListRoles")
 </div>
 
-<div class="right">
+@*<div class="right">
 <h2>添加用户</h2>
 @using (Ajax.BeginForm("FindUser", new { ctrl = "list-"+@ViewBag.RoleName }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "id-" + ViewBag.RoleName }))
 {
@@ -52,4 +52,4 @@
 }
 <div id="id-@ViewBag.RoleName">
 </div>
-</div>
+</div>*@

@@ -15,7 +15,7 @@ using Sunshine.Business.Security;
 
 namespace Sunshine.Controllers
 {
-    [Authorize(Roles="security")]
+    [Authorize(Roles="Security")]
     [InitializeSimpleMembership]
     public class SecurityController : BaseController
     {
@@ -106,6 +106,7 @@ namespace Sunshine.Controllers
 
         public ActionResult UsersInRole(string role, int? pageIndex)
         {
+            ViewBag.CurrentModule = "ListRoles";
             int skipNumber = 100 * pageIndex ?? 0;
             const string query = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
 join dbo.webpages_UsersInRoles ur

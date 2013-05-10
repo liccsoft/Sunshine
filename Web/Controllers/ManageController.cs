@@ -7,7 +7,7 @@ using Sunshine.Business.Core;
 
 namespace Sunshine.Controllers
 {
-    [Authorize(Roles="GeneralManage,AccountManager,CompanyManager")]
+    [Authorize(Roles="Manage,Account,Company")]
     public class ManageController : BaseController
     {
         const int pageSize = 20;
@@ -21,13 +21,13 @@ namespace Sunshine.Controllers
         {
             return View();
         }
-        [Authorize(Roles = "CompanyManager")]
+        [Authorize(Roles = "Company")]
         public ActionResult Companies(int? pageIndex)
         {
             ViewBag.CurrentModule = "Companies";
             return View(new UsersContext().Companys.ToList());
         }
-        [Authorize(Roles = "AccountManager")]
+        [Authorize(Roles = "Account")]
         public ActionResult Users(int? pageIndex)
         {
             ViewBag.CurrentModule = "Users";

@@ -52,7 +52,7 @@ namespace Sunshine
                 }
 
                 ///security: user management
-                foreach (var name in new string[] {"security", "usermanager" })
+                foreach (var name in new string[] { "Security", "Company", "Category", "Account", "Manage" })
                 {
                     if (!Roles.RoleExists(name))
                     {
