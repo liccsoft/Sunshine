@@ -13,5 +13,7 @@ namespace Sunshine.ViewModels
         public string ActionName { get; set; }
         public string ControllerName { get; set; }
         public object RouteAttribute { get; set; }
+
+        public string AllowRole { get; set; }
     }
 }

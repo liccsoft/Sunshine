@@ -251,6 +251,7 @@ namespace Sunshine.Controllers
 
                 if (company.CompanyId > 0)
                 {
+                    company.CreatedUserName = User.Identity.Name;
                     db.Entry(company).State = EntityState.Modified;
                     db.SaveChanges();
                 }
