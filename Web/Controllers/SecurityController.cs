@@ -11,45 +11,83 @@ using Sunshine.ViewModels;
 using System.Data.SqlClient;
 using Sunshine.Models;
 using Sunshine.Business.Account;
+using Sunshine.Business.Security;
 
 namespace Sunshine.Controllers
 {
     [Authorize(Roles="security")]
     [InitializeSimpleMembership]
-    public class SecurityController : Controller
+    public class SecurityController : BaseController
     {
-        readonly int pageSize = 5;
+        readonly int pageSize = 25;
         private UsersContext db = new UsersContext();
-        static List<ModuleModel> AdminModules;
-        static SecurityController()
-        {
-            AdminModules = new List<ModuleModel>();
-            AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "Accounts", ModuleName = "Accounts", Title="管理员管理" });
-            AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "SecurityGroup", ModuleName = "SecurityGroup", Title = "权限组管理" });
-            AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "ListRoles", ModuleName = "ListRoles", Title = "权限管理" });
-           // AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "Accounts", ModuleName = "Accounts", Title = "所有用户" });
-        }
+
 
         public SecurityController()
         {
             ViewBag.ModuleName = "后台管理";
-            ViewBag.TabActiveStyle = "ui-state-default ui-corner-top ui-tabs-selected ui-state-active";
-            ViewBag.TabStyle = "ui-state-default ui-corner-top";
-            ViewData["modules"] = AdminModules;
+            //ViewBag.TabActiveStyle = "ui-state-default ui-corner-top ui-tabs-selected ui-state-active";
+            //ViewBag.TabStyle = "ui-state-default ui-corner-top";
         }
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Admins");
         }
 
-        public ActionResult Accounts(int? pageIndex)
+        public ActionResult Admins(int? pageIndex)
         {
+            ViewBag.CurrentModule = "Admins";
             int skipNumber = pageSize * ((pageIndex ?? 1) - 1);
-            var Users = db.Users.OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
+            var Users = db.Users.Where(a=>a.IsAdmin).OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
             ViewBag.CurrentPageIndex = pageIndex ?? 1;
             ViewBag.IsLastPage = Users.Count < pageSize;
             return View(Users);
+        }
+
+        public ActionResult NewAdmin()
+        {
+            ViewBag.CurrentModule = "Admins";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewAdmin(User user, params string[] roles)
+        {
+            try
+            {
+                AccountManager.Current.AddNewUser(user.UserName, true);
+                WebSecurity.CreateAccount(user.UserName, user.UserName);
+                if (roles!=null && roles.Length > 0) Roles.AddUserToRoles(user.UserName, roles);
+
+                return RedirectToAction("Admins");
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
+        public ActionResult EditAdmin(string userName)
+        {
+            ViewBag.CurrentModule = "Admins";
+            return View(new User { UserName = userName });
+        }
+        [HttpPost]
+        public ActionResult EditAdmin(User user, params string[] roles)
+        {
+            try
+            {
+                var allRoles =  Roles.GetRolesForUser(user.UserName);
+                var list = roles.Except(allRoles);
+                var exclude = allRoles.Except(roles);
+                if (list != null && list.Any()) Roles.AddUserToRoles(user.UserName, list.ToArray());
+                if (exclude != null && exclude.Any()) Roles.RemoveUserFromRoles(user.UserName, exclude.ToArray());
+                return RedirectToAction("Admins");
+            }
+            catch
+            {
+                return View("Error");
+            }
         }
 
         [HttpPost]
@@ -60,6 +98,7 @@ namespace Sunshine.Controllers
 
         public ActionResult ListRoles()
         {
+            ViewBag.CurrentModule = "ListRoles";
             var result = from s in Roles.GetAllRoles()
                    select new RoleModel(){RoleName=s};
             return View(result);
@@ -154,20 +193,23 @@ order by u.UserId";
 
         public ActionResult AddEditSecGroup(int? id)
         {
-
-            return View(db.SecurityGroups.Find(id));
+            return View(SecurityGroupManager.GetSecurityGroupById(id??0));
         }
         [HttpPost]
-        public ActionResult AddEditSecGroup(SecurityGroup securityGroup)
+        public ActionResult AddEditSecGroup(int? securityGroupId, string securityGroupName, string[] permissions)
         {
-
-            if (securityGroup.SecurityGroupId > 0)
+            if (securityGroupId > 0)
             {
-                new AccountManager().UpdateSecurityGroup(securityGroup);
+                SecurityGroupManager.UpdateSecurityGroup(securityGroupName, permissions);
             }
             else
-            new AccountManager().CreateSecurityGroup(securityGroup);
+                SecurityGroupManager.CreateSecurityGroup(securityGroupName, "", permissions);
             return RedirectToAction("SecurityGroup");
+        }
+
+        ISecurityGroupManager _securityGroupManager;
+        ISecurityGroupManager SecurityGroupManager {
+            get { return _securityGroupManager ?? (_securityGroupManager = new AccountManager()); }
         }
     }
 }

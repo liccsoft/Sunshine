@@ -167,6 +167,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\FoundationController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -274,7 +275,7 @@
     <Content Include="Views\Security\_ViewStart.cshtml" />
     <Content Include="Views\Security\SecurityGroup.cshtml" />
     <Content Include="Views\Security\AddEditSecGroup.cshtml" />
-    <Content Include="Views\Security\AdminNav.cshtml" />
+    <Content Include="Views\Shared\AdminNav.cshtml" />
     <Content Include="Views\Foundation\BrandCreate.cshtml" />
     <Content Include="Views\Foundation\BrandDelete.cshtml" />
     <Content Include="Views\Foundation\BrandEdit.cshtml" />
@@ -292,7 +293,11 @@
     <Content Include="Views\Foundation\SizeDelete.cshtml" />
     <Content Include="Views\Foundation\SizeEdit.cshtml" />
     <Content Include="Views\Foundation\SizeManager.cshtml" />
-    <Content Include="Views\Security\Companies.cshtml" />
+    <Content Include="Views\Security\NewAdmin.cshtml" />
+    <Content Include="Views\Security\AdminList.cshtml" />
+    <Content Include="Views\Manage\_ViewStart.cshtml" />
+    <Content Include="Views\Manage\Users.cshtml" />
+    <Content Include="Views\Security\EditAdmin.cshtml" />
     <None Include="Views\Shared\_default.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -391,7 +396,7 @@
     <Content Include="Views\Account\_EditCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Security\Accounts.cshtml" />
+    <Content Include="Views\Security\Admins.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Manage\Companies.cshtml" />

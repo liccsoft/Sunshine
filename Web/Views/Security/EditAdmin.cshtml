@@ -1,0 +1,54 @@
+﻿@model Sunshine.Business.Core.User
+
+@{
+    ViewBag.Title = "EditAdmin";
+    var currentRoles = Roles.GetRolesForUser(Model.UserName);
+}
+<div id="@ViewContext.RouteData.Values["Action"].ToString()" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+<p><h2>修改管理员权限</h2></p>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+        <div class="editor-label">
+            权限
+        </div>
+        <div class="editor-field">
+        <ul>
+            @foreach (var i in Roles.GetAllRoles())
+            {<li>
+                @if (currentRoles.Contains(i))
+                {
+                    <input type="checkbox" checked="checked" name="roles" value="@i"/><span>@i</span>
+                }
+                else
+                {
+                <input type="checkbox" name="roles" value="@i"/><span>@i</span>
+                }</li>
+            }
+            </ul>
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -72,6 +72,23 @@ fieldset
 .editor-field, .display-field{
     float:left; clear:right; width:40%;line-height:35px; font-size: 0.8em
 }
+
+.w  #tabset .editor-label,.w #tabset  .display-label{
+    float:left; clear:left; width:130px; margin-left:10px; line-height:30px; font-size: 0.8em
+}
+
+.w #tabset .editor-field, .w #tabset .display-field{
+    float:right; clear:right; width:400px;line-height:30px; font-size: 0.8em; margin-right:400px
+}
+
+.w #tabset td > .editor-field, .w #tabset td > .display-field{
+    float:right;width:200px; font-size: 0.8em; margin-right:5px
+}
+
+.w #tabset td > .editor-field select, .w #tabset td > .display-field select{
+    width:150px;
+}
+
 fieldset p
 {
     clear:both;margin-left:25%; width: 30%; text-align:right;
@@ -385,7 +402,7 @@ table {
 }
 
 th {
-    font-size: 1.2em;
+    font-size: 1em;
     text-align: left;
     border: none 0px;
     padding-left: 0;

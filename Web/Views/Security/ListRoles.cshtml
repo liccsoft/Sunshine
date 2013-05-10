@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<Sunshine.ViewModels.RoleModel>
-@Html.Partial("AdminNav")
 <table>
 @foreach (Sunshine.ViewModels.RoleModel a in Model)
 {
-    <tr><td>@Html.ActionLink(a.RoleName, "UsersInRole", new { role = a.RoleName }, new { target="_blank" })</td></tr>
+    <tr><td> </td><td>@Html.ActionLink(a.RoleName, "UsersInRole", new { role = a.RoleName }, new { target="_blank" })</td></tr>
 }
 
 </table>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Sunshine.Business.Core.User>
+
+@{
+    ViewBag.Title ="后台管理 - 管理员管理";
+}
+
+<div id="@ViewContext.RouteData.Values["Action"].ToString()" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+<div>
+<p>@Html.ActionLink("添加管理员", "NewAdmin")</p>
+<table id="tbl-all" style="width:100%;"><thead>
+    <tr>
+<th>
+    @Html.DisplayNameFor(model => model.UserName)
+</th>
+<th>
+    权限
+</th>
+<th></th>
+    </tr></thead>
+<tbody>
+@foreach (var item in Model)
+{
+    <tr>
+<td>
+    @Html.DisplayFor(modelItem => item.UserName)
+</td>
+<td>
+    @foreach (var i in Roles.GetRolesForUser(item.UserName))
+    {
+        <input type="checkbox" checked="checked" disabled="disabled" />@i
+    }
+</td>
+<td>
+@Html.ActionLink("编辑", "EditAdmin", new { userName = item.UserName })
+</td>
+    </tr>
+}
+</tbody>
+</table>
+<div style="width:100%; text-align:right;">
+@if (ViewBag.CurrentPageIndex > 1)
+{
+@Html.ActionLink("上一页", "admins", new { pageIndex = ViewBag.CurrentPageIndex - 1 })  
+}
+<b>@ViewBag.CurrentPageIndex</b>
+@if (ViewBag.IsLastPage == false)
+{
+@Html.ActionLink("下一页", "admins", new { pageIndex = ViewBag.CurrentPageIndex + 1 })
+} 
+</div>
+</div>
+<div class="clr"></div>
+</div>

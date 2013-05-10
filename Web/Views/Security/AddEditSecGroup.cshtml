@@ -27,16 +27,16 @@
         <div class="editor-label">权限</div>
         <div class="editor-field">
             <table>
-            @foreach (var r in Roles.GetAllRoles())
+            @foreach (var r in Model.RolesInGroup)
             {
             <tr><td>
-            @if (Model != null && Model.HasPermission(r))
+            @if (r.IsEnabled)
             {
-                <input name = "Permissions" checked="checked" type="checkbox" value="@r" id="@r"/>
+                <input name = "Permissions" checked="checked" type="checkbox" value="@r.RoleName" id="@r.RoleName"/>
             } else {
-            <input name = "Permissions" type="checkbox" value="@r" id="@r"/>
+                <input name = "Permissions" type="checkbox" value="@r.RoleName" id="@r.RoleName"/>
             }
-            </td><td><label for="@r">@r</label></td></tr>
+            </td><td><label for="@r.RoleName">@r.RoleName</label></td></tr>
             }
             </table>
         </div>

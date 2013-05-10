@@ -11,6 +11,7 @@ using Sunshine.Business.Core;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Web.Security;
+using Sunshine.Business.Account;
 
 namespace Sunshine
 {
@@ -43,18 +44,20 @@ namespace Sunshine
 
                 WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "UserId", "UserName", autoCreateTables: true);
 
-                if (!WebSecurity.UserExists("admin"))
+                if (!WebSecurity.UserExists("superadmin"))
                 {
-                    WebSecurity.CreateUserAndAccount("admin", "password");
+                    AccountManager.Current.AddNewUser("superadmin", true);
+
+                    WebSecurity.CreateAccount("superadmin", "password");
                 }
 
                 ///security: user management
-                foreach (var name in new string[] { "admin", "security", "user" })
+                foreach (var name in new string[] {"security", "usermanager" })
                 {
                     if (!Roles.RoleExists(name))
                     {
                         Roles.CreateRole(name);
-                        Roles.AddUserToRole("admin", name);
+                        Roles.AddUserToRole("superadmin", name);
                     }
                 }
             }

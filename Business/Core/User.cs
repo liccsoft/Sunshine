@@ -19,9 +19,7 @@ namespace Sunshine.Business.Core
         [StringLength(128, MinimumLength=6, ErrorMessage="请输入大于6个字符")]
         [Display(Name="用户名")]
         public string UserName { get; set; }
-        [MaxLength(128)]
-        [DataType(DataType.EmailAddress)]
-        public string SecurityEmail { get; set; }
+
         [Display(Name = "用户昵称")]
         public string NickName { get { return Profile == null ? null : Profile.NickName; } }
 
@@ -66,5 +64,9 @@ namespace Sunshine.Business.Core
                 CompanyStatus = (int)value;
             }
         }
+        /// <summary>
+        /// 0 normal, 1: admin
+        /// </summary>
+        public bool IsAdmin { get; set; }
     }
 }

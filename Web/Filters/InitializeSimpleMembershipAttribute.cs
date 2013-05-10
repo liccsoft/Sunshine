@@ -16,13 +16,9 @@ namespace Sunshine.Filters
         private static bool _isInitialized;
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
+        {                            
             // Ensure ASP.NET Simple Membership is initialized only once per app start
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
-            if (WebSecurity.IsAuthenticated && WebSecurity.CurrentUserId < 0)
-            {
-                WebSecurity.Logout();
-            }
         }
 
         private class SimpleMembershipInitializer
