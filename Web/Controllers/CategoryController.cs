@@ -13,12 +13,13 @@ namespace Sunshine.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private UsersContext db = new UsersContext();
         public CategoryController()
         {
             ViewBag.ModuleName = "产品分类管理";
+            ViewBag.CurrentModule = "Category";
         }
         //
         // GET: /Category/

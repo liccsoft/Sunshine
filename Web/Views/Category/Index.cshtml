@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "分类管理";
     ViewBag.SubModuleName = "分类管理";
-    Layout = "~/Views/Shared/_Admin.cshtml";
 }
 <style>
 .t-0{ padding-left:0px;}
@@ -11,10 +10,6 @@
 .t-2{ padding-left:40px;}
 div.c  {cursor: pointer;background: url(images/folder.gif) 0 0 no-repeat; padding-left:18px;}
 </style>
-<section id="tabset">
-    <ul>
-        <li><a href="#cindex">分类管理</a></li>
-    </ul>
 <div id="cindex" class="treeview">
 <p>
     @Html.ActionLink("新建新分类", "Create")
@@ -127,22 +122,3 @@ div.c  {cursor: pointer;background: url(images/folder.gif) 0 0 no-repeat; paddin
 
 </table>
 </div>
-</section>
-
-@*<div id="refilter" class="m">
-@foreach (var root in Model.Where(a => a.CategoryLevel == 0))
-{
-<div class="mt"><h2>@root.CategoryName</h2></div>
-<div class="mc">
-<div class="item fore hover">
-<h3><b></b><a href="/search?keyword=thinkpad%20e430&amp;enc=utf-8&amp;suggest=1&amp;area=1#ls" 
-click-index="671">电脑整机</a><span>(188)</span></h3>
-<ul>
-  <li><s></s><a href="/search?keyword=thinkpad" 
-  click-index="671-672">笔记本					<span>(21)</span></a></li>
-  <li><s class="tree-last"></s><a onclick="lss.query(this, '/s.php?cid3=675&amp;ls=1');searchlog(1, 675, 0, 51);" 
-  href="/search?keyword=thinkpads" 
-  click-index="671-675">笔记本配件					<span>(167)</span></a></li></ul>
-</div></div>
-}
-    </div>*@

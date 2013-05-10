@@ -17,6 +17,8 @@ namespace Sunshine.Controllers
             AdminModules.Add(new ModuleModel { ControllerName = "Manage", ActionName = "Users", ModuleName = "Users", Title = "用户管理" });
             AdminModules.Add(new ModuleModel { ControllerName = "Security", ActionName = "ListRoles", ModuleName = "ListRoles", Title = "权限管理" });
             AdminModules.Add(new ModuleModel { ControllerName = "Manage", ActionName = "Companies", ModuleName = "Companies", Title = "公司管理" });
+            AdminModules.Add(new ModuleModel { ControllerName = "Category", ActionName = "Index", ModuleName = "Category", Title = "类别管理" });
+       
         }
 
         public BaseController()

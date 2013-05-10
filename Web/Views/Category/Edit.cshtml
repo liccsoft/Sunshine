@@ -2,11 +2,8 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
-<h2>Edit</h2>
-
+<div>
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
@@ -53,7 +50,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,13 +1,17 @@
 ﻿@{
     ViewBag.TabActiveStyle = "ui-state-default ui-corner-top ui-tabs-selected ui-state-active";
     ViewBag.TabStyle = "ui-state-default ui-corner-top";
+    var authorizedModule = (ViewData["modules"] as IEnumerable<Sunshine.ViewModels.ModuleModel>); 
 }
 <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-    @foreach(Sunshine.ViewModels.ModuleModel mdl in ViewData["modules"] as System.Collections.IEnumerable){
-    if (mdl.ActionName.Equals(ViewBag.CurrentModule, StringComparison.CurrentCultureIgnoreCase))
+@foreach (Sunshine.ViewModels.ModuleModel mdl in authorizedModule)
+{
+    if (mdl.ModuleName.Equals(ViewBag.CurrentModule, StringComparison.CurrentCultureIgnoreCase))
     {
-        <li class="@ViewBag.TabActiveStyle"><a href="#@mdl.ActionName">@mdl.Title</a></li>
-    } else {
+    <li class="@ViewBag.TabActiveStyle"><a href="#@mdl.ActionName">@mdl.Title</a></li>
+    }
+    else
+    {
     <li class="@ViewBag.TabStyle">@Html.ActionLink(mdl.Title, mdl.ActionName, mdl.ControllerName) </li>
     }
 }

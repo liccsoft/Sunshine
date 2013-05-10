@@ -298,7 +298,7 @@
     <Content Include="Views\Manage\_ViewStart.cshtml" />
     <Content Include="Views\Manage\Users.cshtml" />
     <Content Include="Views\Security\EditAdmin.cshtml" />
-    <None Include="Views\Shared\_default.cshtml" />
+    <Content Include="Views\Shared\_default.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -400,6 +400,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Manage\Companies.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\_ViewStart.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

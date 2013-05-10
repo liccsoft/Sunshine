@@ -10,15 +10,15 @@
 <body>
 <div id="shortcut-2013">
 <div class="w">
-<ul class="fl lh">
+@*<ul class="fl lh">
   <li class="fore1 ld"><b></b><a href="javascript:addtofavorite()" rel="nofollow">收藏</a></li>
-</ul>
+</ul>*@
 <ul class="fr lh">
      @Html.Partial("_LoginPartial")
 </ul>
 <ul class="fr lh">
-  <li class="fore1 ld"><b></b>@Html.ActionLink("后台管理", "Accounts", "Security")</li>
-  <li class="fore1 ld"><b></b>@Html.ActionLink("前台管理", "index", "Category")</li>
+  <li class="fore1 ld"><b></b>@Html.ActionLink("后台管理", "index", "Security")</li>
+  <li class="fore1 ld"><b></b>@Html.ActionLink("个人中心", "Manage", "Account")</li>
 </ul>
 <span class="clr"></span></div></div><!--shortcut end-->
 
