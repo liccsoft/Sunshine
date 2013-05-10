@@ -80,7 +80,7 @@ namespace Sunshine.Controllers
                 var allRoles =  Roles.GetRolesForUser(user.UserName);
                 var list = roles.Except(allRoles);
                 var exclude = allRoles.Except(roles);
-                if (exclude.Contains("Security") && Roles.GetUsersInRole("Security").Count() > 1)
+                if (!exclude.Contains("Security") || Roles.GetUsersInRole("Security").Count() > 1)
                 {
                     if (list != null && list.Any()) Roles.AddUserToRoles(user.UserName, list.ToArray());
                     if (exclude != null && exclude.Any())
