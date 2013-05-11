@@ -18,9 +18,9 @@ tbody tr:hover
 /* main layout
 ----------------------------------------------------------*/
 
-#tabset
+#tabset, #tabset > div
 {
-    min-height:300px;
+    min-height:400px;
 }
 
 fieldset
@@ -74,11 +74,11 @@ fieldset
 }
 
 .w  #tabset .editor-label,.w #tabset  .display-label{
-    float:left; clear:left; width:130px; margin-left:10px; line-height:30px; font-size: 0.8em
+    float:left; clear:left; width:130px; margin-left:10px; height:30px; font-size: 0.8em
 }
 
 .w #tabset .editor-field, .w #tabset .display-field{
-    float:right; clear:right; width:400px;line-height:30px; font-size: 0.8em; margin-right:400px
+    float:right; clear:right; width:400px;height:30px; font-size: 0.8em; margin-right:400px
 }
 
 .w #tabset td > .editor-field, .w #tabset td > .display-field{
@@ -295,9 +295,9 @@ input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 5px 0 6px 0;
-    padding: 5px;
+    padding: 3px;
     max-width: 300px;
 }
 
