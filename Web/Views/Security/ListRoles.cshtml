@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<Sunshine.ViewModels.RoleModel>
+<p> </p>
 <table>
+<thead>
+<tr><th>角色名称</th><th>角色标识</th><th>操作</th></tr>
+</thead>
 @foreach (Sunshine.ViewModels.RoleModel a in Model)
 {
-    <tr><td> </td><td>@Html.ActionLink(a.RoleName, "UsersInRole", new { role = a.RoleName }, new { target="_blank" })</td></tr>
+   <tr><td class="user-icon group">@Sunshine.Utility.GetString(a.RoleName)</td><td>@a.RoleName</td><td>@Html.ActionLink("查看组用户", "UsersInRole", new { role = a.RoleName }) | <span>清空组用户</span></td></tr>
 }
-
 </table>

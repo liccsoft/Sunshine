@@ -26,8 +26,6 @@ namespace Sunshine.Controllers
         public SecurityController()
         {
             ViewBag.ModuleName = "后台管理";
-            //ViewBag.TabActiveStyle = "ui-state-default ui-corner-top ui-tabs-selected ui-state-active";
-            //ViewBag.TabStyle = "ui-state-default ui-corner-top";
         }
 
         public ActionResult Index()
@@ -161,10 +159,6 @@ order by u.UserId";
             }
         }
 
-        //public ActionResult FindUser(string userName)
-        //{
-        //    return View(db.Users.Where(a => a.UserName.Contains(userName)).ToList().ConvertAll<UserRoleModel>((a) => new UserRoleModel { UserName=a.UserName, UserId = a.UserId }));
-        //}
         const string querybyrole = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
 join dbo.webpages_UsersInRoles ur
 on u.UserId = ur.UserId
@@ -193,31 +187,6 @@ order by u.UserId";
             else
                 result = db.Database.SqlQuery<UserModel>(queryAllUsers).Skip(skipNumber).Take(100).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
-        }
-        public ActionResult SecurityGroup()
-        {
-            return View(db.SecurityGroups.ToList());
-        }
-
-        public ActionResult AddEditSecGroup(int? id)
-        {
-            return View(SecurityGroupManager.GetSecurityGroupById(id??0));
-        }
-        [HttpPost]
-        public ActionResult AddEditSecGroup(int? securityGroupId, string securityGroupName, string[] permissions)
-        {
-            if (securityGroupId > 0)
-            {
-                SecurityGroupManager.UpdateSecurityGroup(securityGroupName, permissions);
-            }
-            else
-                SecurityGroupManager.CreateSecurityGroup(securityGroupName, "", permissions);
-            return RedirectToAction("SecurityGroup");
-        }
-
-        ISecurityGroupManager _securityGroupManager;
-        ISecurityGroupManager SecurityGroupManager {
-            get { return _securityGroupManager; }
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Sunshine.Models.UserModel>
 @{
-    ViewBag.Title = "角色管理";
+	ViewBag.Title = "角色管理-" + Request.Params["role"];
     ViewBag.RoleName = Request.Params["role"];
-    ViewBag.SubModuleName = Request.Params["role"];
-}
-
+		ViewBag.SubModuleName = @Sunshine.Utility.GetString(ViewBag.RoleName);
+		}
+<h2>@ViewBag.SubModuleName</h2>
 <div id="panel-@ViewBag.SubModuleName" class="left">
-<table id="list-@ViewBag.RoleName">
+<table id="list-@ViewBag.RoleName" style="width:100%">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
@@ -37,11 +37,10 @@
         </td>
     </tr>
 }
-
 </table>
-@Html.ActionLink("返回", "ListRoles")
 </div>
-
+<div>
+<p>@Html.ActionLink("返回", "ListRoles")</p></div>
 @*<div class="right">
 <h2>添加用户</h2>
 @using (Ajax.BeginForm("FindUser", new { ctrl = "list-"+@ViewBag.RoleName }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "id-" + ViewBag.RoleName }))

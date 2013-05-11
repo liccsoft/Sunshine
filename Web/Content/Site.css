@@ -3,18 +3,38 @@
     border-bottom: 1px solid lightgray;
     border-top: 1px solid lightgray;
     padding-left:5px; padding-right:5px;
-    background:rgb(230, 230, 230)
+    background:rgb(230, 230, 230);
+    height:20px;
 }
-    tr td 
+tr td 
 { 
     border-bottom: 1px solid lightgray;
-    padding-left:5px; 
+    padding-left:5px; padding-right:5px;
+    padding-left:5px;
 }
 tbody tr:hover
 {
      background-color:rgb(250, 250, 250)
 }
 
+#tabset table { width: 100%;}
+
+.user-icon
+{
+    background: url(../Images/icon100X25.png) no-repeat;
+}
+td.group
+{
+    background-position: 0px -25px; padding:1px 1px 1px 30px;
+}
+td.admin
+{
+    background-position: 0px 0px; padding:1px 1px 1px 30px;
+}
+td.user
+{
+    background-position: 0 -75px; padding:1px 1px 1px 30px;
+}
 /* main layout
 ----------------------------------------------------------*/
 
@@ -122,8 +142,9 @@ ol.round {
 }
 
     ol.round li {
-        margin: 25px 0;
+        margin: 10px 0;
         padding-left: 45px;
+        line-height:32px;
     }
 
         ol.round li.zero {

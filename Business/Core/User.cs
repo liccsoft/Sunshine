@@ -72,7 +72,7 @@ namespace Sunshine.Business.Core
         {
             this.userInternal = user;
         }
-        [Required]
+
         [StringLength(128, MinimumLength=6, ErrorMessage="请输入大于6个字符")]
         [Display(Name = "用户账号")]
         public string UserName { get { return userInternal.UserName; } }
@@ -104,7 +104,7 @@ namespace Sunshine.Business.Core
                 return company;
             }
         }
-
+        [Display(Name = "基本资料状态")]
         public ModifyStatus ProfileModifyStatus
         {
             get
@@ -116,7 +116,7 @@ namespace Sunshine.Business.Core
                 userInternal.ProfileStatus = (int)value;
             }
         }
-
+        [Display(Name = "公司信息状态")]
         public ModifyStatus CompanyModifyStatus
         {
             get
@@ -128,10 +128,15 @@ namespace Sunshine.Business.Core
                 userInternal.CompanyStatus = (int)value;
             }
         }
-
+        [Display(Name = "是否管理员")]
         public bool IsAdmin { get { return userInternal.IsAdmin; } }
 
         public int UserId { get { return userInternal.UserId; } }
+
+        [Display(Name = "创建时间")]
+        public DateTime CreationTime {
+            get { return userInternal.CreationTime; }
+        }
 
         private void LoadProfile()
         {

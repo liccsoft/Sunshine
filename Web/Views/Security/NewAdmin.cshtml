@@ -5,7 +5,7 @@
 }
 @using (Html.BeginForm()) {
  @Html.ValidationSummary(true)
-
+ <p>@ViewBag.Title</p>
  <fieldset>
      <legend>添加管理员</legend>
 
@@ -17,23 +17,25 @@
          @Html.ValidationMessageFor(model => model.UserName)
      </div>
      <div class="editor-label">
-         权限
+       <label>权限</label>  
      </div>
      <div class="editor-field">
-         @foreach (var i in Roles.GetAllRoles())
-         {
-             <input type="checkbox" name="roles" value="@i"/><span>@i</span>
-         }
+		 <ul>
+  @foreach (var i in Roles.GetAllRoles())
+  {
+     <li><input type="checkbox" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@Sunshine.Utility.GetString(i)</label></li> 
+  }
+	 </ul>
      </div>
      
      <p>
-         <input type="submit" value="Create" />
+         <input type="submit" value="创建" />
      </p>
  </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Accounts")
+    @Html.ActionLink("Back to List", "Admins")
 </div>
 
 @section Scripts {

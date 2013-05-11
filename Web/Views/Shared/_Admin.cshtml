@@ -17,9 +17,8 @@
      @Html.Partial("_LoginPartial")
 </ul>
 <ul class="fr lh">
-@if (Roles.IsUserInRole("security"))
+@if (User.IsInRole("Manage"))
 {<li class="fore1 ld"><b></b>@Html.ActionLink("后台管理", "index", "Security")</li>}
-    <li class="fore1 ld"><b></b>@Html.ActionLink("前台管理", "index", "Category")</li>
 </ul>
 <span class="clr"></span></div></div><!--shortcut end-->
 <div id="o-header-2013">

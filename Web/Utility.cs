@@ -83,5 +83,10 @@ namespace Sunshine
                 return (from c in list select new SelectListItem() { Value = c.CategoryId.ToString(), Text = c.Title }).ToList();
             }
         }
+
+        public static string GetString(string name)
+        {
+            return Sunshine.Properties.Resources.ResourceManager.GetString(name) ?? name;
+        }
     }
 }

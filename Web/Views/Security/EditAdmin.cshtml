@@ -31,23 +31,23 @@
             {<li>
                 @if (currentRoles.Contains(i))
                 {
-                    <input type="checkbox" checked="checked" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@i</label>
+                    <input type="checkbox" checked="checked" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@Sunshine.Utility.GetString(i)</label>
 								}
 								else
 								{
-                <input type="checkbox" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@i</label>
+                <input type="checkbox" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@Sunshine.Utility.GetString(i)</label>
 								}</li>
 						}
             </ul>
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="保存" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Admins")
 </div>
 </div>
 @section Scripts {
