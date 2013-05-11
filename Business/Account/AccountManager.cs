@@ -9,22 +9,21 @@ using System.Web.Security;
 
 namespace Sunshine.Business.Account
 {
-    public class AccountManager : IAccountManager, ISecurityGroupManager
+    public class AccountManager : IAccountManager
     {
         public static IAccountManager Current = new AccountManager();
-        UsersContext ctx = new UsersContext();
         public string GetNickName(int id)
         {
-
+            using (var ctx = new UsersContext())
             {
                 var user = ctx.Users.Find(id);
-                return user == null ? null : user.NickName;
+                return user == null ? null : "";
             }
         }
 
         public Core.UserProfile GetUserProfile(int id)
         {
-
+            using (var ctx = new UsersContext())
             {
                 return ctx.UserProfiles.Find(id);
             }
@@ -32,6 +31,7 @@ namespace Sunshine.Business.Account
 
         public void AddNewProfile(Core.UserProfile user)
         {
+            using (var ctx = new UsersContext())
             {
                 ctx.UserProfiles.Add(user);
                 ctx.SaveChanges();
@@ -40,14 +40,17 @@ namespace Sunshine.Business.Account
 
         public User AddNewUser(string name, bool isAdmin)
         {
-            var user = ctx.Users.Add(new User { UserName = name, IsAdmin = isAdmin });
-            ctx.SaveChanges();
-            return user;
+            using (var ctx = new UsersContext())
+            {
+                var user = ctx.Users.Add(new UserInternal { UserName = name, IsAdmin = isAdmin });
+                ctx.SaveChanges();
+                return new User(user);
+            }
         }
 
         public void UpdateProfile(Core.UserProfile user)
         {
-
+            using (var ctx = new UsersContext())
             {
                 ctx.Entry(user).State = System.Data.EntityState.Modified;
                 ctx.SaveChanges();
@@ -59,167 +62,38 @@ namespace Sunshine.Business.Account
 
         }
 
-
-        public List<User> GetUsers()
+        public List<User> GetUsers(bool isAdmin, int sindex, int eindex)
         {
-
+            using (var ctx = new UsersContext())
             {
-                return ctx.Users.Take(100).ToList();
+                return ctx.Users.Where(a=>a.IsAdmin == isAdmin).OrderBy(a=>a.UserId).Skip(sindex).Take(eindex-sindex).ToList().ConvertAll<User>(a=>new User(a));
             }
         }
-
-
-        public SecurityGroup CreateSecurityGroup(string groupName, string groupDesc, params string[] permissions)
-        {
-            List<RoleSecurityGroup> allRoles;
-            {
-                allRoles = ctx.Database.SqlQuery<RoleSecurityGroup>("select 0 as RoleSecurityGroupId, 0 as SecurityGroupId, RoleName, cast(0 as bit) IsEnabled from webpages_Roles").ToList();
-            }
-            SecurityGroup securityGroup = new SecurityGroup { SecurityGroupName = groupName, Description = groupDesc, RolesInGroup = allRoles };
-            securityGroup.Permissions = permissions;
-
-            return CreateSecurityGroup(securityGroup);
-        }
-
-        public SecurityGroup CreateSecurityGroup(SecurityGroup securityGroup)
-        {
-
-            {
-                var result = ctx.SecurityGroups.Add(securityGroup);
-                ctx.SaveChanges();
-                //foreach (var item in securityGroup.Roles)
-                //{
-                //    item.SecurityGroupId = result.SecurityGroupId;
-                //    db.RoleSecurityGroups.Add(item);
-                //}
-                //db.SaveChanges();
-                return result;
-            }
-
-        }
-
-        public SecurityGroup UpdateSecurityGroup(SecurityGroup securityGroup)
-        {
-
-                UpdateSecurityGroup(securityGroup, ctx);
-            return securityGroup;
-        }
-
-        private SecurityGroup UpdateSecurityGroup(SecurityGroup securityGroup, UsersContext db)
-        {
-            db.Entry(securityGroup).State = System.Data.EntityState.Modified;
-            ctx.SaveChanges();
-            return securityGroup;
-        }
-
-        public SecurityGroup UpdateSecurityGroup(string name, params string[] permissions)
-        {
-                var item = GetSecurityGroup(name, ctx);
-                item.Permissions = permissions;
-                return UpdateSecurityGroup(item, ctx);
-        }
-
-        public void DeleteSecurityGroup(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddUserToGroup(string groupName, string userName)
-        {
-           var sg = GetSecurityGroup(groupName);
-           if (sg != null)
-           {
-               var r = Roles.GetRolesForUser();
-               if (r != null && r.Length > 0)
-               {
-                   Roles.RemoveUserFromRoles(userName, r);
-               }
-
-               Roles.AddUserToRoles(userName, sg.Permissions);
-           }
-        }
-
-        public void AddUsersToGroup(string groupName, params string[] userNames)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUserToGroup(string groupName, string userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveUsersToGroup(string groupName, params string[] userNames)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Analyze(string[] p, string[] permissions, out List<string> added, out List<string> removed)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SecurityGroup GetSecurityGroup(string name)
-        {
-
-            {
-                return GetSecurityGroup(name, ctx);
-            }
-        }
-
-        private static SecurityGroup GetSecurityGroup(string name, UsersContext ctx)
-        {
-            return ctx.SecurityGroups.Where(a => a.SecurityGroupName == name).FirstOrDefault();
-        }
-
-        public SecurityGroup GetSecurityGroup(int id)
-        {
-                var item = ctx.SecurityGroups.Find(id);
-                if (item != null)
-                {
-                    item.RolesInGroup = ctx.RoleSecurityGroups.Where(a => a.SecurityGroupId == item.SecurityGroupId).ToList();
-                }
-                return item;
-        }
-        public List<SecurityGroup> GetAllSecurityGroup()
-        {
-
-            {
-                return ctx.SecurityGroups.ToList();
-            }
-        }
-
-
-        public void AddPermissionToGroup(string name, string permissions)
-        {
-
-            {
-                ctx.RoleSecurityGroups.Add(new RoleSecurityGroup { });
-            }
-        }
-        private void AddPermissionToGroup(int groupId, string permission, UsersContext ctx = null)
-        {
-            if (ctx == null)
-                using (ctx = new UsersContext())
-                {
-                    ctx.RoleSecurityGroups.Add(new RoleSecurityGroup { SecurityGroupId = groupId, RoleName = permission });
-                    ctx.SaveChanges();
-                }
-            else
-            {
-                ctx.RoleSecurityGroups.Add(new RoleSecurityGroup { SecurityGroupId = groupId, RoleName = permission });
-            }
-        }
-
 
         public SecurityGroup GetSecurityGroupById(int p)
         {
             if (p == 0) return SecurityGroup.Empty;
 
-
+            using(var ctx = new UsersContext())
             {
                 return ctx.SecurityGroups.Find(p);
             }
+        }
+
+        public User GetUser(string p)
+        {
+            using (var ctx = new UsersContext())
+            return new User(ctx.Users.Where(a => a.UserName == p).FirstOrDefault());
+        }
+
+        public List<User> GetAdminUsers(int sindex, int eindex)
+        {
+            return GetUsers(true, sindex, eindex);
+        }
+
+        public List<User> GetNormalUsers(int sindex, int eindex)
+        {
+            return GetUsers(false, sindex, eindex);
         }
     }
 }

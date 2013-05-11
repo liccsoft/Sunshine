@@ -15,15 +15,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Company.CompanyName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProfileStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompanyStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAdmin)
-        </th>
         <th></th>
     </tr>
 
@@ -39,20 +30,10 @@
             @Html.DisplayFor(modelItem => item.Company.CompanyName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProfileStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAdmin)
-        </td>
-        <td>
-            @Html.ActionLink("EditUser", "EditUser", new { id = item.UserId }) |
+@*            @Html.ActionLink("EditUser", "EditUser", new { id = item.UserId }) |
             @Html.ActionLink("ShowUser", "ShowUser", new { id = item.UserId }) |
-            @Html.ActionLink("DelUser", "DelUser", new { id = item.UserId })
+            @Html.ActionLink("DelUser", "DelUser", new { id = item.UserId })*@
         </td>
     </tr>
 }
-
 </table>

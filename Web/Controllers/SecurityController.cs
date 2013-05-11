@@ -39,7 +39,7 @@ namespace Sunshine.Controllers
         {
             ViewBag.CurrentModule = "Admins";
             int skipNumber = pageSize * ((pageIndex ?? 1) - 1);
-            var Users = db.Users.Where(a=>a.IsAdmin).OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
+            var Users = AccountManager.Current.GetAdminUsers(skipNumber, skipNumber+ pageSize);
             ViewBag.CurrentPageIndex = pageIndex ?? 1;
             ViewBag.IsLastPage = Users.Count < pageSize;
             return View(Users);
@@ -52,13 +52,13 @@ namespace Sunshine.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewAdmin(User user, params string[] roles)
+        public ActionResult NewAdmin(string userName, params string[] roles)
         {
             try
             {
-                AccountManager.Current.AddNewUser(user.UserName, true);
-                WebSecurity.CreateAccount(user.UserName, user.UserName);
-                if (roles!=null && roles.Length > 0) Roles.AddUserToRoles(user.UserName, roles);
+                AccountManager.Current.AddNewUser(userName, true);
+                WebSecurity.CreateAccount(userName, userName);
+                if (roles!=null && roles.Length > 0) Roles.AddUserToRoles(userName, roles);
 
                 return RedirectToAction("Admins");
             }
@@ -67,26 +67,26 @@ namespace Sunshine.Controllers
                 return View("Error");
             }
         }
-        public ActionResult EditAdmin(string userName)
+        public ActionResult EditAdmin(int? id)
         {
             ViewBag.CurrentModule = "Admins";
-            return View(new User { UserName = userName });
+            return View(new User(id??0));
         }
         [HttpPost]
-        public ActionResult EditAdmin(User user, params string[] roles)
+        public ActionResult EditAdmin(string userName, params string[] roles)
         {
             try
             {
-                var allRoles =  Roles.GetRolesForUser(user.UserName);
+                var allRoles =  Roles.GetRolesForUser(userName);
                 var list = roles.Except(allRoles);
                 var exclude = allRoles.Except(roles);
                 if (!exclude.Contains("Security") || Roles.GetUsersInRole("Security").Count() > 1)
                 {
-                    if (list != null && list.Any()) Roles.AddUserToRoles(user.UserName, list.ToArray());
+                    if (list != null && list.Any()) Roles.AddUserToRoles(userName, list.ToArray());
                     if (exclude != null && exclude.Any())
                     {
 
-                        Roles.RemoveUserFromRoles(user.UserName, exclude.ToArray());
+                        Roles.RemoveUserFromRoles(userName, exclude.ToArray());
                     }
                 }
                 return RedirectToAction("Admins");
@@ -161,10 +161,10 @@ order by u.UserId";
             }
         }
 
-        public ActionResult FindUser(string userName)
-        {
-            return View(db.Users.Where(a => a.UserName.Contains(userName)).ToList().ConvertAll<UserRoleModel>((a) => new UserRoleModel { UserName=a.UserName, UserId = a.UserId }));
-        }
+        //public ActionResult FindUser(string userName)
+        //{
+        //    return View(db.Users.Where(a => a.UserName.Contains(userName)).ToList().ConvertAll<UserRoleModel>((a) => new UserRoleModel { UserName=a.UserName, UserId = a.UserId }));
+        //}
         const string querybyrole = @"select u.UserName, r.RoleName, c.CompanyName, u.UserId from [User] u 
 join dbo.webpages_UsersInRoles ur
 on u.UserId = ur.UserId
@@ -217,7 +217,7 @@ order by u.UserId";
 
         ISecurityGroupManager _securityGroupManager;
         ISecurityGroupManager SecurityGroupManager {
-            get { return _securityGroupManager ?? (_securityGroupManager = new AccountManager()); }
+            get { return _securityGroupManager; }
         }
     }
 }

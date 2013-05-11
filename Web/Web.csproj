@@ -404,6 +404,12 @@
   <ItemGroup>
     <Content Include="Views\Category\_ViewStart.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Web.config" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

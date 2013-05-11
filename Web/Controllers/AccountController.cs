@@ -13,6 +13,7 @@ using Sunshine.Models;
 using Sunshine.Business.Core;
 using System.Data;
 using System.Data.SqlClient;
+using Sunshine.Business.Account;
 
 namespace Sunshine.Controllers
 {
@@ -88,7 +89,8 @@ namespace Sunshine.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    HttpContext.Items["CurrentUser"] = AccountManager.Current.AddNewUser(model.UserName, false);
+                    WebSecurity.CreateAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -181,43 +183,27 @@ namespace Sunshine.Controllers
         {
             try
             {
-                if (profile.UserProfileId > 0)
-                {
-                    var temp = db.Entry<UserProfile>(profile);
-                    temp.State = EntityState.Modified; ;
-                    db.SaveChanges();
-                    ViewBag.Message = "修改成功";
-                    profile = temp.Entity;
-                }
-                else
-                {
-                    profile = db.UserProfiles.Add(profile);
-                    db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("update [User] set UserProfileId = @id where [userid]=@uid", new SqlParameter("id", profile.UserProfileId), new SqlParameter("uid", WebSecurity.CurrentUserId));
-                }
+                var user= Utility.CurrentUser;
+                user.UpdateProfile(profile);
             }
             catch
             {
                 ViewBag.Message = "修改失败";
             }
 
-            return View(db.Users.Find(WebSecurity.CurrentUserId));
+            return View(Utility.CurrentUser);
         }
         User currentUser;
         public ActionResult Manage()
         {
-            currentUser = db.Users.Find(WebSecurity.CurrentUserId);
+            currentUser = Utility.CurrentUser;
             return View(currentUser);
         }
 
         [HttpPost]
         public JsonResult EditDetail(UserProfile user)
         {
-            if (user.UserProfileId == WebSecurity.CurrentUserId)
-            {
-                db.Entry<UserProfile>(user).State = EntityState.Modified; ;
-                db.SaveChanges();
-            }
+            Utility.CurrentUser.UpdateProfile(user);
 
             return Json(new {data = user, message="修改成功", status = true});
         }
@@ -227,7 +213,7 @@ namespace Sunshine.Controllers
         {
             try
             {
-                var user = db.Users.Find(WebSecurity.CurrentUserId);
+                var user = Utility.CurrentUser;
 
                 if (user.CompanyModifyStatus == ModifyStatus.Forbidden || user.CompanyModifyStatus == ModifyStatus.Submitted)
                 {
@@ -244,7 +230,7 @@ namespace Sunshine.Controllers
                     return Json(new { message = "修改成功,请等待公司管理员审核", status = true });
                 }
 
-                if (user.CompanyId != company.CompanyId && company.CompanyId > 0)
+                if ((user.Company == null || user.Company.CompanyId != company.CompanyId) && company.CompanyId > 0)
                 {
                     return Json(new { message = "修改失败", status = false });
                 }

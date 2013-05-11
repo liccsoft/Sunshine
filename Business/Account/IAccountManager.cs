@@ -8,17 +8,16 @@ namespace Sunshine.Business.Account
 {
     public interface IAccountManager
     {
-        string GetNickName(int id);
         UserProfile GetUserProfile(int id);
         void AddNewProfile(UserProfile user);
         void UpdateProfile(UserProfile user);
         void DeactiveUser(int userId);
 
-        List<User> GetUsers();
+        List<User> GetUsers(bool isAdmin, int sindex, int eindex);
+        List<User> GetAdminUsers(int sindex, int eindex);
+        List<User> GetNormalUsers(int sindex, int eindex);
         User AddNewUser(string name, bool isAdmin);
 
-        #region  Security Group
-        SecurityGroup CreateSecurityGroup(string groupName, string groupDesc, params string[] permission);
-        #endregion
+        User GetUser(string p);
     }
 }

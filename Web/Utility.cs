@@ -7,6 +7,7 @@ using WebMatrix.WebData;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
 using Sunshine.Business.Categories;
+using System.Web.Security;
 
 namespace Sunshine
 {
@@ -16,12 +17,23 @@ namespace Sunshine
         {
             get
             {
-                if (HttpContext.Current.Items["CurrentUserNickName"] == null)
-                {
-                   HttpContext.Current.Items["CurrentUserNickName"] = new AccountManager().GetNickName(WebSecurity.CurrentUserId);
-                }
+                return CurrentUser == null ? HttpContext.Current.User.Identity.Name : CurrentUser.NickName;
+            }
+        }
 
-                return HttpContext.Current.Items["CurrentUserNickName"] as string;
+        public static User CurrentUser
+        {
+            get
+            {
+                if (WebSecurity.Initialized && WebSecurity.IsAuthenticated)
+                {
+                    object o =  HttpContext.Current.Items["CurrentUser"];
+                    if(o==null)
+                        o= AccountManager.Current.GetUser(WebSecurity.CurrentUserName);
+                     HttpContext.Current.Items["CurrentUser"] = o;
+                    return o as User;
+                }
+                return null;
             }
         }
 
@@ -29,9 +41,7 @@ namespace Sunshine
         {
             get {
                 if (HttpContext.Current.Items["CurrentCompanyList"] == null)
-
                 {
-
                     var temp  = new UsersContext().Companys.ToList().ConvertAll<SelectListItem>((a) => { return new SelectListItem() { Value = a.CompanyId.ToString(), Text = a.CompanyName }; });
                     temp.Insert(0, new SelectListItem() {Value = "0", Text= "未知"});
                     HttpContext.Current.Items["CurrentCompanyList"] = temp;

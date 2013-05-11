@@ -5,7 +5,6 @@
 }
 
 <div id="@ViewContext.RouteData.Values["Action"].ToString()" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-<div>
 <p>@Html.ActionLink("添加管理员", "NewAdmin")</p>
 <table id="tbl-all" style="width:100%;"><thead>
     <tr>
@@ -31,7 +30,7 @@
     }
 </td>
 <td>
-@Html.ActionLink("编辑", "EditAdmin", new { userName = item.UserName })
+@Html.ActionLink("编辑", "EditAdmin", new { id = item.UserId })
 </td>
     </tr>
 }
@@ -47,7 +46,6 @@
 {
 @Html.ActionLink("下一页", "admins", new { pageIndex = ViewBag.CurrentPageIndex + 1 })
 } 
-</div>
 </div>
 <div class="clr"></div>
 </div>

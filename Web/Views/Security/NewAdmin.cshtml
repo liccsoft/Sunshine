@@ -1,43 +1,35 @@
 ﻿@model Sunshine.Business.Core.User
 
 @{
-    ViewBag.Title = "NewAdmin";
+    ViewBag.Title = "添加管理员";
 }
-@Html.Partial("AdminNav")
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+ @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>User</legend>
+ <fieldset>
+     <legend>添加管理员</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserName)
-            @Html.ValidationMessageFor(model => model.UserName)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IsAdmin)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsAdmin)
-            @Html.ValidationMessageFor(model => model.IsAdmin)
-        </div>
-        <div class="editor-label">
-            权限
-        </div>
-        <div class="editor-field">
-            @foreach (var i in Roles.GetAllRoles())
-            {
-                <input type="checkbox" name="roles" value="@i"/><span>@i</span>
-            }
-        </div>
-        
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+     <div class="editor-label">
+         @Html.LabelFor(model => model.UserName)
+     </div>
+     <div class="editor-field">
+         @Html.EditorFor(model => model.UserName)
+         @Html.ValidationMessageFor(model => model.UserName)
+     </div>
+     <div class="editor-label">
+         权限
+     </div>
+     <div class="editor-field">
+         @foreach (var i in Roles.GetAllRoles())
+         {
+             <input type="checkbox" name="roles" value="@i"/><span>@i</span>
+         }
+     </div>
+     
+     <p>
+         <input type="submit" value="Create" />
+     </p>
+ </fieldset>
 }
 
 <div>

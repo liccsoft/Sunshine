@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
+using Sunshine.Business.Account;
 
 namespace Sunshine.Controllers
 {
@@ -32,10 +33,10 @@ namespace Sunshine.Controllers
         {
             ViewBag.CurrentModule = "Users";
             int skipNumber = pageSize * ((pageIndex ?? 1) - 1);
-            var Users = db.Users.Where(a => !a.IsAdmin).OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
-            ViewBag.CurrentPageIndex = pageIndex ?? 1;
-            ViewBag.IsLastPage = Users.Count < pageSize;
-            return View(Users);
+            //var Users = db.Users.Where(a => !a.IsAdmin).OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
+            //ViewBag.CurrentPageIndex = pageIndex ?? 1;
+            //ViewBag.IsLastPage = Users.Count < pageSize;
+            return View(AccountManager.Current.GetNormalUsers(skipNumber, skipNumber+pageSize));
         }
 
         protected override void Dispose(bool disposing)

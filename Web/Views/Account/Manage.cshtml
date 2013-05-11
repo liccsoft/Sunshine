@@ -3,10 +3,11 @@
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-<ul id="">
+<ul>
 <li><a href="#info">用户信息</a></li>
 <li><a href="#company">公司信息</a></li>
 <li><a href="#pwd">修改密码</a></li>
+<li><a href="#company-member">公司员工</a></li>
 </ul>
 
 <div id="info">
@@ -20,8 +21,11 @@
 <p class="message"></p>
  @{Html.RenderAction("pwd");}
 </div>
-@section Scripts {
+<div id="company-member">
+@* @Html.Partial("_CompanyMember")*@
+</div>
 
+@section Scripts {
     <script type="text/javascript">
         function showmessage(a, b, c) {
             $(".message").html(a.message);

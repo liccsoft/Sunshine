@@ -14,6 +14,7 @@
         <legend>User</legend>
 
         @Html.HiddenFor(model => model.UserId)
+				@Html.HiddenFor(model => model.UserName)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.UserName)
@@ -22,7 +23,7 @@
             @Html.DisplayFor(model => model.UserName)
         </div>
         <div class="editor-label">
-            权限
+          <label>权限</label>  
         </div>
         <div class="editor-field">
         <ul>
@@ -30,13 +31,13 @@
             {<li>
                 @if (currentRoles.Contains(i))
                 {
-                    <input type="checkbox" checked="checked" name="roles" value="@i"/><span>@i</span>
-                }
-                else
-                {
-                <input type="checkbox" name="roles" value="@i"/><span>@i</span>
-                }</li>
-            }
+                    <input type="checkbox" checked="checked" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@i</label>
+								}
+								else
+								{
+                <input type="checkbox" name="roles" value="@i" id="@i"/><label class="checkbox" for="@i">@i</label>
+								}</li>
+						}
             </ul>
         </div>
         <p>
