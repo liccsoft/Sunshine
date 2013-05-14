@@ -33,7 +33,8 @@
             @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
         <td>
-           @Ajax.ActionLink("移除用户", "RemoveFromRole", new { userName = item.UserName, roleName = ViewBag.RoleName }, new AjaxOptions { OnSuccess = "ShowResult" })
+           @*@Ajax.ActionLink("移除用户", "RemoveFromRole", new { userName = item.UserName, roleName = ViewBag.RoleName }, new AjaxOptions { OnSuccess = "ShowResult" }) |
+*@					 @Html.ActionLink("编辑用户角色", "EditAdmin")
         </td>
     </tr>
 }

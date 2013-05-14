@@ -33,11 +33,13 @@ namespace Sunshine.Controllers
         {
             ViewBag.CurrentModule = "Users";
             int skipNumber = pageSize * ((pageIndex ?? 1) - 1);
-            //var Users = db.Users.Where(a => !a.IsAdmin).OrderBy(a => a.UserId).Skip(skipNumber).Take(pageSize).ToList();
-            //ViewBag.CurrentPageIndex = pageIndex ?? 1;
-            //ViewBag.IsLastPage = Users.Count < pageSize;
-            return View(AccountManager.Current.GetNormalUsers(skipNumber, skipNumber+pageSize));
+            var Users = AccountManager.Current.GetNormalUsers(skipNumber, skipNumber + pageSize);
+            ViewBag.CurrentPageIndex = pageIndex ?? 1;
+            ViewBag.IsLastPage = Users.Count < pageSize;
+            return View(Users);
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
