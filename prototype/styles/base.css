@@ -175,6 +175,9 @@ a:active {
 #loginbar a {
 	margin-left: 5px;
 }
+#loginbar #userId, #loginbar #pwd {
+	 width:90px; padding:0px 5px; margin: 0px 5px;
+}
 #mycity {
 	color: rgb(0, 94, 167); font-weight: bold;
 }
