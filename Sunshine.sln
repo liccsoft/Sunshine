@@ -7,6 +7,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunshine.Business", "Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunshine.Security", "Sunshine.Security\Sunshine.Security.csproj", "{38207213-C15B-4957-A394-4B3D2168601E}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "prototype", "prototype\", "{C82FC90E-A583-48D3-958C-7459CEA14DED}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/prototype"
+		Debug.AspNetCompiler.PhysicalPath = "prototype\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\prototype\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/prototype"
+		Release.AspNetCompiler.PhysicalPath = "prototype\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\prototype\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "18626"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +45,10 @@ Global
 		{38207213-C15B-4957-A394-4B3D2168601E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38207213-C15B-4957-A394-4B3D2168601E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38207213-C15B-4957-A394-4B3D2168601E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C82FC90E-A583-48D3-958C-7459CEA14DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C82FC90E-A583-48D3-958C-7459CEA14DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C82FC90E-A583-48D3-958C-7459CEA14DED}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C82FC90E-A583-48D3-958C-7459CEA14DED}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

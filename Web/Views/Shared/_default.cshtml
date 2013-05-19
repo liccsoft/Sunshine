@@ -4,43 +4,28 @@
 <meta content="max-age=300" http-equiv="cache-control"/>
 <meta content="text/html; charset=utf8" http-equiv="content-type"/>
 <meta content="" />
-@Styles.Render("~/Content/css")
+@Styles.Render("~/styles/css")
  @RenderSection("styles", required: false)
 </head>
 <body>
-<div id="shortcut-2013">
+<div id="shortcut">
 <div class="w">
 <ul class="fl lh">
-  <li class="fore1 ld"><b></b><a href="javascript:addtofavorite()" rel="nofollow">收藏</a></li>
+  <li class="fore1 ld">@*<b></b><a href="javascript:addtofavorite()" rel="nofollow">收藏</a>*@</li>
 </ul>
 <ul class="fr lh">
      @Html.Partial("_LoginPartial")
 </ul><span class="clr"></span></div></div><!--shortcut end-->
-<div id="o-header-2013">
-<div id="header-2013" class="w">
-<div id="logo-2013" class="ld"><a hidefocus="true" 
-href="#"><img alt="徽田" src="/images/logo2013.png" 
-width="260" height="60"></a></div><!--logo end-->
-<div id="search-2013">
-<div class="i-search ld">
-<ul id="shelper" class="hide"></ul>
-     @using (Html.BeginForm("Search", "Product", FormMethod.Get, new { target = "_blank", id = "searchForm" }))
-     {
-<div class="form">
-    <input accesskey="s" name="pattern" onkeydown="javascript:if(event.keycode==13) searchForm.submit();" id="key" class="text" type="text" autocomplete="off" />
-    <input class="button" onclick="searchForm.submit(); return false;" value="搜索" type="button" />
-</div>
-<div id="searchtype">
-    <input type="radio" name="keywords" id="productname" value="1" style="height:1%; width:10%"/>产品名称
-    <input type="radio" name="keywords" id="productmark" value="2" style="height:1%; width:10%"/>产品型号
-</div>
-      }
-</div>
-<div id="hotwords"></div></div><!--search end-->
+<div id="header" class="w">
+<div>
+<div id="logo-2013" class="ld"></div><!--logo end-->
+<div style="width:100%; text-align:center">
+<h1><b><i>欢迎使用徽田</i></b></h1>
+</div><!--search end-->
 <div id="my360buy-2013">
 <dl></dl></div><!--settleup end--></div><!--header end-->
 <div class="w">
-<div id="nav-2013">
+<div id="nav">
 <div id="treasure"></div>
 <ul id="navitems-2013">
   <li id="nav-home" class="fore1">@Html.ActionLink("首页", "index", "home")</li></ul></div></div></div>
@@ -53,9 +38,9 @@ width="260" height="60"></a></div><!--logo end-->
 </div>
 <div id="collect_tip" class="tip360 w260"></div>
 <div class="w">
-<div id="service-2013"><span class="clr"></span></div></div><!-- service end -->
+<div id=""><span class="clr"></span></div></div><!-- service end -->
 <div class="w">
-<div id="footer-2013">
+<div id="">
 <div class="links">
     <a href="/about" rel="nofollow" target="_blank">关于我们</a>|
     <a href="/" rel="nofollow" target="_blank">联系我们</a>|

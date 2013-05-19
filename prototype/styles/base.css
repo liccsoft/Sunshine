@@ -1,0 +1,363 @@
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,header,section,footer {
+	margin: 0px; padding: 0px;
+}
+blockquote,pre,a,address,big,cite,code,del,em,font,img,ins,small,strong,var,b,u,i,center {
+	margin: 0px; padding: 0px;
+}
+dl,dt,dd,ol,ul,li {
+	margin: 0px; padding: 0px;
+}
+fieldset,form,label,legend {
+	margin: 0px; padding: 0px;
+}
+ol {
+	list-style: none;
+}
+ul {
+	list-style: none;
+}
+a img {
+	border: 0px currentColor;
+}
+img {
+	vertical-align: middle;
+}
+table {
+	empty-cells: show;
+}
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+em {
+	font-style: normal;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.fn {
+	float: none;
+}
+.al {
+	text-align: left;
+}
+.ac {
+	text-align: center;
+}
+.ar {
+	text-align: right;
+}
+.clr {
+	height: 0px; line-height: 0; overflow: hidden; clear: both; font-size: 0px; display: block;
+}
+.clearfix::after {
+	height: 0px; clear: both; display: block; visibility: hidden; content: ".";
+}
+.clearfix {
+	display: inline-table;
+}
+.clearfix {
+	display: block;
+}
+* + html .clearfix {
+	min-height: 1%;
+}
+.overflow {
+	overflow: hidden;
+}
+.block {
+	overflow: hidden; display: block;
+}
+.hide {
+	display: none;
+}
+.invisible {
+	visibility: hidden;
+}
+.tab {
+	overflow: hidden; zoom: 1;
+}
+.tab li {
+	text-align: center; float: left;
+}
+.tab a {
+	text-align: center; float: left;
+}
+.tab-item {
+	text-align: center; float: left;
+}
+.btn-img {
+	margin: 0px; padding: 0px; border: 0px currentColor; text-align: center; display: inline-block; cursor: pointer;
+}
+.button {
+	margin: 0px; padding: 0px; border: 0px currentColor; text-align: center; display: inline-block; cursor: pointer;
+}
+.btn-text {
+	margin: 0px; padding: 0px; text-align: center; cursor: pointer;
+}
+body {
+	background: rgb(255, 255, 255); font: 12px/150% Arial, Verdana, "ËÎÌו"; color: rgb(51, 51, 51); font-size-adjust: none; font-stretch: normal; _background-image: url(about:blank); _background-attachment: fixed;
+}
+h1 {
+	font: 20px/normal "microsoft yahei", "ËÎÌו"; font-size-adjust: none; font-stretch: normal;
+}
+h2 {
+	font-size: 14px;
+}
+h3 {
+	font-size: 14px;
+}
+h4 {
+	font-size: 12px;
+}
+h5 {
+	font-size: 12px;
+}
+h6 {
+	font-size: 12px;
+}
+a:link {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:visited {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:hover {
+	color: rgb(204, 0, 0); text-decoration: underline;
+}
+a:active {
+	color: rgb(153, 0, 0);
+}
+.w {
+	margin: 0px auto; width: 990px;
+}
+.w1 {
+	width: 110px;
+}
+.w2 {
+	width: 220px;
+}
+.w3 {
+	width: 330px;
+}
+.w5 {
+	width: 550px;
+}
+.lh {
+	overflow: hidden; zoom: 1;
+}
+.lh li {
+	float: left;
+}
+.lh dl {
+	float: left;
+}
+.lh .item {
+	float: left;
+}
+.ld {
+	position: relative; zoom: 1;
+}
+.ld s {
+	overflow: hidden; position: absolute;
+}
+.ld b {
+	overflow: hidden; position: absolute;
+}
+.ld .block {
+	overflow: hidden; position: absolute;
+}
+#loginbar a {
+	margin-left: 5px;
+}
+#mycity {
+	color: rgb(0, 94, 167); font-weight: bold;
+}
+#quit {
+	color: rgb(153, 153, 153);
+}
+#header {
+	padding: 5px 0px;
+}
+#logo {
+	width: 330px; padding-top: 5px; float: left;
+}
+#logo a:link b {
+	left: 190px; top: 11px; width: 69px; height: 34px; cursor: pointer;
+}
+#logo a:visited b {
+	left: 190px; top: 11px; width: 69px; height: 34px; cursor: pointer;
+}
+#search {
+	padding: 4px 86px 0px 0px; width: 320px; float: left;
+}
+#search input {
+	margin: 0px; padding: 0px; border: currentColor; height: 30px;
+}
+#search .i-search {
+	border-width: 0px 3px; border-style: solid; border-color: rgb(208, 0, 0); width: 304px; height: 36px; margin-bottom: 3px; z-index: 7;
+}
+#search b {
+	top: 0px; height: 36px; background-repeat: no-repeat;
+}
+#search s {
+	top: 0px; height: 36px; background-repeat: no-repeat;
+}
+#search b {
+	background-position: -81px -470px; left: -3px; width: 4px;
+}
+#search s {
+	background-position: 0px -470px; width: 3px; right: -3px;
+}
+#search .form {
+	background-position: 0px -357px; padding: 3px 0px; height: 30px; overflow: hidden; background-color: rgb(208, 0, 0);
+}
+#search .text {
+	background-position: 0px -360px; padding: 5px; width: 216px; height: 20px; color: rgb(153, 153, 153); line-height: 20px; font-family: arial,"ËÎÌו"; font-size: 14px; position: relative; z-index: 1; background-repeat: repeat-x; background-color: rgb(255, 255, 255);
+}
+#search .button {
+	background-position: 0px -395px; width: 78px; font-size: 14px; font-weight: bold; position: relative; z-index: 1; background-color: rgb(251, 177, 17);
+}
+#shortcut {
+	background: rgb(250, 250, 250); height: 30px;
+}
+#shortcut .w {
+	background: rgb(250, 250, 250); height: 30px;
+}
+#shortcut {
+	width: 100%; line-height: 30px; border-bottom-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#shortcut li {
+	padding: 0px 11px 0px 12px; height: 30px;
+}
+#shortcut li s {
+	left: 0px; top: 9px; width: 0px; height: 12px; overflow: hidden; border-left-color: rgb(221, 221, 221); border-left-width: 1px; border-left-style: solid;
+}
+#shortcut b {
+	transition: transform .2s ease-in 0s;
+}
+#shortcut .fl {
+	overflow: visible;
+}
+#shortcut .fl .fore1 {
+	padding-left: 16px; z-index: 1;
+}
+#shortcut .fl b {
+	background-position: -90px -23px; left: 0px; top: 8px; width: 13px; height: 13px; cursor: pointer;
+}
+#shortcut .fl li:hover b {
+	transform: rotate(720deg);
+}
+#shortcut .fl .jtip {
+	left: 68px; top: 6px; width: 120px; line-height: 16px;
+}
+#shortcut .fr {
+	height: 30px; overflow: visible;
+}
+#shortcut .fr b {
+	background-position: -95px -55px; top: 13px; width: 7px; height: 4px; right: 8px;
+}
+#shortcut .menu {
+	width: 60px; z-index: 10;
+}
+#shortcut .dd {
+	display: none;
+}
+#shortcut .hover .outline {
+	background: rgb(255, 255, 255); border: 1px solid rgb(221, 221, 221); position: absolute; box-shadow: 0px 0px 10px #ddd; -moz-box-shadow: 0 0 10px #DDD; -webkit-box-shadow: 0 0 10px #DDD;
+}
+#shortcut .hover .dd {
+	background: rgb(255, 255, 255); border: 1px solid rgb(221, 221, 221); position: absolute; box-shadow: 0px 0px 10px #ddd; -moz-box-shadow: 0 0 10px #DDD; -webkit-box-shadow: 0 0 10px #DDD;
+}
+#shortcut .hover .outline {
+	left: 5px; top: 3px; width: 73px; height: 28px; z-index: -1;
+}
+#shortcut .hover .blank {
+	background: rgb(255, 255, 255); left: 6px; top: 25px; width: 73px; height: 6px; overflow: hidden; position: absolute; z-index: 1;
+}
+#shortcut .hover .dd {
+	top: 30px; display: block;
+}
+#shortcut .fr .hover b {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); transform: rotate(180deg);
+}
+#logo
+{
+    background: url(../images/logo2013.png); height:40px; width:250px;
+}
+#login
+{
+line-height:40px;
+}
+#my-site
+{
+    
+    }
+
+#nav {
+	background: rgb(216, 134, 9  ); height: 35px; padding-left: 220px; margin-bottom: 10px; position: relative; z-index: 6;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFC649",endColorstr="#B86600");
+}
+
+#admin-nav {
+	background: rgb(216, 134, 9); height: 35px; margin-left:  330px; margin-top:20px;margin-bottom: 10px; position: relative; z-index: 6;
+}
+#navitems {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFC649",endColorstr="#B86600");
+}
+#navitems,#navitems li,#navitems li a {
+	height: 35px;
+}
+#navitems li {
+	width: 83px; float: left; position: relative;
+}
+
+#navitems li.fr {
+	width: 83px; float: right; position: relative;
+}
+
+#navitems li a {
+	font: bold 15px/35px "microsoft yahei"; left: 0px; top: 0px; width: 85px; text-align: center; color: rgb(255, 255, 255); text-decoration: none; position: absolute; font-size-adjust: none; font-stretch: normal;
+}
+#navitems .curr {
+	z-index: 1;
+}
+#navitems .hover {
+	z-index: 1;
+}
+#navitems .curr a {
+	background: rgb(164, 0, 0);
+}
+#navitems .hover a {
+	background: rgb(164, 0, 0);
+}
+
+.main
+{
+     min-height:300px;
+}
+
+#hotlinks
+{
+
+}
+
+#hotlinks .link-item
+{
+ padding:0px 5px; margin:0 0 5px 0;
+ background: rgb(244, 244, 244);
+ width: 200px;
+}
+#hotlinks .link-item a
+{
+    width: 200px; cursor:pointer;
+    font-size:1.2em;
+    font-weight:600;
+    display:inline-block;
+    height:32px; line-height:32px;
+ }
