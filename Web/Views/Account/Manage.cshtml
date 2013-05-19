@@ -3,18 +3,18 @@
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-<ul>
+@*<ul>
 <li><a href="#info">用户信息</a></li>
 <li><a href="#company">公司信息</a></li>
 <li><a href="#pwd">修改密码</a></li>
 <li><a href="#company-member">公司员工</a></li>
-</ul>
-
-<div id="info">
+</ul>*@
+@Html.Partial("UserNav")
+<div id="Manage">
 <p class="message">@ViewBag.Message</p>
 @Html.Partial("_EditProfile")
 </div>
-<div id="company">
+@*<div id="company">
  @Html.Partial("_EditCompany")
 </div>
 <div id="pwd">
@@ -22,8 +22,8 @@
  @{Html.RenderAction("pwd");}
 </div>
 <div id="company-member">
-@* @Html.Partial("_CompanyMember")*@
-</div>
+@* @Html.Partial("_CompanyMember")
+</div>*@
 
 @section Scripts {
     <script type="text/javascript">

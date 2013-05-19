@@ -316,69 +316,6 @@ a:active {
 .slide-controls .curr {
 	background: rgb(204, 0, 0);
 }
-#shortcut {
-	height: 30px; background-repeat: repeat-x; background-color: rgb(239, 239, 239);
-}
-#shortcut .w {
-	height: 30px; background-repeat: repeat-x; background-color: rgb(239, 239, 239);
-}
-#shortcut {
-	width: 100%; line-height: 30px; padding-bottom: 1px;
-}
-#shortcut li {
-	background-position: -230px -320px; padding: 0px 9px; height: 27px;
-}
-#shortcut .fl .fore1 {
-	padding-left: 15px;
-}
-#shortcut .fl b {
-	background-position: -57px -289px; left: 1px; top: 10px; width: 10px; height: 10px; cursor: pointer;
-}
-#shortcut .fl span {
-	display: none;
-}
-#shortcut .fr {
-	height: 30px; overflow: visible;
-}
-#shortcut .fr .fore1 {
-	
-}
-#shortcut .fr .menu {
-	padding: 3px 0px 0px; width: 81px; position: relative; z-index: 10;
-}
-#shortcut .menu dl {
-	padding: 0px 6px; width: 67px;
-}
-#shortcut .menu dt {
-	padding: 0px 10px 1px 6px; height: 24px; line-height: 24px; cursor: default;
-}
-#shortcut .menu b {
-	background-position: -35px -281px; top: 10px; width: 7px; height: 4px; right: 3px;
-}
-#shortcut .menu dd {
-	padding: 4px 0px 4px 5px; line-height: 21px; display: none;
-}
-#shortcut .fr .hover {
-	z-index: 11;
-}
-#shortcut .hover dl {
-	background: rgb(255, 255, 255); border: 1px solid rgb(221, 221, 221); box-shadow: 0px 0px 5px #ddd; -moz-box-shadow: 0 0 5px #ddd; -webkit-box-shadow: 0 0 5px #ddd;
-}
-#shortcut .hover dt {
-	line-height: 23px; padding-left: 5px; border-bottom-color: rgb(243, 243, 243); border-bottom-width: 1px; border-bottom-style: solid;
-}
-#shortcut .hover dd {
-	display: block;
-}
-#shortcut .hover b {
-	background-position: -35px -275px; top: 9px;
-}
-#shortcut a.link-logout:link {
-	color: rgb(153, 153, 153);
-}
-#shortcut a.link-logout:visited {
-	color: rgb(153, 153, 153);
-}
 #loginbar a {
 	margin-left: 5px;
 }
@@ -1328,67 +1265,67 @@ footer .authentication a {
 .jtip-close {
 	top: 3px; right: 5px; line-height: 14px; font-size: 14px; position: absolute; cursor: pointer;
 }
-#shortcut-2013 {
+#shortcut {
 	background: rgb(250, 250, 250); height: 30px;
 }
-#shortcut-2013 .w {
+#shortcut .w {
 	background: rgb(250, 250, 250); height: 30px;
 }
-#shortcut-2013 {
+#shortcut {
 	width: 100%; line-height: 30px; border-bottom-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-style: solid;
 }
-#shortcut-2013 li {
+#shortcut li {
 	padding: 0px 11px 0px 12px; height: 30px;
 }
-#shortcut-2013 li s {
+#shortcut li s {
 	left: 0px; top: 9px; width: 0px; height: 12px; overflow: hidden; border-left-color: rgb(221, 221, 221); border-left-width: 1px; border-left-style: solid;
 }
-#shortcut-2013 b {
+#shortcut b {
 	transition: transform .2s ease-in 0s;
 }
-#shortcut-2013 .fl {
+#shortcut .fl {
 	overflow: visible;
 }
-#shortcut-2013 .fl .fore1 {
+#shortcut .fl .fore1 {
 	padding-left: 16px; z-index: 1;
 }
-#shortcut-2013 .fl b {
+#shortcut .fl b {
 	background-position: -90px -23px; left: 0px; top: 8px; width: 13px; height: 13px; cursor: pointer;
 }
-#shortcut-2013 .fl li:hover b {
+#shortcut .fl li:hover b {
 	transform: rotate(720deg);
 }
-#shortcut-2013 .fl .jtip {
+#shortcut .fl .jtip {
 	left: 68px; top: 6px; width: 120px; line-height: 16px;
 }
-#shortcut-2013 .fr {
+#shortcut .fr {
 	height: 30px; overflow: visible;
 }
-#shortcut-2013 .fr b {
+#shortcut .fr b {
 	background-position: -95px -55px; top: 13px; width: 7px; height: 4px; right: 8px;
 }
-#shortcut-2013 .menu {
+#shortcut .menu {
 	width: 60px; z-index: 10;
 }
-#shortcut-2013 .dd {
+#shortcut .dd {
 	display: none;
 }
-#shortcut-2013 .hover .outline {
+#shortcut .hover .outline {
 	background: rgb(255, 255, 255); border: 1px solid rgb(221, 221, 221); position: absolute; box-shadow: 0px 0px 10px #ddd; -moz-box-shadow: 0 0 10px #DDD; -webkit-box-shadow: 0 0 10px #DDD;
 }
-#shortcut-2013 .hover .dd {
+#shortcut .hover .dd {
 	background: rgb(255, 255, 255); border: 1px solid rgb(221, 221, 221); position: absolute; box-shadow: 0px 0px 10px #ddd; -moz-box-shadow: 0 0 10px #DDD; -webkit-box-shadow: 0 0 10px #DDD;
 }
-#shortcut-2013 .hover .outline {
+#shortcut .hover .outline {
 	left: 5px; top: 3px; width: 73px; height: 28px; z-index: -1;
 }
-#shortcut-2013 .hover .blank {
+#shortcut .hover .blank {
 	background: rgb(255, 255, 255); left: 6px; top: 25px; width: 73px; height: 6px; overflow: hidden; position: absolute; z-index: 1;
 }
-#shortcut-2013 .hover .dd {
+#shortcut .hover .dd {
 	top: 30px; display: block;
 }
-#shortcut-2013 .fr .hover b {
+#shortcut .fr .hover b {
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); transform: rotate(180deg);
 }
 .hover#biz-service .dd {
@@ -1697,7 +1634,7 @@ footer .authentication a {
 #settleup-content .hl-orange {
 	background: rgb(255, 102, 0);
 }
-#nav-2013 {
+#nav {
 	background: rgb(228, 57, 60); height: 40px; padding-left: 210px; margin-bottom: 10px; position: relative; z-index: 6;
 }
 

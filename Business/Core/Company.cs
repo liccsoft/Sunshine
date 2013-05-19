@@ -9,7 +9,9 @@ namespace Sunshine.Business.Core
 {
     [Table("Company")]
     public class Company
-    {   [Key]
+    {
+        private List<User> _allMembers;
+        [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int CompanyId { get; set; }
 
@@ -29,5 +31,28 @@ namespace Sunshine.Business.Core
         public string Description { get; set; }
         [Display(Name = "创建者")]
         public string CreatedUserName { get; set; }
+
+        public bool IsOwner(User CurrentUser)
+        {
+            return CurrentUser.UserName == CreatedUserName;
+        }
+
+        
+        public List<User> AllMembers()
+        {
+                loadMembers();
+                return _allMembers;
+        }
+
+        private void loadMembers()
+        {
+            if (_allMembers == null)
+            {
+                using (UsersContext ctx = new UsersContext())
+                {
+                    _allMembers = ctx.Users.Where(a=>a.CompanyId == CompanyId).ToList().ConvertAll<User>(a=>new User(a));
+                }
+            }
+        }
     }
 }

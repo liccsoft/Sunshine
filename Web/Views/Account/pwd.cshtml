@@ -1,8 +1,9 @@
 ﻿@model Sunshine.Models.LocalPasswordModel
 @{
-    Layout = "";
-}
-@using (Ajax.BeginForm("pwd", "Account", new AjaxOptions { OnSuccess = "showmessage" }, new { id = "pwdform" }))
+	Layout = "";
+	}
+<div id="pwdPanel">
+@using (Ajax.BeginForm("pwd", "Account", new AjaxOptions { UpdateTargetId = "pwdPanel" }, new { id = "pwdform" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
@@ -33,6 +34,6 @@
                 @Html.ValidationMessageFor(m => m.ConfirmPassword)
                 </div>
         <p><input type="submit" value="修改密码" /></p>
-        
     </fieldset>
 }
+</div>

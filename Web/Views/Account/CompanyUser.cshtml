@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Sunshine.Business.Core.User>
+
+@{
+    ViewBag.Title = "CompanyUser";
+		Layout = "";	
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationTime)
+        </td>
+        <td>
+           @* @Html.ActionLink("移除", "")*@
+        </td>
+    </tr>
+}
+
+</table>

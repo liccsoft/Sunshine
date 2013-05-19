@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Sunshine.Business.Core;
 using Sunshine.Business.Categories;
 using System.Web.Security;
+using Sunshine.ViewModels;
 
 namespace Sunshine
 {
@@ -87,6 +88,17 @@ namespace Sunshine
         public static string GetString(string name)
         {
             return Sunshine.Properties.Resources.ResourceManager.GetString(name) ?? name;
+        }
+
+        public static ModuleManager ModulesManager
+        {
+            get {
+                if (HttpContext.Current.Cache["ModuleManager"] != null)
+                {
+                    return (HttpContext.Current.Cache["ModuleManager"] as ModuleManager);
+                }
+                return null;
+            }
         }
     }
 }

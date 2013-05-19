@@ -19,7 +19,7 @@ namespace Sunshine.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private UsersContext db = new UsersContext();
         //
@@ -107,8 +107,7 @@ namespace Sunshine.Controllers
        
         //
         // GET: /Account/Manage
-        [ChildActionOnly]
-        [OutputCache( Duration = 100000)]
+       
         public ActionResult pwd()
         {
             return View();
@@ -164,7 +163,7 @@ namespace Sunshine.Controllers
                     try
                     {
                         WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+                        //sreturn RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
                     }
                     catch (Exception e)
                     {
@@ -181,6 +180,7 @@ namespace Sunshine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(UserProfile profile)
         {
+            ViewBag.CurrentModule = "Manage";
             try
             {
                 var user= Utility.CurrentUser;
@@ -196,10 +196,16 @@ namespace Sunshine.Controllers
         User currentUser;
         public ActionResult Manage()
         {
+            ViewBag.CurrentModule = "Manage";
             currentUser = Utility.CurrentUser;
             return View(currentUser);
         }
 
+        public ActionResult Password()
+        {
+            ViewBag.CurrentModule = "Password";
+            return View();
+        }
         [HttpPost]
         public JsonResult EditDetail(UserProfile user)
         {
@@ -207,6 +213,21 @@ namespace Sunshine.Controllers
 
             return Json(new {data = user, message="修改成功", status = true});
         }
+
+        public ActionResult Company()
+        {
+            return View(CurrentUser);
+        }
+
+        public ActionResult CompanyUser()
+        {
+            if (CurrentUser.Company != null && CurrentUser.Company.IsOwner(CurrentUser))
+            {
+                return View(CurrentUser.Company.AllMembers());
+            }
+            return View(new List<User>(0));
+        }
+        
 
         [HttpPost]
         public JsonResult EditCompany(Company company)

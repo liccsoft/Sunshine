@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ModuleManager>
+  <AdminModules>
+    <Module AllowRole="Security" ControllerName="Security" ActionName="Admins" IsActive="false" Title="管理员管理" ModuleName="Admins"/>
+    <Module AllowRole="Security" ControllerName="Security" ActionName="ListRoles" IsActive="false" Title="角色管理" ModuleName="ListRoles"/>
+    <Module AllowRole="Account" ControllerName="Manage" ActionName="Users" IsActive="false" Title="用户管理" ModuleName="Users"/>
+    <Module AllowRole="Company" ControllerName="Manage" ActionName="Companies" IsActive="false" Title="公司管理" ModuleName="Companies"/>
+    <Module AllowRole="Category" ControllerName="Category" ActionName="Index" IsActive="false" Title="类别管理" ModuleName="Category"/>
+  </AdminModules>
+  <UserModules>
+    <Module AllowRole="All" ControllerName="Account" ActionName="Manage" IsActive="false" Title="个人信息" ModuleName="Manage"/>
+    <Module AllowRole="All" ControllerName="Account" ActionName="pwd" IsActive="false" Title="用户密码" ModuleName="pwd"/>
+    <Module AllowRole="All" ControllerName="Account" ActionName="Task" IsActive="false" Title="待处理任务" ModuleName="Task"/>
+    <Module AllowRole="All" ControllerName="Account" ActionName="Company" IsActive="false" Title="企业管理" ModuleName="Company"/>
+    <Module AllowRole="All" ControllerName="Account" ActionName="CompanyUser" IsActive="false" Title="员工管理" ModuleName="CompanyUser"/>
+  </UserModules>
+</ModuleManager>
