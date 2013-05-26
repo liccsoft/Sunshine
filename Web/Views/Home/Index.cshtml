@@ -1,52 +1,53 @@
 ﻿@{
     ViewBag.Title = "徽田首页";
-    }
-<div id="digitals" class="w w1">
-    @{Html.RenderAction("LatestProducts");}
-
-    <div class="m plist home-widget" data-widget="tabs">
-        <div style="left: 0px;" class="tab-arrow"><b></b></div>
-        <div class="sm sm2 fore1 curr" data-widget="tab-item">
-            <div class="smt" clstag="homepage|keycount|home2012|18c1">
-                <h3>最新商品</h3>
-            </div>
-            <div class="smc" data-widget="tab-content">
-                <ul class="lh style1">
-                    @foreach(var i in new string[] {"","","","",""}){
-                    <li class="fore3">
-                        <div class="p-img">
-                            <a title="" href="" data-img="1">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>
-                        </div>
-                        <div class="p-name"><a title="" href="" target="_blank"></a></div>
-                        <div class="p-price"><span></span>1299<span></span></div>
-                    </li>
-                    }
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- ad start -->
-    <div id="digitals-brands" class="sm sm1 brands">
-        <div class="smt">
-            <h3>热门公司直通车</h3>
-        </div>
-        <div class="smc">
-            <ul class="l" data-widget="tab-content">
-                <li class="fore1">
-                    <a title="" href="" target="_blank">
-                        <img alt="" src="" width="98" height="35" data-img="2"></a></li>
-                <li class="fore2"><a title="" href="" target="_blank">
-                    <img alt="" src="" data-img="2"></a></li>
-                <li class="fore8"><a title="" href="" target="_blank">
-                    <img alt="" src="" data-img="2"></a></li>
-            </ul>
-            <div class="tab"><span class="curr" data-widget="tab-item"><b></b></span><span data-widget="tab-item"><b></b></span></div>
-        </div>
-    </div>
-
-</div>
-
-@section styles {
-    @Styles.Render("~/Styles/search/css")
 }
+<div id="hotlinks" class="w2 fl">
+	<div>
+		<ul>
+		<li class="link-item"><a href="#"  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+		<li class="link-item"><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商家</span></a></li>
+		<li class="link-item"><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门业务员</span></a></li>
+		<li class="link-item"><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+		</ul>
+	</div>
+</div>
+<div class="w5 fl">
+	<div>
+	<img alt="" src="images/ad.png" />
+	</div>
+</div>
+<div class="w2 fl">
+	<div>
+		<div>
+			<h3>热门公司</h3>
+		</div>
+		<div>
+			<ul class="l" >
+				<li class="link-item"><a title="" href="" target="_blank">
+					<img alt="" src="images/bullet.png"><span>fddf dsfd fddf dsfd fddf dsfd</span></a></li>
+				<li class="link-item"><a title="" href="" target="_blank">
+					<img alt="" src="images/bullet.png"><span>fddfdsfd</span></a></li>
+				<li class="link-item"><a title="" href="" target="_blank">
+					<img alt="" src="images/bullet.png"><span>fddfdsfd</span></a></li>
+			</ul>
+			<div class="tab"><span class="curr" ><b></b></span><span ><b></b></span></div>
+		</div>
+	</div>
+	<div>
+		<div>
+			<h3>热门公司</h3>
+		</div>
+		<div>
+			<ul class="l" >
+				<li class="link-item"><a title="" href="" target="_blank">
+					<img alt="" src="images/bullet.png"><span>fddfdsfd</span></a></li>
+				<li class="link-item"><a title="" href="" target="_blank">
+					<img alt="" src="images/bullet.png"><span>fddfdsfd</span></a></li>
+				<li class="link-item"><a title="" href="" target="_blank">
+					<img alt="" src="images/bullet.png"><span>fddfdsfd</span></a></li>
+			</ul>
+			<div class="tab"><span class="curr" ><b></b></span><span ><b></b></span></div>
+		</div>
+	</div>
+</div>
 

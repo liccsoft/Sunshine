@@ -1,0 +1,19 @@
+﻿@if (Request.IsAuthenticated) {
+    <li>您好！欢迎来到徽田！@Html.ActionLink(Sunshine.Utility.CurrentNickName ?? WebSecurity.CurrentUserName, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+    </li>
+	<li>
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+        @Html.AntiForgeryToken()
+        <a href="javascript:document.getElementById('logoutForm').submit()"> 登出 </a>
+    }
+</li>
+} else {
+<li id="loginbar">
+@using (Html.BeginForm("Login","Account",new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+<span>用户</span><input id="userId" name="UserName" /><span>密码</span><input name="Password" type="password" id="pwd" /><input  type="submit" value="登陆" />
+}
+</li>
+<li> @Html.ActionLink(" [免费注册]", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+}

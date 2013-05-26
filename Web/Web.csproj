@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="styles\base.css" />
+    <Content Include="styles\base_old.css" />
     <Content Include="styles\search\search.css" />
     <Content Include="styles\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="styles\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -429,6 +430,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\CompanyUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_newlayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LoginBarPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

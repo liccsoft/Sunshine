@@ -27,7 +27,9 @@ namespace Sunshine
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Styles/css").Include("~/Styles/site.css",
-                "~/Styles/base.css"));
+                "~/Styles/base_old.css"));
+
+            bundles.Add(new StyleBundle("~/Styles/base").Include("~/Styles/base.css"));
 
             bundles.Add(new StyleBundle("~/Styles/search/css").Include("~/Styles/search/search.css"));
 
