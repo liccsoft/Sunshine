@@ -148,6 +148,9 @@ a:active {
 .w5 {
 	width: 550px;
 }
+.w7 {
+	width: 770px;
+}
 .lh {
 	overflow: hidden; zoom: 1;
 }
@@ -363,3 +366,16 @@ line-height:40px;
     display:inline-block;
     height:32px; line-height:32px;
  }
+ 
+.search-panel
+ {
+    height:50px; line-height:50px;  background:rgb(240,240,240); width:100%;
+ }
+ .search-panel #key-re-search
+ {
+    width:40%; padding:5px;
+ }
+.search-panel #btn-re-search
+{
+    padding:6px; width:80px; text-align:center; background:rgb(83,145,186); margin-left:5px;
+}

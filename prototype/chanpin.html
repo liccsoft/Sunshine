@@ -1,0 +1,82 @@
+﻿<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<html lang="zh-hans">
+<head><title>电脑 - 徽田</title>
+<link href="styles/base.css" rel="Stylesheet" />
+<link href="styles/search/search.css" rel="Stylesheet" />
+</head>
+<body>
+<div id="header">
+<div class="w">
+<div id="logo" class="ld"></div><!--logo end-->
+<div id="login">
+	<ul class="fr lh">
+	<li id="loginbar"><form action="/Account/Login"><span>用户</span><input id="userId" /><span>密码</span><input type="password" id="pwd" /><input  type="submit" value="登陆" />&nbsp;</form></li>
+	<li id="Li1" ><a href="/Account/Register" id="A2">[免费注册]</a></li>
+	</ul>
+</div>
+<div id="my-site"></div>
+<span class="clr"></span>
+</div>
+<div class="w">
+<div id="nav">
+<ul id="navitems">
+  <li id="nav-home" ><a href="/">首页</a></li>
+	<li><a href="#" target="_blank">找产品</a></li>
+	<li><a href="#" target="_blank">找商家</a></li>
+	<li><a href="#" target="_blank">找业务员</a></li></ul></div></div></div>
+<!-- header end -->
+<div class="main w">
+<div id="hotlinks" class="w2 fl">
+<h2>最近搜素历史</h2>
+	<ul>
+		<li><a href="#"  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商家</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门业务员</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+	</ul>
+</div>
+<div class="w7 fl">
+<div class="ac search-panel">
+	<input onkeydown="javascript:if(event.keycode==13){search('key-re-search');return false;}" id="key-re-search" class="text" name="pattern" value="" type="text">
+	<input id="btn-re-search" class="button" onclick="search('key-re-search')" value="搜&nbsp;索" type="button">
+</div>
+<div id="result">
+	<div class="fore1 pagin">
+		<span class="prev-disabled">上一页<b></b></span><a href="#" class="current">1</a><a onclick="SS.page(2)" href="#filter">2</a><a onclick="SS.page(3)" href="#filter">3</a><a onclick="SS.page(4)" href="#filter">4</a><a onclick="SS.page(5)" href="#filter">5</a><a onclick="SS.page(6)" href="#filter">6</a><span class="text">…</span><a onclick="SS.page(2)" href="#filter" class="next" title="使用方向键右键也可翻到下一页哦！">下一页<b></b></a><span class="page-skip"><em>&nbsp;&nbsp;共144页</em></span>
+	</div>
+	<table id="prodlist">
+		<thead>
+		</thead>
+		<tbody>
+			<tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			<td>产品代码</td><td>产品名称</td><td>产品配置</td><td>产品发布者</td><td>公司</td><td><a href="#">查看</a></td></tr><tr>
+			</tr>
+		</tbody>
+		<tfoot>
+		</tfoot>
+	</table>
+
+	<div class="fore2 pagin">
+	<span class="prev-disabled">上一页<b></b></span>
+	<a href="#" class="current">1</a><a onclick="SS.page(2)" href="#filter">2</a><a onclick="SS.page(3)" href="#filter">3</a><a onclick="SS.page(4)" href="#filter">4</a><a onclick="SS.page(5)" href="#filter">5</a><a onclick="SS.page(6)" href="#filter">6</a><span class="text">…</span><a onclick="SS.page(2)" href="#filter" class="next" title="">下一页<b></b></a><span class="page-skip"><em>&nbsp;&nbsp;共144页</em></span>
+	</div>
+</div>
+</div>
+</div>
+<div class="w">
+<div id="">
+<div class="links">
+    <a href="#">关于我们</a>|
+    <a href="#">联系我们</a>|
+    <a href="#">商家入驻</a>|
+    <a href="#">友情链接</a>|
+    <a href="#">销售联盟</a></div>
+</div>
+</div>
+</body></html>
