@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sunshine.Business.Core.SearchResultItem>
+﻿@model IEnumerable<Sunshine.Business.Core.ProductItem>
 @{
     ViewBag.Title = "Index";
     Layout = "";
@@ -12,10 +12,13 @@
 </div>
 <table id="prodlist">
     <thead>
-	<tr><th>@Html.DisplayNameFor(model => model.ProductMark)</th>
-	<th>@Html.DisplayNameFor(model => model.ProductName)</th>
-	<th>@Html.DisplayNameFor(model => model.DeliveryPrice)</th>
-	<th>@Html.DisplayNameFor(model => model.UserName)</th>
+	<tr>
+	<th>@Html.DisplayNameFor(model => model.ProductMark)</th>
+	<th>@Html.DisplayNameFor(model => model.Setting)</th>
+	<th>@Html.DisplayNameFor(model => model.Price)</th>
+	<th>@Html.DisplayNameFor(model => model.Stock)</th>
+	<th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+	<th>@Html.DisplayNameFor(model => model.Contact)</th>
 	<th> </th></tr>
     </thead>
     <tbody>
@@ -26,16 +29,22 @@
                     @item.ProductMark
                 </td>
                 <td>
-                    @item.ProductName + "|" + @item.ProductSizeName
+                    @item.Setting 
                 </td>
                 <td>
-                    @item.DeliveryPrice
+                    @item.Price
+                </td>
+				<td>
+                    @item.Stock
                 </td>
                 <td>
-                    @item.UserName + "|" + @item.QQ + "|" + @item.Mobile + "|" + @item.TelNumber
+                    @item.CompanyName
+                </td>
+				<td>
+                    @item.Contact
                 </td>
                 <td>
-                    @Html.ActionLink("查看详细", "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })
+                    @Html.ActionLink("详细", "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })
                 </td> 
             </tr>
         }

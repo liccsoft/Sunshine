@@ -14,7 +14,7 @@
 	<div class="ac search-panel">
 	@using (Ajax.BeginForm("MerchantSearch", "Search", new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }, new { id = "searchForm" }))
  {
-		<input onkeydown="javascript:if(event.keycode==13){search('key-search');return false;}" id="key-search" class="text" name="pattern" value="" type="text">
+		<input onkeydown="javascript:if(event.keycode==13){search('key-search');return false;}" id="key-search" class="text" name="pattern" value="@ViewBag.pattern" type="text">
 		<input id="btn-search" onclick="search('key-search')" type="button"  value="查找">
      <input id="sub" class="hide" type="submit" />
  }
@@ -33,6 +33,11 @@
         $("#sub").click();
     }
 
+    $(document).ready(
+	function () {
+		search('key-search');
+	}
+	);
 </script>
  }
 

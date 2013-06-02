@@ -90,11 +90,11 @@ fieldset
 ----------------------------------------------------------*/
 
 .editor-label, .display-label{
-    float:left; clear:left; width:130px; margin-left:10px; line-height:30px; padding-top:1px; 
+    float:left;width:130px; margin-left:10px; line-height:30px; padding-top:1px; 
 }
 
 .editor-field, .display-field{
-    float:left; clear:right; width:40%;line-height:30px;
+    float:right; margin-right:0px; width:990px;line-height:30px; padding-left:150px; border:none
 }
 
 .w  #tabset .editor-label,.w #tabset  .display-label{

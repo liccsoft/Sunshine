@@ -11,18 +11,73 @@ using System.Data.SqlClient;
 
 namespace Sunshine.Business.Core
 {
+    public class ProductItem
+    {
+        public long ProductId { get; set; }
+
+        [DisplayName("产品型号")]
+        public string ProductMark { get; set; }
+
+        [DisplayName("产品配置")]
+        public string Setting { get; set; }
+
+        [DisplayName("产品价格")]
+        public string Price { get; set; }
+
+        [DisplayName("产品库存")]
+        public int Stock { get; set; }
+
+        [DisplayName("商家")]
+        public string CompanyName { get; set; }
+
+        [DisplayName("联系方式")]
+        public string Contact { get; set; }
+
+        public List<ProductItem> getproductresult(string name, int skipcount)
+        {
+
+            using (var ctx = new UsersContext())
+            {
+                string xx = @"select  p.ProductId, p.ProductMark,p.ProductDescription as Setting,p.DeliveryPrice as Price,p.ProductStock as Stock,cm.CompanyName, cm.TelNumber as Contact
+from Product p 
+left join [User] u on p.userid = u.userid 
+left join Company cm on cm.CompanyId = u.CompanyId 
+where p.ProductMark like '%" + name + @"%'
+order by p.DeliveryPrice, p.Createtime,p.Updatetime";
+                return ctx.Database.SqlQuery<ProductItem>(xx).OrderBy(a => a.ProductId).Skip<ProductItem>(skipcount).Take(10).ToList();
+                //db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
+            }
+        }
+
+        public int getcount(string pattern, string keywords)
+        {
+            using (var ctx = new UsersContext())
+            {
+                string x;
+                x = string.Format("select count(1) TotalCount from Product where productmark like '%{0}%'", pattern);
+
+                var cnt = ctx.Database.SqlQuery<Count>(x).First();
+                return cnt.TotalCount;
+            }
+        }
+    }
+
+
     public class SearchResultItem
     {
         public long ProductId { get; set; }
+        [DisplayName("产品名称")]
         public string ProductName { get; set; }
         public string CategoryName { get; set; }
+        [DisplayName("产品型号")]
         public string ProductMark { get; set; }
         public string ProductSizeName { get; set; }
         public string BrandName { get; set; }
         public string CompanyId { get; set; }
         public string QQ { get; set; }
+        [DisplayName("产品报价")]
         public decimal DeliveryPrice { get; set; }
-
+        [DisplayName("商家")]
         public string CompanyName { get; set; }
         public string Address { get; set; }
         public string TelNumber { get; set; }
@@ -31,24 +86,7 @@ namespace Sunshine.Business.Core
 
         public string UserName { get; set; }
 
-        public IList<SearchResultItem> getproductresult(string name, int skipcount)
-        {
 
-            using (var ctx = new UsersContext())
-            {
-                string xx = @"select p.ProductId, p.ProductName, p.DeliveryPrice, c.CategoryName, p.ProductMark, ps.ProductSizeName, up.QQ, up.Mobile,up.tel TelNumber  
-from Product p 
-left join Category c on p.CategoryId = c.CategoryId 
-left join ProductSize ps on p.ProductSizeId = ps.ProductSizeId 
-left join [User] u on p.userid = u.userid 
-left join Company cc on u.companyid = cc.companyid 
-left join UserProfile up on u.UserProfileid = up.UserProfileid 
-left join Company cm on cm.CompanyId = u.CompanyId 
-where p.ProductMark like '%" + name + "%'";
-                return ctx.Database.SqlQuery<SearchResultItem>(xx).OrderBy(a => a.ProductId).Skip<SearchResultItem>(skipcount).Take(10).ToList();
-                //db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
-            }
-        }
 
         public IList<SearchResultItem> getmerchantsresult(string name, int skipcount)
         {

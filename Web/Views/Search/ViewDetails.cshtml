@@ -1,101 +1,82 @@
-﻿@model Sunshine.Business.Core.Product
+﻿@model Sunshine.Controllers.ProductRelationInfo
 @section styles {
-@Styles.Render("~/Styles/css")
+@Styles.Render("~/Styles/site")
 }
 @{
-    ViewBag.Title = "ViewDetails";
+
 }
-<fieldset>
+<fieldset style=" width:100%">
     <legend>产品明细</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductName)
-    </div>
-
-   <div class="display-label">
-         @Html.DisplayNameFor(model => model.Brand.BrandName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Brand.BrandName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductSize.ProductSizeName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductSize.ProductSizeName)
-    </div>
-
-    <div class="display-label">
+	<table>
+	<tr>
+	<td>
+	
+         @Html.DisplayNameFor(model => model.CompanyName)
+    
+    
+        @Html.DisplayFor(model => model.CompanyName)
+    
+	</td>
+	<td>
+	
+         @Html.DisplayNameFor(model => model.TelNumber)
+    
+    
+        @Html.DisplayFor(model => model.TelNumber)
+    
+	</td>
+	</tr>
+	<tr>
+	<td>
+	
+         @Html.DisplayNameFor(model => model.BrandName)
+    
+    
+        @Html.DisplayFor(model => model.BrandName)
+    
+	</td>
+	<td>
+		 
          @Html.DisplayNameFor(model => model.ProductMark)
-    </div>
-    <div class="display-field">
+    
+    
         @Html.DisplayFor(model => model.ProductMark)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductProcessor)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductProcessor)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductVideo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductVideo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PriceInterval.PriceIntervalName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PriceInterval.PriceIntervalName)
-    </div>
-
-    <div class="display-label">
+    
+	</td>
+	</tr>
+   
+   <tr>
+   <td>
+   
          @Html.DisplayNameFor(model => model.ProductDescription)
-    </div>
-    <div class="display-field">
+    
+    
         @Html.DisplayFor(model => model.ProductDescription)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductSize.ProductSizeName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductSize.ProductSizeName)
-    </div>
-
-    <div class="display-label">
+    
+   </td>
+   <td>
+    
          @Html.DisplayNameFor(model => model.ProductAdditions)
-    </div>
-    <div class="display-field">
+    
+    
         @Html.DisplayFor(model => model.ProductAdditions)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AgentPrice)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AgentPrice)
-    </div>
-
-    <div class="display-label">
+    
+   </td></tr>
+   
+   <tr>
+   <td>
+    
          @Html.DisplayNameFor(model => model.DeliveryPrice)
-    </div>
-    <div class="display-field">
+    
+    
         @Html.DisplayFor(model => model.DeliveryPrice)
-    </div>
+    
+   </td>
+   </tr>
+    </table>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ProductColor.ProductColorName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ProductColor.ProductColorName)
-    </div>
+   
+
+   
 </fieldset>

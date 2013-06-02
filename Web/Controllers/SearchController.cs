@@ -7,10 +7,52 @@ using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
 using Sunshine.Filters;
+using System.Data.SqlClient;
+using System.ComponentModel;
 
 
 namespace Sunshine.Controllers
 {
+    public class ProductRelationInfo
+    {
+        [DisplayName("产品型号")]
+        public string ProductMark { get; set; }
+        [DisplayName("备注")]
+        public string ProductAdditions { get; set; }
+        [DisplayName("产品配置")]
+        public string ProductDescription { get; set; }
+        [DisplayName("产品库存")]
+        public int ProductStock { get; set; }
+        [DisplayName("公司名称")]
+        public string CompanyName { get; set; }
+        [DisplayName("品牌")]
+        public string BrandName { get; set; }
+        [DisplayName("一级类别")]
+        public string CategoryName { get; set; }
+        [DisplayName("二级类别")]
+        public string SecondCategoryName { get; set; }
+        [DisplayName("提货价")]
+        public string DeliveryPrice { get; set; }
+        [DisplayName("联系方式")]
+        public string TelNumber { get; set; }
+
+        public static ProductRelationInfo getProductRelationInfo(long id = 0)
+        {
+            using (var ctx = new UsersContext())
+            {
+                string xx = @"select p.DeliveryPrice, p.ProductMark,p.ProductAdditions,p.ProductDescription,p.ProductStock,c.CompanyName,b.BrandName,c1.CategoryName, c2.CategoryName as SecondCategoryName, b.BrandName, c.TelNumber
+from Product p
+left join (select CategoryId,CategoryName from Category) c1 on c1.CategoryId = p.CategoryId 
+left join (select CategoryId,CategoryName from Category) c2 on c1.CategoryId = p.SecondCategoryId 
+left join Brand b on p.BrandId = b.BrandId
+left join [User] u on p.UserId = u.UserId
+left join Company c on u.CompanyId = c.CompanyId
+where p.ProductId = @id";
+
+                return ctx.Database.SqlQuery<ProductRelationInfo>(xx, new SqlParameter("id", id)).ToList().First();
+        }
+    }
+    }
 
     public class SearchController : Controller
     {
@@ -30,7 +72,7 @@ namespace Sunshine.Controllers
         [AllowAnonymous]
         public ActionResult ProductSearch(string pattern, int? pageIndex)
         {
-            SearchResultItem search = new SearchResultItem();
+            ProductItem search = new ProductItem();
             string keywords = "1";
             int count = search.getcount(pattern, keywords);
             ViewBag.count = count;
@@ -39,19 +81,26 @@ namespace Sunshine.Controllers
             ViewBag.keyword = pattern;
             int skipcount = ((pageIndex ?? 1)-1) * 10;
 
-            IList<SearchResultItem> results = search.getproductresult(pattern, skipcount);
-            return View(results);//Json(new { result = results, status = true });
+            List<ProductItem> results = search.getproductresult(pattern, skipcount);
+            return View(results.ConvertAll<ProductItem>(a=>
+                new ProductItem() { ProductId = a.ProductId,
+                 ProductMark = a.ProductMark,
+                 Price = a.Price.ToString(),
+                 CompanyName = a.CompanyName,
+                 Contact = a.Contact,
+                 Setting = a.Setting}));//Json(new { result = results, status = true });
         }
 
         public ActionResult ViewDetails(long id = 0)
         {
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
+            //ProductRelationInfo info = new ProductRelationInfo();
+            ProductRelationInfo info = ProductRelationInfo.getProductRelationInfo(id);
+                if (info == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(info);
+            }  
 
         public ActionResult Merchant()
         {
@@ -73,6 +122,7 @@ namespace Sunshine.Controllers
             IList<SearchResultItem> results = search.getmerchantsresult(pattern, skipcount);
             return View(results);//Json(new { result = results, status = true });
         }
+
         public ActionResult Salesman()
         {
             return View();

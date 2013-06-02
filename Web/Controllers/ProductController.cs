@@ -28,7 +28,7 @@ namespace Sunshine.Controllers
         public ActionResult Index()
         {
             var product = db.Products.ToDictionary<Product, long>((a) => { return a.ProductId; });
-            product.Add(0, new Product() { ProductName = "无" });
+            // product.Add(0, new Product() { ProductName = "无" });
             ViewData["Product"] = product;
             return View(db.Products.ToList());
         }
@@ -43,11 +43,9 @@ namespace Sunshine.Controllers
             ViewBag.pages = Convert.ToInt32(search.getcount(pattern, keywords) / 10 + 1);
 
             ViewBag.keyword = pattern;
-            int skipcount = (pageIndex??0) * 10;
-            if (type == "1")
-                return View(db.Products.Where(a => a.ProductName.Contains(pattern)).OrderBy(a=>a.CategoryId).Skip(skipcount).Take(10).ToList());
-            else
-                return View(db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
+            int skipcount = (pageIndex ?? 0) * 10;
+
+            return View(db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
         }
         //
         // GET: /Product/Details/5
@@ -94,7 +92,7 @@ namespace Sunshine.Controllers
         [HttpPost]
         public ActionResult Create(Product product)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 product.UserId = Utility.CurrentUser.UserId;
                 product.Createtime = DateTime.Now;
@@ -110,7 +108,7 @@ namespace Sunshine.Controllers
         //
         // GET: /Product/Edit/5
 
-        [Authorize(Roles = "edit")]
+        // [Authorize(Roles = "edit")]
         public ActionResult Edit(long id = 0)
         {
             Product product = db.Products.Find(id);
@@ -138,33 +136,6 @@ namespace Sunshine.Controllers
                                          Text = s.BrandName,
                                          Value = s.BrandId.ToString()
                                      }).ToList();
-
-            IList<PriceInterval> ProductIntervalList = productmanager.getPriceInterval();
-            ViewData["productintervallist"] = (from s in ProductIntervalList
-                                               select new SelectListItem
-                                               {
-                                                   Selected = (s.PriceIntervalId == product.PriceIntervalId),
-                                                   Text = s.PriceIntervalName,
-                                                   Value = s.PriceIntervalId.ToString()
-                                               }).ToList();
-
-            IList<ProductSize> ProductSizeList = productmanager.getProductSize();
-            ViewData["productsizelist"] = (from s in ProductSizeList
-                                           select new SelectListItem
-                                           {
-                                               Selected = (s.ProductSizeId == product.ProductSizeId),
-                                               Text = s.ProductSizeName,
-                                               Value = s.ProductSizeId.ToString()
-                                           }).ToList();
-
-            IList<ProductColor> ProductColorList = productmanager.getProductColor();
-            ViewData["productcolorlist"] = (from s in ProductColorList
-                                           select new SelectListItem
-                                           {
-                                               Selected = (s.ProductColorId == product.ProductColorId),
-                                               Text = s.ProductColorName,
-                                               Value = s.ProductColorId.ToString()
-                                           }).ToList();
         }
 
         //

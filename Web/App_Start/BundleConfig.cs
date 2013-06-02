@@ -10,7 +10,7 @@ namespace Sunshine
         {
             BundleTable.EnableOptimizations = true;
             bundles.UseCdn = true;
-            bundles.Add(new ScriptBundle("~/bundles/jquery", "http://code.jquery.com/jquery-1.7.1.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery", "http://lib.sinaapp.com/js/jquery/1.7/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/datatable", "http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"));
 
@@ -28,6 +28,8 @@ namespace Sunshine
 
             bundles.Add(new StyleBundle("~/Styles/css").Include("~/Styles/site.css",
                 "~/Styles/base_old.css"));
+
+            bundles.Add(new StyleBundle("~/Styles/site").Include("~/Styles/site.css"));
 
             bundles.Add(new StyleBundle("~/Styles/base").Include("~/Styles/base.css"));
 

@@ -1,4 +1,20 @@
-﻿#result {
+﻿.search-panel
+ {
+    height:50px; background:rgb(240,240,240); width:100%; 
+ }
+ .search-panel #key-search
+ {
+    width:40%;height:26px; margin:auto; font-size:15px; padding:0; margin-top:10px;line-height:20px; padding-top:auto;padding-bottom:auto;
+ }
+.search-panel #btn-search
+{
+   margin:0; margin-top:10px;padding:0; width:80px; 
+   text-align:center;font-size:15px; background:rgb(83,145,186); 
+   margin-left:5px; color:rgb(255,255,255); font-weight:800; 
+   height:26px; line-height:20px;padding-top:auto;padding-bottom:auto;
+   border:rgb(83,145,186) solid 2px;
+}
+#result {
 	border-width: 1px 1px 1px; border-style: solid; border-color: rgb(222, 223, 222) rgb(222, 223, 222) rgb(222, 223, 222); margin-bottom: 20px;
 }
 #result .fore1 {
@@ -28,7 +44,7 @@ overflow: hidden;
 
 #result #prodlist
 {
-    width:100%; font-size:0.9em;
+ font-size:0.9em; margin-right:0px; margin-left:0px; width:98%
 }
 #result .prev-disabled
 {
@@ -49,3 +65,14 @@ overflow: hidden;
 {
      color:rgb(255,153,0); cursor:text
 }
+#pshistory { margin-top:10px;}
+#pshistory li
+{
+    background:url(../../images/bullet.png) no-repeat; margin-left:3px; line-height:30px;padding-left:15px;
+}
+#pshistory li a, #pshistory li a span
+{
+    width:80%; height:20px; line-height:20px;text-decoration:none
+}
+ #pshistory li a span { display: block; color:rgb(51,102,102); padding-left:5px;}
+ #pshistory li a span:hover{  background:rgb(245,235,255); }

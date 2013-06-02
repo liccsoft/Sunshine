@@ -344,7 +344,7 @@ line-height:40px;
 
 .main
 {
-     min-height:300px;
+     min-height:400px;
 }
 
 #hotlinks
@@ -366,15 +366,3 @@ line-height:40px;
     display:inline-block;
     height:32px; line-height:32px;
  }
-.search-panel
- {
-    height:50px; line-height:50px;  background:rgb(240,240,240); width:100%;
- }
- .search-panel #key-search
- {
-    width:40%; padding:5px;
- }
-.search-panel #btn-search
-{
-    padding:6px; width:80px; text-align:center; background:rgb(83,145,186); margin-left:5px;
-}
