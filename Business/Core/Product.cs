@@ -68,5 +68,14 @@ namespace Sunshine.Business.Core
 
         [Display(Name = "库存")]
         public int ProductStock { get; set; }
+
+        [Display(Name = "录入人员")]
+        public int UserId { get; set; }
+
+        [Display(Name = "录入时间")]
+        public DateTime Createtime { get; set; }
+
+        [Display(Name = "更新时间")]
+        public DateTime Updatetime { get; set; }
     }
 }

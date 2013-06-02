@@ -70,16 +70,6 @@ namespace Sunshine.Business.Account
             }
         }
 
-        public SecurityGroup GetSecurityGroupById(int p)
-        {
-            if (p == 0) return SecurityGroup.Empty;
-
-            using(var ctx = new UsersContext())
-            {
-                return ctx.SecurityGroups.Find(p);
-            }
-        }
-
         public User GetUser(string p)
         {
             using (var ctx = new UsersContext())

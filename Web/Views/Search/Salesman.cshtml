@@ -1,0 +1,39 @@
+﻿@section styles {
+@Styles.Render("~/Styles/search/css")
+}
+<div id="hotlinks" class="w2 fl">
+<h2>最近搜索历史</h2>
+	<ul>
+		<li><a href="#"  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商家</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门业务员</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+	</ul>
+</div>
+<div class="w7 fl">
+	<div class="ac search-panel">
+	@using (Ajax.BeginForm("SalesmanSearch", "Search", new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }, new { id = "searchForm" }))
+ {
+		<input onkeydown="javascript:if(event.keycode==13){search('key-search');return false;}" id="key-search" class="text" name="pattern" value="" type="text">
+		<input id="btn-search" onclick="search('key-search')" type="button"  value="查找">
+     <input id="sub" class="hide" type="submit" />
+ }
+	</div>
+	<div id="result">
+	</div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    function search(id)
+    {
+        if ($("#" + id).val()=="") 
+            return false;
+        $("#sub").click();
+    }
+
+</script>
+ }
+
+

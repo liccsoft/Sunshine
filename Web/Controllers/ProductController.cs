@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
 using Sunshine.Filters;
+using WebMatrix.WebData;
 
 namespace Sunshine.Controllers
 {
@@ -93,8 +94,11 @@ namespace Sunshine.Controllers
         [HttpPost]
         public ActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
+                product.UserId = Utility.CurrentUser.UserId;
+                product.Createtime = DateTime.Now;
+                product.Updatetime = DateTime.Now;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -172,6 +176,8 @@ namespace Sunshine.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
+                product.Updatetime = DateTime.Now;
+                product.UserId = Utility.CurrentUser.UserId;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

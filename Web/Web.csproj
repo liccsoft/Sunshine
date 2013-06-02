@@ -168,6 +168,7 @@
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\FoundationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="ViewModels\RoleModels.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\ad.png" />
     <Content Include="styles\base.css" />
     <Content Include="styles\base_old.css" />
     <Content Include="styles\search\search.css" />
@@ -436,6 +438,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_LoginBarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Chanpin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Product\sprod.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\Merchant.cshtml" />
+    <Content Include="Views\Search\MerchantSearch.cshtml" />
+    <Content Include="Views\Search\pagingPart.cshtml" />
+    <Content Include="Views\Search\ProductSearch.cshtml" />
+    <Content Include="Views\Search\Salesman.cshtml" />
+    <Content Include="Views\Search\SalesmanSearch.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\ViewDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

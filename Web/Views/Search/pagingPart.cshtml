@@ -1,0 +1,29 @@
+﻿@{
+    int j = 0;
+    var ajaxoptions = new AjaxOptions { UpdateTargetId = "result", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading", LoadingElementDuration=5000 };
+    var currentIndex = (int)(ViewBag.currentPages ?? 1);
+} 
+
+@if (ViewBag.currentPages == 1)
+{ 
+    <span class="prev-disabled">上一页<b></b></span>
+} else
+{
+    @Ajax.ActionLink("上一页", ViewBag.actionName as string, new { pattern=ViewBag.keyword, pageIndex = currentIndex - 1 }, ajaxoptions )
+}
+@for (int i = Math.Max(1, Math.Min(currentIndex - 3, @ViewBag.pages-6)); i <= @ViewBag.pages && j <= 6; i++, j++)
+{
+    if (i != currentIndex)
+    {
+        @Ajax.ActionLink(i.ToString(), "ProductSearch", new { pattern=ViewBag.keyword, pageIndex=i },ajaxoptions )
+    } else {
+        <a href="#" class="current">@i</a> 
+    }
+}
+
+@if (currentIndex == @ViewBag.pages)
+{ 
+    <span class="next-disabled">下一页<b></b></span>
+} else {
+    @Ajax.ActionLink("下一页", "ProductSearch", new { pattern=ViewBag.keyword, pageIndex = currentIndex + 1 },ajaxoptions )
+}

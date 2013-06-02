@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Sunshine.Business.Core.Product>
+
+@{
+    Layout = "~/Views/Shared/_search.cshtml";
+}
+<div class="crumb">全部结果&nbsp;&gt;&nbsp;<strong>@ViewBag.keyword</strong></div>
+<div class="right-extra">
+<div id="filter">
+<div class="fore1">
+<dl class="order">
+  <dt>排序：</dt>
+  <dd><a href="#"><strong>@Html.ActionLink("上架时间", "Searchprice")</strong></a><b></b></dd></dl>
+<div id="top_pagi" class="pagin pagin-m"><span class="text">1/1</span><span 
+class="prev-disabled">上一页<b></b></span><a class="next"
+href="#">下一页<b></b></a></div>
+<div class="total"><span>共<strong>@ViewBag.count</strong>个商品</span></div><span 
+class="clr"></span></div>
+<div class="fore2 form">
+<!--<dl class="store">
+  </dl>-->
+<span class="clr"></span></div></div>
+<div id="plist" class="m psearch ">
+<ul class="list clearfix">
+    @foreach (var item in Model) {
+         <li sku="@item.ProductId">
+         <div class="p-name">
+              <strong>@Html.ActionLink(item.Brand.BrandId +" "+ item.ProductMark + item.ProductSize.ProductSizeName + "【 " + item.ProductName + "】", "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })</strong>
+        </div>
+        <div class="extra">
+            @Html.DisplayTextFor(modelItem => item.ProductDescription)
+        </div>
+      </li>
+    }
+</ul></div>
+<div id="bottom_pager" class="m clearfix">
+
+<div id="pagin-btm" class="pagin fr"><span 
+class="prev-disabled">上一页<b></b></span><a class="current" href="javascript:void(0)">1</a><a 
+class="next" onclick="searchlog(1, 2, 0, 56);" href="#">下一页<b></b></a><span 
+class="page-skip"><em>&nbsp;&nbsp;共</em><a>@ViewBag.pages</a><em>页&nbsp;&nbsp;&nbsp;&nbsp;到第</em><input 
+onkeydown="javascript:if(event.keycode==13){jumpto();return false;}" class="jumpto" 
+value="1" type="text"><em>页</em><a class="btn-skipsearch" onclick="jumpto()" >确定</a></span></div></div>
+<div id="re-search" class="m">
+<dl>
+  <dt>重新搜索</dt>
+  <dd>
+      @using (Html.BeginForm("Search", "Product", FormMethod.Get, new { id = "searchForm" })){
+        <input onkeydown="javascript:if(event.keycode==13){search('key-re-search');return false;}" id="key-re-search" class="text" name="pattern" value="@ViewBag.keyword" type="text">
+        <input id="btn-re-search" class="button" onclick="search('key-re-search')" value="搜&nbsp;索" type="button">
+      }
+  </dd></dl></div>
+</div>
+@section Scripts {
+<script>
+    function search(id) {
+        if ($("#" + id).val().length > 0) {
+            searchForm.submit();
+        }
+    }
+
+    function jumpto() {
+
+    }
+
+</script>
+}
+

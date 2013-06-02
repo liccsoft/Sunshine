@@ -31,8 +31,8 @@ width="260" height="40"></a></div><!--logo end-->
         <li class="fr">@Html.ActionLink("首页", "Index", "Home")</li>
         @if (User.Identity.IsAuthenticated){
         <li class="fr">@Html.ActionLink("个人中心", "Manage", "Account")</li>
-            if (Roles.IsUserInRole("admin") || User.Identity.Name == "admin"){
-            <li class="fr">@Html.ActionLink("类别管理", "Index", "Category")</li>        
+			if (Roles.IsUserInRole("Manage") || User.Identity.Name == "superadmin")
+			{
             <li class="fr">@Html.ActionLink("基础数据", "Index", "Foundation")</li>
             }        
         <li class="fr">@Html.ActionLink("产品管理", "Index", "Product")</li>

@@ -67,6 +67,10 @@ namespace Sunshine.Controllers
                 return View();
             }
         }
+        public ActionResult Chanpin()
+        {
+            return View();
+        }
 
         public readonly int ItemSize = 5;
     }

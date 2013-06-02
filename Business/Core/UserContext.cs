@@ -29,9 +29,5 @@ namespace Sunshine.Business.Core
         public DbSet<ProductColor> ProductColors { get; set; }
 
         public DbSet<Company> Companys { get; set; }
-
-
-        public DbSet<SecurityGroup> SecurityGroups { get; set; }
-        public DbSet<RoleSecurityGroup> RoleSecurityGroups { get; set; }
     }
 }

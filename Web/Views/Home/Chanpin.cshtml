@@ -1,0 +1,63 @@
+﻿@section styles {
+@Styles.Render("~/Styles/search/css")
+}
+<div id="hotlinks" class="w2 fl">
+<h2>最近搜素历史</h2>
+	<ul id="recently">
+		<li><a href="#"  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商家</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门业务员</span></a></li>
+		<li><a  target="_blank"><img alt="" src="images/bullet.png" /><span>热门商品</span></a></li>
+	</ul>
+</div>
+<div class="w7 fl">
+	<div class="ac search-panel">
+	@using(Ajax.BeginForm("sprod", "Product", new AjaxOptions { UpdateTargetId = "result", InsertionMode= InsertionMode.Replace, HttpMethod="POST" }))
+	{
+		<input onkeydown="javascript:if(event.keycode==13){search('key-re-search');return false;}" id="key-re-search" class="text" name="pattern" value="" type="text">
+		<input id="btn-re-search" onclick="search('key-re-search')" class="button" type="button">
+	}
+	</div>
+	<div id="result">
+	</div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+	
+	<script>
+		function search(id) {
+			showHistory($("#" + id).val());
+			localStorage.setItem("keyword", $("#" + id).val())
+		}
+
+		$(document).ready(
+		function () {
+			showHistory("");
+			var keyword = localStorage.getItem("keyword")
+			if (keyword != "") {
+				$("#key-re-search").val(keyword);
+				$("#btn-re-search").click();
+			}
+		}
+		);
+
+		function showHistory(a) {
+			var value = JSON.parse(localStorage.getItem("history"));
+			if (value == null || value == undefined || value == "") {
+				value = new Array();
+			}
+
+			if (value.length > 10) {value.reverse();while (value.length > 10) value.pop();value.reverse();};
+			if (a != "")
+				value.push(a);
+			localStorage.setItem("history", JSON.stringify(value));
+			
+			$("#recently").html("");
+			var i = value.length-1;
+			for (; i >= 0; i--) {
+				$("#recently").append("<li><li><a  target='_blank'><span>" + value[i] + "</span></a></li>");
+			}
+		}
+	</script>
+ }

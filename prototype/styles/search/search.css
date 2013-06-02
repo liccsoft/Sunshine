@@ -9,7 +9,7 @@
 }
 #result .pagin 
 {
-    text-align:right; line-height:20px; padding:5px;
+    text-align:right; line-height:20px; padding:5px;-moz-user-select: none;-webkit-user-select: none;
 }
 #result .pagin a, #result .pagin span {
 height: 20px;
@@ -24,11 +24,11 @@ overflow: hidden;
 -webkit-border-radius: 5px;
 }
 
-#result .pagin .current {border:none;}
+#result .pagin .current {border:none; text-decoration:none; cursor:text}
 
 #result #prodlist
 {
-    width:98%; font-size:0.9em;
+    width:100%; font-size:0.9em;
 }
 #result .prev-disabled
 {
@@ -38,4 +38,14 @@ overflow: hidden;
 #result .next-disabled
 {
     color:rgb(230,230,230)
+}
+#prodlist { border:none} 
+#prodlist tr td
+{
+ border:none; border-bottom:inset rgb(250,250,250) 1px; padding:2px 5px 1px 5px; overflow:hidden
+}
+
+#prodlist tr:hover
+{
+     color:rgb(255,153,0); cursor:text
 }

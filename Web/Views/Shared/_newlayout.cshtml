@@ -22,18 +22,11 @@
 <div class="w">
 <div id="nav">
 <ul id="navitems">
-  <li id="nav-home" ><a href="/">首页</a></li>
-	<li><a href="#" target="_blank">找产品</a></li>
-	<li><a href="#" target="_blank">找商家</a></li>
-	<li><a href="#" target="_blank">找业务员</a></li></ul></div></div></div>
+	<li id="nav-home" ><a href="/">首页</a></li>	<li>@Html.ActionLink("找产品", "Index", "Search")</li>    <li>@Html.ActionLink("找商家", "Merchant", "Search")</li>    <li>@Html.ActionLink("找业务员", "Salesman", "Search")</li></ul></div></div></div>
 <!-- header end -->
 <div class="main w">
 @RenderBody()
 </div>
-<div class="w"> 
-</div>
-<div class="w">
-<div id=""><span class="clr"></span></div></div>
 <div class="w">
 <div id="">
 <div class="links">
