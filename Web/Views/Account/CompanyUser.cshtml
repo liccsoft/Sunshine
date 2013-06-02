@@ -2,8 +2,8 @@
 
 @{
     ViewBag.Title = "CompanyUser";
-		Layout = "";	
 }
+@Html.Partial("UserNav")
 <table>
     <tr>
         <th>
@@ -30,6 +30,12 @@
             @Html.DisplayFor(modelItem => item.CreationTime)
         </td>
         <td>
+            @if (item.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.Submitted)
+            {
+                @Html.ActionLink("批准", "Approve", new { uid=item.UserId, itemname="company" })
+            } else  {
+                <span>已批准</span>
+            }
            @* @Html.ActionLink("移除", "")*@
         </td>
     </tr>

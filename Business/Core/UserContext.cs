@@ -14,7 +14,7 @@ namespace Sunshine.Business.Core
         public UsersContext()
             : base("DefaultConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+           // this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<UserInternal> Users { get; set; }
@@ -29,5 +29,7 @@ namespace Sunshine.Business.Core
         public DbSet<ProductColor> ProductColors { get; set; }
 
         public DbSet<Company> Companys { get; set; }
+
+        public DbSet<TraderKind> TraderKinds { get; set; }
     }
 }

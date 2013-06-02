@@ -9,8 +9,7 @@
   </AdminModules>
   <UserModules>
     <Module AllowRole="All" ControllerName="Account" ActionName="Manage" IsActive="false" Title="个人信息" ModuleName="Manage"/>
-    <Module AllowRole="All" ControllerName="Account" ActionName="pwd" IsActive="false" Title="用户密码" ModuleName="pwd"/>
-    <Module AllowRole="All" ControllerName="Account" ActionName="Task" IsActive="false" Title="待处理任务" ModuleName="Task"/>
+    <Module AllowRole="All" ControllerName="Account" ActionName="Password" IsActive="false" Title="用户密码" ModuleName="Password"/>
     <Module AllowRole="All" ControllerName="Account" ActionName="Company" IsActive="false" Title="企业管理" ModuleName="Company"/>
     <Module AllowRole="All" ControllerName="Account" ActionName="CompanyUser" IsActive="false" Title="员工管理" ModuleName="CompanyUser"/>
   </UserModules>

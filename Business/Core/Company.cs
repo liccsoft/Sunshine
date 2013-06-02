@@ -32,6 +32,13 @@ namespace Sunshine.Business.Core
         [Display(Name = "创建者")]
         public string CreatedUserName { get; set; }
 
+        [Display(Name = "商家类别")]
+        public int? CompanyTraderKindId { get; set; }
+
+        [Display(Name = "商家类别")]
+        [ForeignKey("CompanyTraderKindId")]
+        public TraderKind CompanyTraderKind { get; set; }
+
         public bool IsOwner(User CurrentUser)
         {
             return CurrentUser.UserName == CreatedUserName;
@@ -54,5 +61,24 @@ namespace Sunshine.Business.Core
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 商家类型
+    /// </summary>
+    [Table("TradeKinds")]
+    public class TraderKind
+    {
+        [Key]
+        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
+        public int TraderKindId { get; set; }
+
+        [Required]
+        [MaxLength(128)]
+        [Display(Name="商家类别")]
+        public string TraderKindName { get; set; }
+
+        [Display(Name = "商家类别描述")]
+        public string Description { get; set; }
     }
 }

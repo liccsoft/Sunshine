@@ -46,7 +46,7 @@ width="260" height="40"></a></div><!--logo end-->
 
 <div id="body" class="w">
     <section id="nav-display">@ViewBag.ModuleName > @ViewBag.SubModuleName</section>
-    <section id="tabset" class="content-wrapper clear-fix">
+    <section id="tabset" class="content-wrapper clear-fix ui-tabs ui-widget ui-widget-content ui-corner-all">
     @RenderBody()
     </section>
 </div>
@@ -55,14 +55,8 @@ width="260" height="40"></a></div><!--logo end-->
 </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $("#tabset").tabs({ ajaxOptions: { cache: true} });
-            });
-    </script>
-     @RenderSection("scripts", required: false)
+  
+    @RenderSection("scripts", required: false)
         
 </body>
 </html>

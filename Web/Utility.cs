@@ -100,5 +100,31 @@ namespace Sunshine
                 return null;
             }
         }
+
+        public static List<TraderKind> AllTraderKind
+        {
+            get {
+                var list = HttpContext.Current.Cache["DDL_TradeKindsList"];
+                if (list == null)
+                {
+                    using (UsersContext db = new UsersContext())
+                    {
+                        list = db.TraderKinds.ToList();
+                        HttpContext.Current.Cache["DDL_TradeKindsList"] = list;
+                    }
+                }
+                return list as List<TraderKind>;
+            }
+        }
+
+        public static IEnumerable<SelectListItem> TradeKindsList
+        {
+            get
+            {
+                var list = AllTraderKind.ConvertAll<SelectListItem>(a => new SelectListItem() { Value = a.TraderKindId.ToString(), Text = a.TraderKindName });
+                list.Insert(0,new SelectListItem {  Value="0", Text="" });
+                return list;
+            }
+        }
     }
 }

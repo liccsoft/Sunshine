@@ -1,23 +1,24 @@
 ﻿@model Sunshine.Business.Core.User
 
 @{
-    Layout = "";
     
 }
+@Html.Partial("UserNav")
+<div>
 <p id="message" class=""></p>
 @if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None)
 { 
-<div id="company-option">
-<p>
-<a href="javascript:addNewCompany()">创建一个公司</a> 
-<span>或者</span>
-<a href="javascript:joinCompany()">加入一个公司</a></p>
-<fieldset id="join-panel" style="display:none"><legend></legend>
-<input id="scname" type="search"/> <input type="button" value="查找" onclick="javascript:chooseCompany(scname.value)"/>
-<div id="search-reuslt"></div>
-</fieldset>
-</div>
-ViewBag.display = "display:none";
+    <div id="company-option">
+    <p>
+    <a href="javascript:addNewCompany()">创建一个公司</a> 
+    <span>或者</span>
+    <a href="javascript:joinCompany()">加入一个公司</a></p>
+    <fieldset id="join-panel" style="display:none"><legend></legend>
+    <input id="scname" type="search"/> <input type="button" value="查找" onclick="javascript:chooseCompany(scname.value)"/>
+    <div id="search-reuslt"></div>
+    </fieldset>
+    </div>
+    ViewBag.display = "display:none";
 }
 
 <fieldset id="NewCompany" style="@ViewBag.display">
@@ -30,6 +31,13 @@ ViewBag.display = "display:none";
     @Html.ValidationSummary(true) 
         
     @Html.HiddenFor(model => model.Company.CompanyId)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Company.CompanyTraderKind.TraderKindName)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.Company.CompanyTraderKindId, Sunshine.Utility.TradeKindsList)
+        @Html.ValidationMessageFor(model => model.Company.CompanyTraderKindId)
+    </div>
     <div class="editor-label">
         @Html.LabelFor(model => model.Company.CompanyName)
     </div>
@@ -74,8 +82,13 @@ ViewBag.display = "display:none";
     }
 }
 else
-{
-    
+{   
+    <div class="display-label">
+        @Html.LabelFor(model => model.Company.CompanyTraderKind.TraderKindName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.CompanyTraderKind.TraderKindName)
+    </div>
     <div class="display-label">
         @Html.LabelFor(model => model.Company.CompanyName)
     </div>
@@ -108,7 +121,8 @@ else
         @Html.DisplayFor(model => model.Company.Description)
     </div>
 } </fieldset>
-<div id="dialoghold" style="display:none"></div>
+</div>
+
 <script type="text/javascript">
     function addNewCompany() {
         $("#Company_CompanyId").val('');
@@ -141,6 +155,9 @@ else
                     this.disabled= "disabled";
             }
         });
+
+        $("#NewCompany select").val(data.CompanyTraderKindId);
+        $("#NewCompany select").attr("disabled", "disabled");
         $("#NewCompany").show();
         $("#join-panel").hide();
         alert(cd);

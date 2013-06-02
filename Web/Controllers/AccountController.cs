@@ -107,8 +107,8 @@ namespace Sunshine.Controllers
        
         //
         // GET: /Account/Manage
-       
-        public ActionResult pwd()
+
+        public ActionResult Password()
         {
             return View();
         }
@@ -118,7 +118,7 @@ namespace Sunshine.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult pwd(LocalPasswordModel model)
+        public ActionResult Password(LocalPasswordModel model)
         {
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
@@ -193,19 +193,12 @@ namespace Sunshine.Controllers
 
             return View(Utility.CurrentUser);
         }
-        User currentUser;
         public ActionResult Manage()
         {
             ViewBag.CurrentModule = "Manage";
-            currentUser = Utility.CurrentUser;
-            return View(currentUser);
+            return View(Utility.CurrentUser);
         }
 
-        public ActionResult Password()
-        {
-            ViewBag.CurrentModule = "Password";
-            return View();
-        }
         [HttpPost]
         public JsonResult EditDetail(UserProfile user)
         {
@@ -216,6 +209,10 @@ namespace Sunshine.Controllers
 
         public ActionResult Company()
         {
+            if (CurrentUser != null && CurrentUser.Company != null && CurrentUser.Company.CompanyTraderKind == null)
+            {
+                CurrentUser.Company.CompanyTraderKind = Utility.AllTraderKind.Find(a => a.TraderKindId == CurrentUser.Company.CompanyTraderKindId);
+            }
             return View(CurrentUser);
         }
 
@@ -259,12 +256,15 @@ namespace Sunshine.Controllers
                 if (company.CompanyId > 0)
                 {
                     company.CreatedUserName = User.Identity.Name;
+                    //company.CompanyTraderKind = Utility.AllTraderKind.Find(a => a.TraderKindId == company.CompanyTraderKind.TraderKindId);
+                    
                     db.Entry(company).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 else
                 {
                     company.CreatedUserName = user.UserName;
+                    //company.CompanyTraderKind = Utility.AllTraderKind.Find(a => a.TraderKindId == company.CompanyTraderKind.TraderKindId);
                     var c = db.Companys.Add(company);
                     db.SaveChanges();
                     db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
@@ -279,6 +279,18 @@ namespace Sunshine.Controllers
             {
                 return Json(new { message = "修改失败"+e.Message, status = false });
             }
+        }
+
+        public ActionResult Approve(int uid, string itemname)
+        {
+            if (itemname.Equals("company", StringComparison.CurrentCultureIgnoreCase))
+            {
+                db.Database.ExecuteSqlCommand("update [User] set CompanyStatus = @status where [userid]=@uid",
+                        new SqlParameter("uid", uid),
+                        new SqlParameter("status", ModifyStatus.Allowed));
+                RedirectToAction(itemname + "User");
+            }
+            return RedirectToAction("Manage");
         }
 
         protected override void Dispose(bool disposing)
