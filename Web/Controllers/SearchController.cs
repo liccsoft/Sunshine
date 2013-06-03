@@ -70,25 +70,21 @@ where p.ProductId = @id";
         // keywords
         //pageIndex 页数
         [AllowAnonymous]
-        public ActionResult ProductSearch(string pattern, int? pageIndex)
+        public ActionResult ProductSearch(string pattern, int? pageIndex, int? pageSize)
         {
+            var pagesize = pageSize ?? 10;
             ProductItem search = new ProductItem();
             string keywords = "1";
             int count = search.getcount(pattern, keywords);
             ViewBag.count = count;
-            ViewBag.pages = (count + 9) / 10;
+            ViewBag.pages = (count + pagesize -1) / pagesize;
             ViewBag.currentPages = pageIndex??1;
             ViewBag.keyword = pattern;
-            int skipcount = ((pageIndex ?? 1)-1) * 10;
+            ViewBag.pagesize = pagesize;
+            int skipcount = ((pageIndex ?? 1) - 1) * pagesize;
 
-            List<ProductItem> results = search.getproductresult(pattern, skipcount);
-            return View(results.ConvertAll<ProductItem>(a=>
-                new ProductItem() { ProductId = a.ProductId,
-                 ProductMark = a.ProductMark,
-                 Price = a.Price.ToString(),
-                 CompanyName = a.CompanyName,
-                 Contact = a.Contact,
-                 Setting = a.Setting}));//Json(new { result = results, status = true });
+            List<ProductItem> results = search.getproductresult(pattern, skipcount, pagesize);
+            return View(results);
         }
 
         public ActionResult ViewDetails(long id = 0)

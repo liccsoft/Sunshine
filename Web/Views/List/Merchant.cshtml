@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section styles {
+@Styles.Render("~/Styles/search/css")
+}
+<div class="w2 fl">
+<p>公司业务员</p>
+</div>
+<div class="w7 fl">
+<dl>
+<dt>公司名称</dt>
+<dd>本公司是。。。</dd>
+</dl>
+<h2>公司产品报价</h2>
+<div id="result">
+@{Html.RenderAction("ProductSearch", "Search", new { pattern = "", type="company", pageSize=15 });}
+</div>
+</div>
+
+<p class="clr"></p>
+@section scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+	}

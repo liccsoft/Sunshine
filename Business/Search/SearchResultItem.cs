@@ -33,7 +33,7 @@ namespace Sunshine.Business.Core
         [DisplayName("联系方式")]
         public string Contact { get; set; }
 
-        public List<ProductItem> getproductresult(string name, int skipcount)
+        public List<ProductItem> getproductresult(string name, int skipcount, int pageSize=10)
         {
 
             using (var ctx = new UsersContext())
@@ -44,7 +44,7 @@ left join [User] u on p.userid = u.userid
 left join Company cm on cm.CompanyId = u.CompanyId 
 where p.ProductMark like '%" + name + @"%'
 order by p.DeliveryPrice, p.Createtime,p.Updatetime";
-                return ctx.Database.SqlQuery<ProductItem>(xx).OrderBy(a => a.ProductId).Skip<ProductItem>(skipcount).Take(10).ToList();
+                return ctx.Database.SqlQuery<ProductItem>(xx).OrderBy(a => a.ProductId).Skip<ProductItem>(skipcount).Take(pageSize).ToList();
                 //db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
             }
         }

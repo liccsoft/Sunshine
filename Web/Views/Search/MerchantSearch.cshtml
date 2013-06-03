@@ -8,35 +8,31 @@
     loading...
 </div>
 <div class="fore1 pagin">
-    @Html.Partial("pagingPart")      
+    @Html.Partial("pagingPart")
 </div>
 <table id="prodlist">
-    <thead>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.CompanyName
-                </td>
-                <td>
-                    @item.Address
-                </td>
-                <td>
-                    @item.TelNumber
-                </td>
-                <td>
-                    @item.Mobile
-                </td>
-                    <td>
-                    @item.Description
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tfoot>
-    </tfoot>
+	<thead>
+		<tr><th>公司名称</th><th>公司地址</th><th>公司电话</th><th>公司介绍</th><th>查看报价</th></tr>
+	</thead>
+	<tbody>@foreach (var item in Model){<tr><td>
+					@item.CompanyName
+				</td>
+				<td>
+					@item.Address
+				</td>
+				<td>
+					<span> @item.TelNumber</span> 
+					<span> @item.Mobile</span> 
+				</td>
+				<td>
+					@item.Description
+				</td>
+				<td>
+				@Html.ActionLink("报价", "Merchant", "List", new { id = item.CompanyName }, new { target = "_blank" })
+				</td></tr>}
+</tbody>
+	<tfoot>
+	</tfoot>
 </table>
 <div class="fore2 pagin">
     @Html.Partial("pagingPart")  

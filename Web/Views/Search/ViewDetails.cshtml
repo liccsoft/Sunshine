@@ -5,78 +5,76 @@
 @{
 
 }
-<fieldset style=" width:100%">
-    <legend>产品明细</legend>
-
-	<table>
+<div class="w2 fl">
+<p>最近查看商品</p>
+</div>
+<div class="w7 fl">
+<table style=" margin-left:0px; margin-right:0px; width:98%">
+<thead>
+<tr>
+<th class="w1"></th>
+<th class="w5"></th>
+</tr>
+</thead>
 	<tr>
-	<td>
-	
-         @Html.DisplayNameFor(model => model.CompanyName)
-    
-    
-        @Html.DisplayFor(model => model.CompanyName)
-    
-	</td>
-	<td>
-	
-         @Html.DisplayNameFor(model => model.TelNumber)
-    
-    
-        @Html.DisplayFor(model => model.TelNumber)
-    
-	</td>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.CompanyName)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.CompanyName)
+		</td>
+			</tr>
+	<tr>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.TelNumber)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.TelNumber)
+		</td>
 	</tr>
 	<tr>
-	<td>
-	
-         @Html.DisplayNameFor(model => model.BrandName)
-    
-    
-        @Html.DisplayFor(model => model.BrandName)
-    
-	</td>
-	<td>
-		 
-         @Html.DisplayNameFor(model => model.ProductMark)
-    
-    
-        @Html.DisplayFor(model => model.ProductMark)
-    
-	</td>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.BrandName)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.BrandName)
+		</td>
+			</tr>
+	<tr>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.ProductMark)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.ProductMark)
+		</td>
 	</tr>
-   
-   <tr>
-   <td>
-   
-         @Html.DisplayNameFor(model => model.ProductDescription)
+	<tr>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.ProductDescription)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.ProductDescription)
     
-    
-        @Html.DisplayFor(model => model.ProductDescription)
-    
-   </td>
-   <td>
-    
-         @Html.DisplayNameFor(model => model.ProductAdditions)
-    
-    
-        @Html.DisplayFor(model => model.ProductAdditions)
-    
-   </td></tr>
-   
-   <tr>
-   <td>
-    
-         @Html.DisplayNameFor(model => model.DeliveryPrice)
-    
-    
-        @Html.DisplayFor(model => model.DeliveryPrice)
-    
-   </td>
-   </tr>
-    </table>
+		</td>
+			</tr>
+	<tr>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.ProductAdditions)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.ProductAdditions)
+		</td>
+	</tr>
+	<tr>
+		<td class="label">
+		@Html.DisplayNameFor(model => model.DeliveryPrice)
+		</td>
+		<td>
+		@Html.DisplayFor(model => model.DeliveryPrice)
+		</td>
+			</tr>
+</table>
+</div>
+<div class="w2 fl ">
 
-   
-
-   
-</fieldset>
+</div>
