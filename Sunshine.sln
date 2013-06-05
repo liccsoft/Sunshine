@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{38644A78-C669-42C5-88AB-FF29C0C244CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sunshine.Business", "Business\Sunshine.Business.csproj", "{1E04109E-B897-4501-952B-A9EE719D0798}"
@@ -23,6 +23,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "prototype", "prototype\", "
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "18626"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{7E10B183-96D3-441C-83B4-4C55C642A952}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\searchproduct.sql = scripts\searchproduct.sql
 	EndProjectSection
 EndProject
 Global

@@ -1,0 +1,45 @@
+﻿@{
+	Sunshine.ViewModels.PagedModel pageInfo = ViewBag.Paging;
+    int j = 0;
+	var index = pageInfo.CurrentIndex;
+}
+<div class="pagin">
+@if ((pageInfo.PagedStype & Sunshine.ViewModels.PagedStyle.PreNext) == Sunshine.ViewModels.PagedStyle.PreNext)
+{
+if (pageInfo.CurrentIndex <= 1)
+{
+	<span class="prev-disabled">上一页<b></b></span>
+}
+else
+{
+	index=pageInfo.CurrentIndex-1;
+	<a href='#' onclick='javascript:loadpage(@index)'>上一页</a>
+}
+}
+@if ((pageInfo.PagedStype & Sunshine.ViewModels.PagedStyle.Number) == Sunshine.ViewModels.PagedStyle.Number)
+{
+	for (int i = pageInfo.StartIndex; i <= pageInfo.EndIndex; i++, j++)
+	{
+		if (i != pageInfo.CurrentIndex)
+		{
+		<a href='#' onclick='javascript:loadpage(@i);'>@i</a>
+		}
+		else
+		{
+		<span class="current">@i</span> 
+		}
+	}
+}
+@if ((pageInfo.PagedStype & Sunshine.ViewModels.PagedStyle.PreNext) == Sunshine.ViewModels.PagedStyle.PreNext)
+{
+	if (pageInfo.CurrentIndex >= pageInfo.TotalPage)
+	{
+	<span class="next-disabled">下一页<b></b></span>
+	}
+	else
+	{
+		index = pageInfo.CurrentIndex + 1;
+	<a href='#' onclick='javascript:loadpage(@index);'>下一页</a>
+	}
+}
+</div>

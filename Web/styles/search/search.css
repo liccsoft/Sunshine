@@ -34,7 +34,7 @@ border: 1px solid #ccc;
 margin-left: 2px;
 font-family: arial;
 line-height: 20px;
-font-size: 14px;
+font-size: 12px;
 overflow: hidden;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
@@ -48,12 +48,12 @@ overflow: hidden;
 }
 #result .prev-disabled
 {
-    color:rgb(230,230,230)
+    color:rgb(230,230,230); position:relative;
 }
 
 #result .next-disabled
 {
-    color:rgb(230,230,230)
+    color:rgb(230,230,230);position:relative;
 }
 #prodlist { border:none} 
 #prodlist tr td

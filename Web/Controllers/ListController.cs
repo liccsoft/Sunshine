@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Sunshine.Business.Search;
 
 namespace Sunshine.Controllers
 {
@@ -11,25 +12,29 @@ namespace Sunshine.Controllers
         //
         // GET: /Merchant/
 
-        public ActionResult Merchant()
+        public ActionResult Merchant(string name, int? id)
         {
+            ViewBag.Name = name;
             return View();
         }
 
         //
         // GET: /Merchant/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult SaleMan(string name, int? id)
         {
+            ViewBag.Name = name;
             return View();
         }
 
         //
         // GET: /Merchant/Create
 
-        public ActionResult Create()
+        public ActionResult Goods(string name, int? pageIndex, string field = "companyname")
         {
-            return View();
+            var results = SearchEngine.Search(name, field ?? "companyname", "product", new  SearchOptions{ CurrentIndex = pageIndex ?? 1});
+            ViewBag.Name = name;
+            return View(results);
         }
 
         //

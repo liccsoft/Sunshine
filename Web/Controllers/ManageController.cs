@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Sunshine.Business.Core;
 using Sunshine.Business.Account;
+using Sunshine.ViewModels;
 
 namespace Sunshine.Controllers
 {
@@ -26,7 +27,9 @@ namespace Sunshine.Controllers
         public ActionResult Companies(int? pageIndex)
         {
             ViewBag.CurrentModule = "Companies";
-            return View(new UsersContext().Companys.ToList());
+            ViewBag.Paging = new PagedModel() { ControllerName = "Manage", ActionName = "Companies", CurrentIndex=pageIndex??1, PagedStype = PagedStyle.PreNext};
+
+            return View(db.Companys.ToList());
         }
         [Authorize(Roles = "Account")]
         public ActionResult Users(int? pageIndex)
@@ -35,7 +38,8 @@ namespace Sunshine.Controllers
             int skipNumber = pageSize * ((pageIndex ?? 1) - 1);
             var Users = AccountManager.Current.GetNormalUsers(skipNumber, skipNumber + pageSize);
             ViewBag.CurrentPageIndex = pageIndex ?? 1;
-            ViewBag.IsLastPage = Users.Count < pageSize;
+            var totalPage = Users.Count < pageSize ? pageIndex ?? 1 : ((pageIndex ?? 1) + 1);
+            ViewBag.Paging = new PagedModel() { ControllerName = "Manage", ActionName = "Users", CurrentIndex = pageIndex ?? 1, PagedStype = PagedStyle.PreNext, TotalPage = totalPage };
             return View(Users);
         }
 

@@ -1,7 +1,6 @@
 ﻿@{
-    ViewBag.Title = "商家信息";
+    ViewBag.Title = "业务员";
 }
-
 @section styles {
 	@Styles.Render("~/Styles/search/css")
 }
@@ -9,20 +8,15 @@
 <p>公司业务员</p>
 </div>
 <div class="w7 fl">
-<dl>
-<dt>@ViewBag.Name</dt>
-<dd></dd>
-</dl>
-<h2>公司产品报价</h2>
-<div id="loading" class="hide w7">
+<h2>产品报价</h2>
+<div id="loading" class="hide w7" style="height:100%; line-height:100px;background-color:transparent; position:fixed; z-index:1000; text-align:center; vertical-align:middle">
 loading...
 </div>
 <div id="result">
-@{Html.RenderAction("Goods", "List", new { name = ViewBag.Name, pageSize=15 });}
+@{Html.RenderAction("Goods", "List", new { name = ViewBag.Name });}
 </div>
-@using (Ajax.BeginForm("Goods", new AjaxOptions { UpdateTargetId = "result", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading" }))
+@using (Ajax.BeginForm("Goods", new { field = "saleman", name = ViewBag.Name }, new AjaxOptions { UpdateTargetId = "result", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading" }))
 {
-	<input name='name' id='name' type=hidden value='@ViewBag.Name' />
 	<input name='pageIndex' id='pageIndex' type="hidden" />
 	<input class="hide" id="pagesubmit" type="submit" />
 }
@@ -34,7 +28,6 @@ loading...
 	@Scripts.Render("~/bundles/jqueryval")
 	<script type="text/javascript">
 		function loadpage(index) {
-			$("#loading").css("height", $("#result").css("height"))
 			document.getElementById("pageIndex").value = index;
 			$("#pagesubmit").click();
 			return false;

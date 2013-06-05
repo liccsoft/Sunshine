@@ -1,0 +1,47 @@
+﻿@model Sunshine.Business.Search.SearchResult
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+    ViewBag.actionName = "Goods";
+	ViewBag.Paging = new Sunshine.ViewModels.PagedModel() { ControllerName = "List"
+		, ActionName = "Companies"
+		, CurrentIndex = Model.CurrentPageIndex
+		, TotalPage = Model.TotalPage
+		, PagedStype = Sunshine.ViewModels.PagedStyle.All
+	};
+}
+<div class="fore1 pagin">
+@Html.Partial("_ajaxPaging")
+</div>
+<table id="prodlist">
+<thead>
+<tr>
+<th>型号</th> 
+<th>配置</th> 
+<th>报价</th> 
+<th>库存</th> 
+<th>联系人</th> 
+<th> </th></tr>
+</thead>
+<tbody>
+@foreach (System.Data.DataRow row in Model.Data.Rows)
+{
+	<tr>
+	<td>@row["ProductMark"]</td>
+	<td>@row["Setting"]</td>
+	<td>@row["ProductStock"]</td>
+	<td>@row["DeliveryPrice"]</td>
+	<td>@row["UserName"] @row["TelNumber"]</td>
+	<td>@Html.ActionLink("详细", "ViewDetails","Search", new { id = @row["ProductId"] }, new { target = "_blank" })</td>
+	</tr>
+}
+</tbody>
+<tfoot>
+</tfoot>
+</table>
+<div class="fore2 pagin">
+@Html.Partial("_ajaxPaging")  
+</div>
+
+
+

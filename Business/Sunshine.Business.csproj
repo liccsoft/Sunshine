@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
@@ -51,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Account\AccountManager.cs" />
     <Compile Include="Account\IAccountManager.cs" />
+    <Compile Include="Search\DefaultSearchProvider.cs" />
+    <Compile Include="Search\SearchEngine.cs" />
     <Compile Include="Security\ISecurityGroupManager.cs" />
     <Compile Include="Security\MyRoleProvider.cs" />
     <Compile Include="Security\UserGroup.cs" />

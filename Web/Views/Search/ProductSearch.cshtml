@@ -4,55 +4,39 @@
     Layout = "";
     ViewBag.actionName = "ProductSearch";
 }
-<div id="loading" class="hide w7" style="height:100%; line-height:100px; background-color:transparent; position:fixed; z-index:1000; text-align:center; vertical-align:central">
-    loading...
-</div>
 <div class="fore1 pagin">
-    @Html.Partial("pagingPart")      
+@Html.Partial("pagingPart")
 </div>
 <table id="prodlist">
-    <thead>
+<thead>
+<tr>
+<th>@Html.DisplayNameFor(model => model.ProductMark)</th>
+<th>@Html.DisplayNameFor(model => model.Setting)</th>
+<th>@Html.DisplayNameFor(model => model.Price)</th>
+<th>@Html.DisplayNameFor(model => model.Stock)</th>
+<th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+<th>@Html.DisplayNameFor(model => model.Contact)</th>
+<th> </th></tr>
+</thead>
+<tbody>
+@foreach (var item in Model)
+{
 	<tr>
-	<th>@Html.DisplayNameFor(model => model.ProductMark)</th>
-	<th>@Html.DisplayNameFor(model => model.Setting)</th>
-	<th>@Html.DisplayNameFor(model => model.Price)</th>
-	<th>@Html.DisplayNameFor(model => model.Stock)</th>
-	<th>@Html.DisplayNameFor(model => model.CompanyName)</th>
-	<th>@Html.DisplayNameFor(model => model.Contact)</th>
-	<th> </th></tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.ProductMark
-                </td>
-                <td>
-                    @item.Setting 
-                </td>
-                <td>
-                    @item.Price
-                </td>
-				<td>
-                    @item.Stock
-                </td>
-                <td>
-                    @item.CompanyName
-                </td>
-				<td>
-                    @item.Contact
-                </td>
-                <td>
-                    @Html.ActionLink("详细", "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })
-                </td> 
-            </tr>
-        }
-    </tbody>
-    <tfoot>
-    </tfoot>
+		<td>@item.ProductMark
+	</td><td>@item.Setting 
+	</td><td>@item.Price
+	</td><td>@item.Stock
+	</td><td>@item.CompanyName
+	</td><td>@item.Contact
+	</td><td>@Html.ActionLink("详细", "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })
+		</td> 
+	</tr>
+}
+</tbody>
+<tfoot>
+</tfoot>
 </table>
 <div class="fore2 pagin">
-    @Html.Partial("pagingPart")  
+@Html.Partial("pagingPart")  
 </div>
 
