@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "商家信息";
+	ViewBag.Title = @ViewBag.Name;
 }
 
 @section styles {
@@ -9,10 +9,8 @@
 <p>公司业务员</p>
 </div>
 <div class="w7 fl">
-<dl>
-<dt>@ViewBag.Name</dt>
-<dd></dd>
-</dl>
+<h1>@ViewBag.Name</h1>
+
 <h2>公司产品报价</h2>
 <div id="loading" class="hide w7">
 loading...
