@@ -11,19 +11,20 @@
 	</ul>
 </div>
 <div class="w7 fl">
-<div id="loading" class="hide w7" style="height:100%; line-height:100px;background-color:transparent; position:fixed; z-index:1000; text-align:center; vertical-align:middle">
+<div id="loading" class="hide w7">
 loading...
 </div>
-	<div class="ac search-panel">
-	@using (Ajax.BeginForm("ProductSearch", new { }, new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }, new { id = "searchForm" }))
- {
-		<input onkeydown="javascript:if(event.keycode==13){search('key-search');return false;}" id="key-search" class="text" name="pattern" value="@ViewBag.pattern" type="text">
-		<input id="btn-search" onclick="search('key-search')" type="button" value="查 找">
-     <input id="sub" class="hide" type="submit" />
- }
-	</div>
-	<div id="result">
-	</div>
+<div class="ac search-panel">
+@using (Ajax.BeginForm("ProductSearch", new { }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loading", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }, new { id = "searchForm" }))
+{
+	<input onkeydown="javascript:if(event.keycode==13){search('key-search');return false;}" id="key-search" class="text" name="pattern" value="@ViewBag.pattern" type="text" />
+	<input id="btn-search" onclick="search('key-search')" type="button" value="查 找" />
+	<input id="sub" class="hide" type="submit" />
+}
+
+</div>
+<div id="result">
+</div>
 </div>
 @section scripts {
     @Scripts.Render("~/bundles/jquery")
@@ -31,10 +32,11 @@ loading...
 <script>
 	function search(id)
 	{
-		if ($("#" + id).val()=="") 
+		if ($("#" + id).val()=="")
 			return false;
-			$("#sub").click();
-			$("#pshistory").SearchHistory("pshistory",$("#" + id).val());
+		$("#loading").css("height", $(".search-panel").css("height"));
+		$("#sub").click();
+		$("#pshistory").SearchHistory("pshistory",$("#" + id).val());
 	}
 
 

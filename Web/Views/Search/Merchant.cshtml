@@ -30,6 +30,7 @@
 	function search(id) {
 		if ($("#" + id).val() == "")
 			return false;
+		$("#loading").css("height", $("#result").css("height"));
 		$("#sub").click();
 		$("#pshistory").SearchHistory("cshistory", $("#" + id).val());
 	}

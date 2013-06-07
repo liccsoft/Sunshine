@@ -32,7 +32,7 @@ loading...
 	@Scripts.Render("~/bundles/jqueryval")
 	<script type="text/javascript">
 		function loadpage(index) {
-			$("#loading").css("height", $("#result").css("height"))
+			$("#loading").css("height", $("#result").css("height"));
 			document.getElementById("pageIndex").value = index;
 			$("#pagesubmit").click();
 			return false;
