@@ -90,7 +90,7 @@ fieldset
 ----------------------------------------------------------*/
 
 .editor-label, .display-label{
-    float:left;width:11.11%; line-height:30px; padding-top:1px;
+    float:left;width:25%; line-height:30px; padding-top:1px;
 }
 
 .editor-field, .display-field{
