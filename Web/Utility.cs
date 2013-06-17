@@ -122,7 +122,7 @@ namespace Sunshine
             get
             {
                 var list = AllTraderKind.ConvertAll<SelectListItem>(a => new SelectListItem() { Value = a.TraderKindId.ToString(), Text = a.TraderKindName });
-                list.Insert(0,new SelectListItem {  Value="0", Text="" });
+                //list.Insert(0,new SelectListItem {  Value="0", Text="" });
                 return list;
             }
         }

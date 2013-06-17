@@ -94,7 +94,7 @@ fieldset
 }
 
 .editor-field, .display-field{
-    float:right; margin-right:0px; width:82%;line-height:30px; padding-left:0px; border:none
+    float:right; margin-right:0px; width:70%;line-height:30px; padding-left:0px; border:none
 }
 
 .w  #tabset .editor-label,.w #tabset  .display-label{
