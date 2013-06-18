@@ -1,5 +1,3 @@
-USE [ht22]
-GO
 
 /****** Object:  StoredProcedure [dbo].[SearchProduct]    Script Date: 06/05/2013 22:56:29 ******/
 SET ANSI_NULLS ON
