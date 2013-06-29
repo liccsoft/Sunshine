@@ -30,8 +30,8 @@
 	<tr>
 	<td>@row["ProductMark"]</td>
 	<td>@row["Setting"]</td>
-	<td>@row["ProductStock"]</td>
 	<td>@row["DeliveryPrice"]</td>
+	<td>@row["ProductStock"]</td>
 	<td>@row["UserName"] @row["TelNumber"]</td>
 	<td>@Html.ActionLink("详细", "ViewDetails","Search", new { id = @row["ProductId"] }, new { target = "_blank" })</td>
 	</tr>

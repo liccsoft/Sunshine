@@ -6,6 +6,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+if object_id('[dbo].[SearchProduct]') is not null
+ drop procedure [dbo].[SearchProduct]
+ go
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -38,7 +41,7 @@ BEGIN
 	where p.ProductMark like '%'+@productmark+'%' escape '/';
 	
 	
-	select p.ProductId, p.ProductMark, p.ProductDescription Setting
+	select p.ProductId, p.ProductMark, p.ProductAdditions Setting
 	, p.DeliveryPrice as price, p.ProductStock, isnull(up.NickName, u.UserName) as UserName, c.CompanyName, up.Tel as TelNumber
 	from dbo.Product p 
 	left join dbo.[User] u on p.UserId = u.UserId

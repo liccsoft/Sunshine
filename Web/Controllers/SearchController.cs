@@ -18,9 +18,10 @@ namespace Sunshine.Controllers
         [DisplayName("产品型号")]
         public string ProductMark { get; set; }
         [DisplayName("备注")]
-        public string ProductAdditions { get; set; }
-        [DisplayName("产品配置")]
         public string ProductDescription { get; set; }
+        [DisplayName("产品配置")]
+        public string ProductAdditions { get; set; }
+
         [DisplayName("产品库存")]
         public int ProductStock { get; set; }
         [DisplayName("公司名称")]
