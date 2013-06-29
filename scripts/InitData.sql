@@ -1,8 +1,10 @@
-﻿--
+﻿use $(DBName)
+GO
 -- 公司类型 初始数据
 SET IDENTITY_INSERT TradeKinds on;
 if not exists(select 1 from TradeKinds where TraderKindId in (0,1,2,3,4))
-insert into TradeKinds
+insert into TradeKinds (TraderKindId, [TraderKindName]
+           ,[Description])
 values
 (0,'未定义','尚未定义'),
 (1,'一级代理商','一级代理商'),
