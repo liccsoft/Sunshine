@@ -6,9 +6,6 @@ IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[Compa
 DROP INDEX [idx_company_companyname] ON [dbo].[Company] WITH ( ONLINE = OFF )
 GO
 
-USE [ht22]
-GO
-
 /****** Object:  Index [idx_company_companyname]    Script Date: 06/29/2013 08:40:46 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [idx_company_companyname] ON [dbo].[Company] 
 (
