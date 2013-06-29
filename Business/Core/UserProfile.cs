@@ -18,7 +18,7 @@ namespace Sunshine.Business.Core
         /// 用户昵称，显示
         /// </summary>
         [MaxLength(256)]
-        [Display(Name = "昵称", GroupName = "基本信息")]
+        [Display(Name = "真实姓名", GroupName = "基本信息")]
         public string NickName { get; set; }
 
         /// <summary>
