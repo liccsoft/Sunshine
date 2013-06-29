@@ -21,7 +21,7 @@
 		@Html.DisplayNameFor(model => model.CompanyName)
 		</td>
 		<td>
-		@Html.DisplayFor(model => model.CompanyName)
+		@Html.ActionLink(Model.CompanyName, "Merchant", "List", new { name = Model.CompanyName }, null)
 		</td>
 			</tr>
 	<tr>

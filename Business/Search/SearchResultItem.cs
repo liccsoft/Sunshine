@@ -38,7 +38,7 @@ namespace Sunshine.Business.Core
 
             using (var ctx = new UsersContext())
             {
-                string xx = @"select  p.ProductId, p.ProductMark,p.ProductDescription as Setting,p.DeliveryPrice as Price,p.ProductStock as Stock,cm.CompanyName, cm.TelNumber as Contact
+                string xx = @"select  p.ProductId, p.ProductMark,p.ProductAdditions as Setting,p.DeliveryPrice as Price,p.ProductStock as Stock,cm.CompanyName, cm.TelNumber as Contact
 from Product p 
 left join [User] u on p.userid = u.userid 
 left join Company cm on cm.CompanyId = u.CompanyId 
