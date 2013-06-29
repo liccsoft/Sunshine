@@ -16,10 +16,11 @@ namespace Sunshine.Controllers
             return View();
         }
 
-        public ActionResult GeneralError()
+        public ActionResult GeneralError(string errorMessage)
         {
             ViewBag.SubModuleName = "错误处理";
-            return View((object)"你的操作出错");
+            ViewBag.ErrorMessage = errorMessage;
+            return View();
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,10 +20,6 @@ namespace Sunshine.Controllers
 
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
         [Authorize(Roles = "Company")]
         public ActionResult Companies(int? pageIndex)
         {
@@ -53,6 +50,12 @@ namespace Sunshine.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult RemoveCompany(int companyid)
+        {
+            db.Database.ExecuteSqlCommand("RemoveCompany @CompanyId = @cid", new SqlParameter("cid", companyid));
+            return RedirectToAction("Companies");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
 	ViewBag.Title = @ViewBag.Name;
 }
 
@@ -9,21 +10,20 @@
 <p>公司业务员</p>
 </div>
 <div class="w7 fl">
-<h1>@ViewBag.Name</h1>
-
-<h2>公司产品报价</h2>
-<div id="loading" class="hide w7">
-loading...
-</div>
-<div id="result">
-@{Html.RenderAction("Goods", "List", new { name = ViewBag.Name, pageSize=15 });}
-</div>
-@using (Ajax.BeginForm("Goods", new AjaxOptions { UpdateTargetId = "result", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading" }))
-{
-	<input name='name' id='name' type=hidden value='@ViewBag.Name' />
-	<input name='pageIndex' id='pageIndex' type="hidden" />
-	<input class="hide" id="pagesubmit" type="submit" />
-}
+@{ Html.RenderAction("BusinessDetail", "Company", new {name = ViewBag.Name}); }
+	<h2>公司产品报价</h2>
+	<div id="loading" class="hide w7">
+		loading...
+	</div>
+	<div id="result">
+		@{Html.RenderAction("Goods", "List", new { name = ViewBag.Name, pageSize = 10 });}
+	</div>
+	@using (Ajax.BeginForm("Goods", new AjaxOptions { UpdateTargetId = "result", HttpMethod = "POST", InsertionMode = InsertionMode.Replace, LoadingElementId = "loading" }))
+	{
+		<input name='name' id='name' type=hidden value='@ViewBag.Name' />
+		<input name='pageIndex' id='pageIndex' type="hidden" />
+		<input class="hide" id="pagesubmit" type="submit" />
+	}
 </div>
 
 <p class="clr"></p>

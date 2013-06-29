@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,7 +10,7 @@ namespace Sunshine.Business.Core
     {
         private List<User> _allMembers;
         [Key]
-        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CompanyId { get; set; }
 
         [StringLength(256)]
@@ -39,25 +37,29 @@ namespace Sunshine.Business.Core
         [ForeignKey("CompanyTraderKindId")]
         public TraderKind CompanyTraderKind { get; set; }
 
-        public bool IsOwner(User CurrentUser)
+        [Display(Name = "付款方式")]
+        [StringLength(4000)]
+        public string Payment { get; set; }
+
+        public bool IsOwner(User currentUser)
         {
-            return CurrentUser.UserName == CreatedUserName;
+            return currentUser.UserName == CreatedUserName;
         }
 
         
         public List<User> AllMembers()
         {
-                loadMembers();
+                LoadMembers();
                 return _allMembers;
         }
 
-        private void loadMembers()
+        private void LoadMembers()
         {
             if (_allMembers == null)
             {
-                using (UsersContext ctx = new UsersContext())
+                using (var ctx = new UsersContext())
                 {
-                    _allMembers = ctx.Users.Where(a=>a.CompanyId == CompanyId).ToList().ConvertAll<User>(a=>new User(a));
+                    _allMembers = ctx.Users.Where(a=>a.CompanyId == CompanyId).ToList().ConvertAll(a=>new User(a));
                 }
             }
         }
@@ -70,7 +72,7 @@ namespace Sunshine.Business.Core
     public class TraderKind
     {
         [Key]
-        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TraderKindId { get; set; }
 
         [Required]

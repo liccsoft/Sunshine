@@ -1,0 +1,74 @@
+﻿@model Sunshine.Business.Core.Company
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Company</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TelNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TelNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Mobile)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mobile)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedUserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedUserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyTraderKind.TraderKindName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyTraderKind.TraderKindName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Payment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Payment)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

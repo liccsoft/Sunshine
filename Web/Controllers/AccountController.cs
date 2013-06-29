@@ -263,14 +263,21 @@ namespace Sunshine.Controllers
                 }
                 else
                 {
-                    company.CreatedUserName = user.UserName;
-                    //company.CompanyTraderKind = Utility.AllTraderKind.Find(a => a.TraderKindId == company.CompanyTraderKind.TraderKindId);
-                    var c = db.Companys.Add(company);
-                    db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
-                        new SqlParameter("id", c.CompanyId),
-                        new SqlParameter("uid", user.UserId),
-                        new SqlParameter("status", ModifyStatus.Allowed));
+                    if (db.Companys.FirstOrDefault(a => a.CompanyName == company.CompanyName) == null)
+                    {
+                        company.CreatedUserName = user.UserName;
+                        var c = db.Companys.Add(company);
+                        db.SaveChanges();
+                        db.Database.ExecuteSqlCommand(
+                            "update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
+                            new SqlParameter("id", c.CompanyId),
+                            new SqlParameter("uid", user.UserId),
+                            new SqlParameter("status", ModifyStatus.Allowed));
+                    }
+                    else
+                    {
+                        return Json(new { message = "修改失败, 公司名称重复", status = false });
+                    }
                 }
 
                 return Json(new { message = "修改成功", status = true });
@@ -281,13 +288,32 @@ namespace Sunshine.Controllers
             }
         }
 
+        public ActionResult JoinCompany(int? companyId)
+        {
+            if (companyId == null || companyId.Value <= 0) return ToErrorPage("非法请求");
+
+            var user = Utility.CurrentUser;
+
+            if (user.CompanyModifyStatus == ModifyStatus.None || user.CompanyModifyStatus == ModifyStatus.Allowed)
+            {
+                db.Database.ExecuteSqlCommand(
+                    "update [User] set CompanyId = @id, CompanyStatus = @status where [userid]=@uid",
+                    new SqlParameter("id", companyId.Value),
+                    new SqlParameter("uid", user.UserId),
+                    new SqlParameter("status", ModifyStatus.Submitted));
+
+                return RedirectToAction("Company");
+            }
+            return ToErrorPage("不允许修改");
+        }
+
         public ActionResult Approve(int uid, string itemname)
         {
             if (itemname.Equals("company", StringComparison.CurrentCultureIgnoreCase))
             {
                 db.Database.ExecuteSqlCommand("update [User] set CompanyStatus = @status where [userid]=@uid",
-                        new SqlParameter("uid", uid),
-                        new SqlParameter("status", ModifyStatus.Allowed));
+                                              new SqlParameter("uid", uid),
+                                              new SqlParameter("status", ModifyStatus.Allowed));
                 RedirectToAction(itemname + "User");
             }
             return RedirectToAction("Manage");

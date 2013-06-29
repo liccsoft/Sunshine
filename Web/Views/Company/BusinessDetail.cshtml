@@ -1,0 +1,15 @@
+﻿@model Sunshine.Business.Core.Company
+@{
+	Layout = "";
+}
+<dl>
+	<dt><h1>@Html.DisplayFor(model=>model.CompanyName)</h1></dt>
+	<dd>
+	简介：@Html.DisplayFor(model=>model.CompanyName)</dd><dd>
+	付款方式：@Html.DisplayFor(model=>model.Payment)	
+	</dd><dd>
+	联系方式：电话 @Html.DisplayFor(model=>model.TelNumber)  手机 @Html.DisplayFor(model=>model.Mobile)	
+	</dd><dd>
+	公司地址：@Html.DisplayFor(model=>model.Address)	
+	</dd>
+</dl>

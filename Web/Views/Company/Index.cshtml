@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<Sunshine.Business.Core.Company>
 
 @{
-    ViewBag.Title = "企业管理";
+    ViewBag.Title = "Index";
 }
 
-@Html.Partial("_htmlPaging")
-<table style="width:100%;">
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CompanyName)
@@ -24,6 +28,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreatedUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyTraderKind.TraderKindName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment)
         </th>
         <th></th>
     </tr>
@@ -48,10 +58,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.CreatedUserName)
         </td>
-	    <td>
-		    @Html.ActionLink("移除公司","RemoveCompany", new{ companyid=item.CompanyId})
-	    </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyTraderKind.TraderKindName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CompanyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CompanyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyId })
+        </td>
     </tr>
 }
+
 </table>
-@Html.Partial("_htmlPaging")

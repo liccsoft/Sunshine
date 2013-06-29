@@ -18,15 +18,15 @@
     <div id="search-reuslt"></div>
     </fieldset>
     </div>
-    ViewBag.display = "display:none";
+	ViewBag.display = "display:none";
 }
 
 <fieldset id="NewCompany" style="@ViewBag.display">
         <legend></legend>
 @if (Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.None || Model.CompanyModifyStatus == Sunshine.Business.Core.ModifyStatus.Allowed)
 {
-    using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "editcmpymsg" }))
-    {
+	using (Ajax.BeginForm("EditCompany", "Account", new AjaxOptions { OnSuccess = "editcmpymsg" }))
+	{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true) 
         
@@ -65,13 +65,20 @@
     <div class="editor-field">
         @Html.EditorFor(model => model.Company.Address)
         @Html.ValidationMessageFor(model => model.Company.Address)
+    </div><span class="clr"></span>
+        <div class="editor-label">
+        @Html.LabelFor(model => model.Company.Payment)
     </div>
-    
+		<div class="editor-field">
+			@Html.TextAreaFor(model => model.Company.Payment)
+			@Html.ValidationMessageFor(model => model.Company.Payment)
+		</div>
+	<span class="clr"></span>
     <div class="editor-label">
         @Html.LabelFor(model => model.Company.Description)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.Company.Description)
+        @Html.TextAreaFor(model => model.Company.Description)
         @Html.ValidationMessageFor(model => model.Company.Description)
     </div>
            
@@ -79,10 +86,11 @@
             <input type="submit" value="保存" />
      </p>  
     
-    }
+	}
 }
 else
 {   
+	<p><h2>你所属的公司信息</h2></p>
     <div class="display-label">
         @Html.LabelFor(model => model.Company.CompanyTraderKind.TraderKindName)
     </div>
@@ -122,7 +130,15 @@ else
     </div>
 } </fieldset>
 </div>
+<div class="hide">
+	@using (Html.BeginForm("JoinCompany", "Account"))
+ {
+		<input type="hidden" name="CompanyId" id="joinCompanyId"/>
 
+		<input type="submit" name="btnsubmit" id="btnsubmit"/>	
+ }
+
+</div>
 <script type="text/javascript">
     function addNewCompany() {
         $("#Company_CompanyId").val('');
@@ -137,7 +153,7 @@ else
         $("#join-panel").show();
     }
     function chooseCompany(name) {
-        if (name == "" || name == null || name == undefined)
+        if (name == undefined || name == "" )
             return false;
         $.get("/widget/company", {name:name}, function (a) {
             $("#search-reuslt").html(a);
@@ -145,23 +161,25 @@ else
         return false;
     }
 
-    function Choosed(item, data)
-    {
-        var Company = data;
-        $("#NewCompany input").each(function (index) {
-            if (this.name != '') {
-                this.value=Company[this.name.replace("Company.", '')];
-                if(this.type != 'hidden')
-                    this.disabled= "disabled";
-            }
-        });
+    function Choosed(item, data) {
+    	if (confirm("确定申请加入公司" + data.CompanyName)) {
+		    var company = data;
+		    $("#joinCompanyId").val(data.CompanyId);
+		    $("#btnsubmit").click();
+	    }
+//        $("#NewCompany input").each(function (index) {
+//            if (this.name != '') {
+//                this.value=company[this.name.replace("Company.", '')];
+//                if(this.type != 'hidden')
+//                    this.disabled= "disabled";
+//            }
+//        });
 
-        $("#NewCompany select").val(data.CompanyTraderKindId);
-        $("#NewCompany select").attr("disabled", "disabled");
-        $("#NewCompany").show();
-        $("#join-panel").hide();
-        alert(cd);
-        return false;
+//        $("#NewCompany select").val(data.CompanyTraderKindId);
+//        $("#NewCompany select").attr("disabled", "disabled");
+//        $("#NewCompany").show();
+//        $("#join-panel").hide();
+//        return false;
     }
 
     function editcmpymsg(a, b, c) {

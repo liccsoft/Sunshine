@@ -1,0 +1,71 @@
+﻿@model Sunshine.Business.Core.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Company</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TelNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TelNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Mobile)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mobile)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedUserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedUserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyTraderKind.TraderKindName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyTraderKind.TraderKindName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Payment)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Payment)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CompanyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

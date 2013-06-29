@@ -27,6 +27,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "prototype", "prototype\", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{7E10B183-96D3-441C-83B4-4C55C642A952}"
 	ProjectSection(SolutionItems) = preProject
+		scripts\InitData.sql = scripts\InitData.sql
 		scripts\searchproduct.sql = scripts\searchproduct.sql
 	EndProjectSection
 EndProject

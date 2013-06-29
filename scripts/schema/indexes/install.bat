@@ -1,0 +1,1 @@
+FOR %%i IN (%~dp0*.sql) DO sqlcmd -i %%i -v DBName =%1
