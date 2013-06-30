@@ -17,7 +17,7 @@ BEGIN
 	SET NOCOUNT ON;
 	set xact_abort on
 	begin tran
-	update [User] set CompanyId = null where CompanyId = @CompanyId;
+	update [User] set CompanyId = null, CompanyStatus = null where CompanyId = @CompanyId;
 	
 	insert into Company_removed
 	select * from Company where CompanyId = @CompanyId;

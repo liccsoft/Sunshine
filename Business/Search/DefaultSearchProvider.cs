@@ -25,6 +25,10 @@ namespace Sunshine.Business.Search
                 comm.Parameters.Add(field, pattern);
                 comm.Parameters.Add("pageindex", options.CurrentIndex);
                 comm.Parameters.Add("pagesize", options.PageSize);
+                if (options.LimitCategory != null)
+                {
+                    comm.Parameters.Add("CategoryId", options.LimitCategory.CategoryId);
+                }
                 conn.Open();
                 SqlDataReader reader = comm.ExecuteReader();
                 SearchResult result = new SearchResult() { };

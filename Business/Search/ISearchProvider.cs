@@ -28,5 +28,6 @@ namespace Sunshine.Business.Search
         public int PageSize = 15;
         public int CurrentIndex = 1;
         public string OrderField;
+        public Category LimitCategory = null;
     }
 }

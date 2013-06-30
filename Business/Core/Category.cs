@@ -52,5 +52,11 @@ namespace Sunshine.Business.Core
         public string ShortDescription { get {
             return (Description == null || Description.Length < 50) ? Description : Description.Substring(0, 50) + "...";
         } }
+
+        public static Category Find(int p)
+        {
+            using (UsersContext db = new UsersContext())
+                return db.Categorys.Find(p);
+        }
     }
 }
