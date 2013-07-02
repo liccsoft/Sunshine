@@ -27,10 +27,10 @@ namespace Sunshine.Controllers
 
         public ActionResult Index()
         {
-            var product = db.Products.ToDictionary<Product, long>((a) => { return a.ProductId; });
-            // product.Add(0, new Product() { ProductName = "无" });
-            ViewData["Product"] = product;
-            return View(db.Products.ToList());
+            //var product = db.Products.ToDictionary<Product, long>((a) => { return a.ProductId; });
+            //// product.Add(0, new Product() { ProductName = "无" });
+            //ViewData["Product"] = product;
+            return View(db.Products.Where(a=>a.UserId == Utility.CurrentUser.UserId).ToList());
         }
 
         [HttpGet]
