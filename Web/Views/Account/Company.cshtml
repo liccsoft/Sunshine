@@ -10,9 +10,9 @@
 { 
     <div id="company-option">
     <p>
-    <a href="javascript:addNewCompany()">创建一个公司</a> 
+    <a href="javascript:addNewCompany();">创建一个公司</a> 
     <span>或者</span>
-    <a href="javascript:joinCompany()">加入一个公司</a></p>
+    <a href="javascript:joinCompany();">加入一个公司</a></p>
     <fieldset id="join-panel" style="display:none"><legend></legend>
     <input id="scname" type="search"/> <input type="button" value="查找" onclick="javascript:chooseCompany(scname.value)"/>
     <div id="search-reuslt"></div>
@@ -146,7 +146,6 @@ else
         $("#join-panel").hide();
         $("#NewCompany div>input").removeAttr("disabled");
         $("#NewCompany").show();
-        return false;
     }
     function joinCompany() {
         $("#NewCompany").hide();
