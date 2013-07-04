@@ -123,13 +123,27 @@ order by p.DeliveryPrice, p.Createtime,p.Updatetime";
                 {
                     x = string.Format("select count(1) TotalCount from Company where CompanyName like '%{0}%'", pattern);
                 }
-                else
+                else if (keywords == "3")
                 {
                     x = string.Format("select count(1) TotalCount from [User] where UserName like '%{0}%'", pattern);
+                }
+                else
+                {
+                    x = string.Format("select count(1) TotalCount from LFProduct where ProductAdditions like '%{0}%'", pattern);
                 }
 
                 var cnt = ctx.Database.SqlQuery<Count>(x).First();
                 return cnt.TotalCount;
+            }
+        }
+
+        public IList<SearchResultItem> gettrlfproduct(string name, int skipcount)
+        {
+            using (var ctx = new UsersContext())
+            {
+                //string xx = "select top 10 p.ProductId, p.ProductName, c.CategoryName, p.ProductMark, ps.ProductSizeName  from Product p left join Category c on p.CategoryId = c.CategoryId left join ProductSize ps on p.ProductSizeId = ps.ProductSizeId where p.ProductMark like '%" + name + "%' and productid > " + skipcount;
+                return ctx.Database.SqlQuery<SearchResultItem>("select * from LFProduct where ProductAdditions like '%" + name + "%'").OrderBy(a => a.ProductId).Skip<SearchResultItem>(skipcount).Take(10).ToList();
+                //db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
             }
         }
     }
