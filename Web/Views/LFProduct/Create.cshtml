@@ -1,0 +1,99 @@
+﻿@model Sunshine.Business.Core.LFProduct
+@{
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<section id="tabset">
+    <ul>
+        <li><a href="#cindex">求购意向</a></li>
+    </ul>
+<div id="cindex">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Product</legend>
+        <table>
+		 <tr>
+			<td>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId)
+        </div>
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoryId, ViewData["categorylist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+			</td>
+			<td>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.SecondCategoryId)
+        </div>
+         <div class="editor-field">
+            @Html.DropDownListFor(model => model.SecondCategoryId, ViewData["secondcategorylist"] as IList<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.SecondCategoryId)
+        </div>
+			</td>
+        </tr>
+		<tr>
+			<td>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Brand.BrandName)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.BrandId, ViewData["brandlist"] as IList<SelectListItem>, new { @class = "text-box single-line" })
+            @Html.ValidationMessageFor(model => model.BrandId)
+        </div>
+</td>
+<td>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.ProductMark)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductMark)
+            @Html.ValidationMessageFor(model => model.ProductMark)
+        </div>
+		 </td>
+		</tr>
+		<tr> <td><div class="editor-label">
+            @Html.LabelFor(model => model.ProductAdditions)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductAdditions)
+            @Html.ValidationMessageFor(model => model.ProductAdditions)
+        </div>
+		</td>
+		<td>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductDescription)
+            @Html.ValidationMessageFor(model => model.ProductDescription)
+        </div>
+        </td>
+
+		</tr>
+
+			
+
+		
+        <tr>
+			<td align="right">
+            <input type="submit" value="确定" />
+        </td>
+        <td align="left">
+			@Html.ActionLink("Back to List", "Index")
+			</td>
+		</tr>
+		        </table>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+</div>
+</section>
