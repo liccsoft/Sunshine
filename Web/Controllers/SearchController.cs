@@ -120,6 +120,27 @@ where p.ProductId = @id";
             return View(results);//Json(new { result = results, status = true });
         }
 
+        public ActionResult LFProduct()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult LFProductSearch(string pattern, int? pageIndex)
+        {
+            SearchResultItem search = new SearchResultItem();
+            string keywords = "4";
+            int count = search.getcount(pattern, keywords);
+            ViewBag.count = count;
+            ViewBag.pages = (count + 9) / 10;
+            ViewBag.currentPages = pageIndex ?? 1;
+            ViewBag.keyword = pattern;
+            int skipcount = ((pageIndex ?? 1) - 1) * 10;
+
+            IList<SearchResultItem> results = search.gettrlfproduct(pattern, skipcount);
+            return View(results);//Json(new { result = results, status = true });
+        }
+
         public ActionResult Salesman()
         {
             return View();

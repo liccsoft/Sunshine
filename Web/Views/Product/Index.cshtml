@@ -4,6 +4,7 @@
     ViewBag.ModuleName = "产品管理";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
+<style>.t-0{ padding-left:10%;font-size:2px;align:center;}.t-1{ padding-left:10%;font-size:2px;align:center;}.t-2{ padding-left:10%;font-size:2px;}.t-3{ padding-left:10%;}.t-4{ padding-left:10%;}.t-5{ padding-left:10%;}.t-6{ padding-left:10%;}.t-7{ padding-left:10%;}.t-8{ padding-left:10%;}div.c  {cursor: pointer;background: url(images/folder.gif) 0 0 no-repeat; padding-left:0px;}</style>
 <section id="tabset">
     <ul>
         <li><a href="#cindex">产品列表</a></li>
@@ -25,7 +26,10 @@
                 @Html.DisplayNameFor(model => model.Brand.BrandName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeliveryPrice)
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductAdditions)
             </th>
             <th align="center">
             操作
@@ -48,7 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Brand.BrandName)
             </td>
              <td>
-                @Html.DisplayFor(modelItem => item.DeliveryPrice)
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.ProductAdditions)
             </td>
             <td>
                 @Html.ActionLink("修改", "Edit", new { id = item.ProductId }) |

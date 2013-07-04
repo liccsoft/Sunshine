@@ -13,6 +13,12 @@
 <fieldset>
     <legend>Product</legend>
 
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductMark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductMark)
+    </div>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.ProductMark)
@@ -26,6 +32,13 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProductDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductAdditions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductAdditions)
     </div>
 
     <div class="display-label">

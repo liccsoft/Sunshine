@@ -31,7 +31,7 @@ click-index="671">电脑整机</a><span>(188)</span></h3>
 <div id="top_pagi" class="pagin pagin-m"><span class="text">1/1</span><span 
 class="prev-disabled">上一页<b></b></span><a class="next"
 href="#">下一页<b></b></a></div>
-<div class="total"><span>共<strong>@ViewBag.count</strong>个商品</span></div><span 
+<div class="total"><span>共<strong>@ViewBag.count</strong>个意向</span></div><span 
 class="clr"></span></div>
 <div class="fore2 form">
 <!--<dl class="store">
@@ -42,7 +42,7 @@ class="clr"></span></div>
     @foreach (var item in Model) {
          <li sku="@item.ProductId">
          <div class="p-name">
-              <strong>@Html.ActionLink(item.Brand.BrandId +" "+ item.ProductMark + item.ProductSize.ProductSizeName + "【 " + item.ProductName + "】", "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })</strong>
+              <strong>@Html.ActionLink(item.Brand.BrandId +" "+ item.ProductMark, "ViewDetails", new { id = item.ProductId }, new { target = "_blank" })</strong>
         </div>
         <div class="extra">
             @Html.DisplayTextFor(modelItem => item.ProductDescription)
