@@ -8,7 +8,7 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>Product</legend>
+    <legend>LFProduct</legend>
 
    <div class="display-label">
          @Html.DisplayNameFor(model => model.Brand.BrandName)
@@ -39,13 +39,13 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.DeliveryPrice)
+         @Html.DisplayNameFor(model => model.ProductNum)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.DeliveryPrice)
+        @Html.DisplayFor(model => model.ProductNum)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductId }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.LFProductId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

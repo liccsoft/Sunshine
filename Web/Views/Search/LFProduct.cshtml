@@ -15,7 +15,7 @@
 loading...
 </div>
 <div class="ac search-panel">
-@using (Ajax.BeginForm("LFProductSearch", new { }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loading", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }, new { id = "searchForm" }))
+@using (Ajax.BeginForm("Search","LFProduct", new { }, new AjaxOptions { UpdateTargetId = "result", LoadingElementId = "loading", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }, new { id = "searchForm" }))
 {
 	<input onkeydown="javascript:if(event.keycode==13){search('key-search');return false;}" id="key-search" class="text" name="pattern" value="@ViewBag.pattern" type="text" />
 	<input id="btn-search" onclick="search('key-search')" type="button" value="查 找" />

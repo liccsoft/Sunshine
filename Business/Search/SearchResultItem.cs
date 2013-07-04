@@ -62,6 +62,53 @@ order by p.DeliveryPrice, p.Createtime,p.Updatetime";
         }
     }
 
+    public class LFProductItem
+    {
+        public long ProductId { get; set; }
+
+        [DisplayName("产品型号")]
+        public string ProductMark { get; set; }
+
+        [DisplayName("产品配置")]
+        public string Setting { get; set; }
+
+        [Display(Name = "备注")]
+        public string ProductDescription { get; set; }
+
+        [Display(Name = "数量")]
+        public int ProductNum { get; set; }
+
+        [DisplayName("联系方式")]
+        public string Contact { get; set; }
+
+        public List<LFProductItem> getlfproductresult(string name, int skipcount, int pageSize = 10)
+        {
+
+            using (var ctx = new UsersContext())
+            {
+                string xx = @"select  p.ProductId, p.ProductMark,p.ProductAdditions as Setting,p.ProductNum as Num
+from LFProduct p 
+left join [User] u on p.userid = u.userid 
+where p.ProductMark like '%" + name + @"%'
+order by p.DeliveryPrice, p.Createtime,p.Updatetime";
+                return ctx.Database.SqlQuery<LFProductItem>(xx).OrderBy(a => a.ProductId).Skip<LFProductItem>(skipcount).Take(pageSize).ToList();
+                //db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
+            }
+        }
+
+        public int getcount(string pattern, string keywords)
+        {
+            using (var ctx = new UsersContext())
+            {
+                string x;
+                x = string.Format("select count(1) TotalCount from LFProduct where productmark like '%{0}%'", pattern);
+
+                var cnt = ctx.Database.SqlQuery<Count>(x).First();
+                return cnt.TotalCount;
+            }
+        }
+    }
+
 
     public class SearchResultItem
     {

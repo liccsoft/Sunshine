@@ -13,7 +13,7 @@ namespace Sunshine.Business.Core
     {
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
-        public long ProductId { get; set; }
+        public long LFProductId { get; set; }
 
         [Display(Name = "型号")]
         public string ProductMark { get; set; }

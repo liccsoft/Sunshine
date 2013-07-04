@@ -25,88 +25,87 @@ namespace Sunshine.Controllers
 
         public ActionResult Index()
         {
-            var product = db.Products.ToDictionary<Product, long>((a) => { return a.ProductId; });
-            ViewData["Product"] = product;
-            return View(db.Products.ToList());
+            var lfproduct = db.LFProduct.ToDictionary<LFProduct, long>((a) => { return a.LFProductId; });
+            ViewData["LFProduct"] = lfproduct;
+            return View(db.LFProduct.ToList());
         }
 
         public ActionResult Create()
         {
-            SetDefaultInfo(new Product());
+            SetDefaultInfo(new LFProduct());
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(LFProduct LFProduct)
         {
             if (ModelState.IsValid)
             {
-                product.UserId = Utility.CurrentUser.UserId;
-                product.Createtime = DateTime.Now;
-                product.Updatetime = DateTime.Now;
-                db.Products.Add(product);
+                LFProduct.UserId = Utility.CurrentUser.UserId;
+                LFProduct.Createtime = DateTime.Now;
+                LFProduct.Updatetime = DateTime.Now;
+                db.LFProduct.Add(LFProduct);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            return View(LFProduct);
         }
 
         public ActionResult Edit(long id = 0)
         {
-            Product product = db.Products.Find(id);
-            SetDefaultInfo(product);
-            if (product == null)
+            LFProduct LFProduct = db.LFProduct.Find(id);
+            SetDefaultInfo(LFProduct);
+            if (LFProduct == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(LFProduct);
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(LFProduct LFProduct)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                product.Updatetime = DateTime.Now;
-                product.UserId = Utility.CurrentUser.UserId;
+                db.Entry(LFProduct).State = EntityState.Modified;
+                LFProduct.Updatetime = DateTime.Now;
+                LFProduct.UserId = Utility.CurrentUser.UserId;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            return View(LFProduct);
         }
 
         public ActionResult Delete(long id = 0)
         {
-            Product product = db.Products.Find(id);
-            if (product == null)
+            LFProduct LFProduct = db.LFProduct.Find(id);
+            if (LFProduct == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(LFProduct);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            LFProduct LFProduct = db.LFProduct.Find(id);
+            db.LFProduct.Remove(LFProduct);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public ActionResult ViewDetails(long id = 0)
+        public ActionResult Details(long id = 0)
         {
-            Product product = db.Products.Find(id);
-            if (product == null)
+            LFProduct LFProduct = db.LFProduct.Find(id);
+            if (LFProduct == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(LFProduct);
         }
 
-         [HttpGet]
         [AllowAnonymous]
         public ActionResult Search(string pattern, string type, string keywords, int? pageIndex)
         {
@@ -118,10 +117,10 @@ namespace Sunshine.Controllers
             ViewBag.keyword = pattern;
             int skipcount = (pageIndex ?? 0) * 10;
 
-            return View(db.Products.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
+            return View(db.LFProduct.Where(a => a.ProductMark.Contains(pattern)).OrderBy(a => a.CategoryId).Skip(skipcount).Take(10).ToList());
         }
 
-        private void SetDefaultInfo(Product product)
+         private void SetDefaultInfo(LFProduct LFProduct)
         {
             ProductManager productmanager = new ProductManager();
             IList<Category> CategoryList = productmanager.getCategory(0);
@@ -133,7 +132,7 @@ namespace Sunshine.Controllers
             ViewData["brandlist"] = (from s in BrandList
                                      select new SelectListItem
                                      {
-                                         Selected = (s.BrandId == product.BrandId),
+                                         Selected = (s.BrandId == LFProduct.BrandId),
                                          Text = s.BrandName,
                                          Value = s.BrandId.ToString()
                                      }).ToList();

@@ -63,18 +63,27 @@
             @Html.ValidationMessageFor(model => model.ProductAdditions)
         </div>
 		</td>
-		<td>
+			<td>
+				<div class="editor-label">
+					@Html.LabelFor(model => model.ProductDescription)
+				</div>
+				<div class="editor-field">
+					@Html.EditorFor(model => model.ProductDescription)
+					@Html.ValidationMessageFor(model => model.ProductDescription)
+				</div>
+			</td>
+		</tr>
+	        <tr>
+		       <td>
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductDescription)
+            @Html.LabelFor(model => model.ProductNum)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDescription)
-            @Html.ValidationMessageFor(model => model.ProductDescription)
+            @Html.EditorFor(model => model.ProductNum)
+            @Html.ValidationMessageFor(model => model.ProductNum)
         </div>
         </td>
-
-		</tr>
-
+	        </tr>
 			
 
 		

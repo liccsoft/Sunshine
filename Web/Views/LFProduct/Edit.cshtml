@@ -17,7 +17,7 @@
     <fieldset>
         <legend>Product</legend>
 
-        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model => model.LFProductId)
 		@Html.HiddenFor(model => model.Updatetime)
 		@Html.HiddenFor(model => model.UserId)
 		@Html.HiddenFor(model => model.Createtime)
@@ -67,12 +67,20 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDescription)
         </div>
+	    <div class="editor-field">
+		    @Html.EditorFor(model => model.ProductDescription)
+		    @Html.ValidationMessageFor(model => model.ProductDescription)
+	    </div>
+		
+		<div class="editor-label">
+            @Html.LabelFor(model => model.ProductNum)
+        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDescription)
-            @Html.ValidationMessageFor(model => model.ProductDescription)
+            @Html.EditorFor(model => model.ProductNum)
+            @Html.ValidationMessageFor(model => model.ProductNum)
         </div>
 
-		<div id="ext"></div>
+	    <div id="ext"></div>
         <p>
             <input type="submit" value="确定" />
         </p>

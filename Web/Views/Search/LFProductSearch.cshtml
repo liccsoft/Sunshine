@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Sunshine.Business.Core.LFProduct>
+﻿@model IEnumerable<Sunshine.Business.Core.LFProductItem>
 @{
     ViewBag.Title = "Index";
     Layout = "";
-    ViewBag.actionName = "Search";
+    ViewBag.actionName = "LFProductSearch";
 }
 <div class="fore1 pagin">
 @Html.Partial("pagingPart")
@@ -11,10 +11,9 @@
 <thead>
 <tr>
 <th>@Html.DisplayNameFor(model => model.ProductMark)</th>
-<th>@Html.DisplayNameFor(model => model.ProductAdditions)</th>
+<th>@Html.DisplayNameFor(model => model.Setting)</th>
 <th>@Html.DisplayNameFor(model => model.ProductNum)</th>
-<th>@Html.DisplayNameFor(model => model.Updatetime)</th>
-
+<th>@Html.DisplayNameFor(model => model.Contact)</th>
 <th> </th></tr>
 </thead>
 <tbody>
@@ -22,10 +21,10 @@
 {
 	<tr>
 		<td>@item.ProductMark
-	</td><td>@item.ProductAdditions 
+	</td><td>@item.Setting 
 	</td><td>@item.ProductNum
-	</td><td>@item.Updatetime
-	</td><td>@Html.ActionLink("详细", "Details", new { id = item.LFProductId }, new { target = "_blank" })
+	</td><td>@item.Contact
+	</td><td>@Html.ActionLink("详细", "Details", new { id = item.ProductId }, new { target = "_blank" })
 		</td> 
 	</tr>
 }

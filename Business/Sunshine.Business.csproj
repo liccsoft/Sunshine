@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Account\AccountManager.cs" />
     <Compile Include="Account\IAccountManager.cs" />
+    <Compile Include="Core\LFProduct.cs" />
     <Compile Include="Search\DefaultSearchProvider.cs" />
     <Compile Include="Search\SearchEngine.cs" />
     <Compile Include="Security\ISecurityGroupManager.cs" />
