@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[LFProduct]
+    ADD CONSTRAINT [LFProduct_Brand] FOREIGN KEY ([BrandId]) REFERENCES [dbo].[Brand] ([BrandId]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

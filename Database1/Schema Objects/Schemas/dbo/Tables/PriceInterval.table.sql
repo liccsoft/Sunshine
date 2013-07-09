@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[PriceInterval] (
+    [PriceIntervalId]   INT            IDENTITY (1, 1) NOT NULL,
+    [PriceIntervalName] NVARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([PriceIntervalId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
+);
+
